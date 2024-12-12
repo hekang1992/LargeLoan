@@ -1,0 +1,6 @@
+framework module Pods_LargeLoan {
+  umbrella header "Pods-LargeLoan-umbrella.h"
+
+  export *
+  module * { export * }
+}
