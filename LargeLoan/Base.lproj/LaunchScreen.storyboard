@@ -17,17 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icloud.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ypy-bZ-6de">
-                                <rect key="frame" x="0.0" y="0.66666666666668561" width="393" height="851.66666666666652"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchimage" translatesAutoresizingMaskIntoConstraints="NO" id="ypy-bZ-6de">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launcicon" translatesAutoresizingMaskIntoConstraints="NO" id="Hed-vj-WT3">
+                                <rect key="frame" x="76" y="339" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Hed-vj-WT3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="76" id="4c4-XJ-uh2"/>
                             <constraint firstItem="ypy-bZ-6de" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="7av-ea-HxD"/>
                             <constraint firstItem="ypy-bZ-6de" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7mf-Nt-yUq"/>
+                            <constraint firstItem="Hed-vj-WT3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="280" id="8L7-20-ak0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hed-vj-WT3" secondAttribute="trailing" constant="77" id="QwD-fk-7JC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ypy-bZ-6de" secondAttribute="trailing" id="jUD-fa-gIv"/>
                             <constraint firstAttribute="bottom" secondItem="ypy-bZ-6de" secondAttribute="bottom" id="mYw-f6-fHb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Hed-vj-WT3" secondAttribute="bottom" constant="351" id="pRF-w3-w5s"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,7 +44,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icloud.and.arrow.up.fill" catalog="system" width="128" height="108"/>
+        <image name="launchimage" width="375" height="812"/>
+        <image name="launcicon" width="108" height="118"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
