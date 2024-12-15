@@ -11,5 +11,10 @@ import RxSwift
 class BaseView: UIView {
 
     let disposeBag = DisposeBag()
+    
+    lazy var headView: HeadView = {
+        let headView = HeadView()
+        return headView
+    }()
 
 }

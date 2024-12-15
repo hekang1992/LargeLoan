@@ -1,27 +1,26 @@
 //
-//  BaseViewController.swift
+//  LoginViewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/12.
+//  Created by 何康 on 2024/12/14.
 //
 
 import UIKit
-import RxSwift
 
-class BaseViewController: UIViewController {
+class LoginViewController: BaseViewController {
     
-    let disposeBag = DisposeBag()
-    
-    lazy var headView: HeadView = {
-        let headView = HeadView()
-        return headView
-    }()
+    private var loginView = LoginView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .white
+        view.addSubview(loginView)
+        loginView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        tapClick()
     }
     
 
@@ -37,14 +36,15 @@ class BaseViewController: UIViewController {
 
 }
 
-
-extension BaseViewController {
+extension LoginViewController {
     
-    
-    func backInfo() {
-        self.headView.backBtn.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+    func tapClick() {
+        
+        loginView.loginBtn.rx.tap.subscribe(onNext: { [weak self] in
+            PushRootVcConfig.goRootVc()
         }).disposed(by: disposeBag)
+        
     }
+    
     
 }
