@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-LargeLoan/Pods-LargeLoan-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/BRPickerView/BRPickerView.framework
 ${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework
 ${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
@@ -11,4 +12,7 @@ ${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework
 ${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework
 ${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework
 ${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/SAMKeychain/SAMKeychain.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/TYAlertController/TYAlertController.framework
+${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework

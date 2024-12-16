@@ -1,5 +1,31 @@
 PODS:
   - Alamofire (5.10.2)
+  - BRPickerView (2.9.1):
+    - BRPickerView/All (= 2.9.1)
+  - BRPickerView/All (2.9.1):
+    - BRPickerView/Default
+    - BRPickerView/Deprecated
+  - BRPickerView/Core (2.9.1)
+  - BRPickerView/DatePicker (2.9.1):
+    - BRPickerView/Core
+  - BRPickerView/Default (2.9.1):
+    - BRPickerView/DatePicker
+    - BRPickerView/TextPicker
+  - BRPickerView/Deprecated (2.9.1):
+    - BRPickerView/Core
+    - BRPickerView/Deprecated/AddressPickerView (= 2.9.1)
+    - BRPickerView/Deprecated/Base (= 2.9.1)
+    - BRPickerView/Deprecated/StringPickerView (= 2.9.1)
+  - BRPickerView/Deprecated/AddressPickerView (2.9.1):
+    - BRPickerView/Core
+    - BRPickerView/Deprecated/Base
+  - BRPickerView/Deprecated/Base (2.9.1):
+    - BRPickerView/Core
+  - BRPickerView/Deprecated/StringPickerView (2.9.1):
+    - BRPickerView/Core
+    - BRPickerView/Deprecated/Base
+  - BRPickerView/TextPicker (2.9.1):
+    - BRPickerView/Core
   - DeviceKit (5.2.3)
   - Differentiator (5.0.0)
   - IQKeyboardManagerSwift (6.5.16)
@@ -22,9 +48,13 @@ PODS:
   - RxRelay (6.6.0):
     - RxSwift (= 6.6.0)
   - RxSwift (6.6.0)
+  - SAMKeychain (1.5.3)
   - SnapKit (5.7.1)
+  - Toast-Swift (5.1.1)
+  - TYAlertController (1.2.0)
 
 DEPENDENCIES:
+  - BRPickerView (~> 2.9.1)
   - DeviceKit (~> 5.2.2)
   - IQKeyboardManagerSwift (~> 6.5.16)
   - Kingfisher (~> 7.11.0)
@@ -34,11 +64,15 @@ DEPENDENCIES:
   - RxDataSources (~> 5.0.0)
   - RxGesture (~> 4.0.4)
   - RxSwift (~> 6.6.0)
+  - SAMKeychain (~> 1.5.3)
   - SnapKit (~> 5.7.1)
+  - Toast-Swift (~> 5.1.1)
+  - TYAlertController (~> 1.2.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BRPickerView
     - DeviceKit
     - Differentiator
     - IQKeyboardManagerSwift
@@ -50,10 +84,14 @@ SPEC REPOS:
     - RxGesture
     - RxRelay
     - RxSwift
+    - SAMKeychain
     - SnapKit
+    - Toast-Swift
+    - TYAlertController
 
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
+  BRPickerView: 6dd69ea2c48e0a0abf1d197a705050e13143ee63
   DeviceKit: 4504e64df8f8ad1c42aae68f30ece5b51d56022a
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
@@ -65,8 +103,11 @@ SPEC CHECKSUMS:
   RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
+  SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
+  TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
 
-PODFILE CHECKSUM: 6424e7fda40311894e5c389790068d0120768888
+PODFILE CHECKSUM: 5c4d159794d7850895d04ffa4652d8967d871b94
 
 COCOAPODS: 1.16.2

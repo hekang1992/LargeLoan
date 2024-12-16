@@ -15,7 +15,46 @@ class SetViewController: BaseViewController {
         homeImageView.isUserInteractionEnabled = true
         return homeImageView
     }()
-
+    
+    lazy var jImageView: UIImageView = {
+        let jImageView = UIImageView()
+        jImageView.image = UIImage(named: "jianbainsebg")
+        return jImageView
+    }()
+    
+    lazy var whiteView: UIView = {
+        let whiteView = UIView()
+        whiteView.backgroundColor = .white
+        return whiteView
+    }()
+    
+    lazy var iconImageView: UIImageView = {
+        let iconImageView = UIImageView()
+        iconImageView.image = UIImage(named: "centerlogo")
+        return iconImageView
+    }()
+    
+    lazy var vlabel: UILabel = {
+        let vlabel = UILabel()
+        vlabel.text = "Version 1.0.0"
+        vlabel.textColor = UIColor.init(cssStr: "#101D37")
+        vlabel.textAlignment = .center
+        vlabel.font = .regularFontOfSize(size: 16)
+        return vlabel
+    }()
+    
+    lazy var logoutBtn: UIButton = {
+        let logoutBtn = UIButton(type: .custom)
+        logoutBtn.setImage(UIImage(named: "logoutimge"), for: .normal)
+        return logoutBtn
+    }()
+    
+    lazy var delBtn: UIButton = {
+        let delBtn = UIButton(type: .custom)
+        delBtn.setImage(UIImage(named: "deleteimage"), for: .normal)
+        return delBtn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,18 +73,57 @@ class SetViewController: BaseViewController {
         
         backInfo()
         
+        homeImageView.addSubview(jImageView)
+        jImageView.snp.makeConstraints { make in
+            make.top.equalTo(headView.snp.bottom).offset(27)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
+            make.height.equalTo(62)
+        }
+        
+        homeImageView.addSubview(whiteView)
+        whiteView.snp.makeConstraints { make in
+            make.left.bottom.right.equalToSuperview()
+            make.top.equalTo(jImageView.snp.top).offset(36)
+        }
+        whiteView.layoutIfNeeded()
+        whiteView.setTopCorners(radius: 20)
+
+        
+        whiteView.addSubview(iconImageView)
+        
+        whiteView.addSubview(vlabel)
+        
+        iconImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(20)
+            make.size.equalTo(CGSize(width: 129, height: 129))
+        }
+        
+        vlabel.snp.makeConstraints { make in
+            make.top.equalTo(iconImageView.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(19)
+        }
+        
+        whiteView.addSubview(logoutBtn)
+        whiteView.addSubview(delBtn)
+        
+        
+        logoutBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 343, height: 60))
+            make.top.equalTo(iconImageView.snp.bottom).offset(63)
+        }
+        
+        delBtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 343, height: 60))
+            make.top.equalTo(logoutBtn.snp.bottom).offset(10)
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

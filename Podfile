@@ -25,5 +25,13 @@ target 'LargeLoan' do
   pod 'DeviceKit', '~> 5.2.2'
   
   pod 'IQKeyboardManagerSwift', '~> 6.5.16'
+  
+  pod 'TYAlertController', '~> 1.2.0'
 
+  pod 'BRPickerView', '~> 2.9.1'
+  
+  pod 'SAMKeychain', '~> 1.5.3'
+  
+  pod 'Toast-Swift', '~> 5.1.1'
+  
 end

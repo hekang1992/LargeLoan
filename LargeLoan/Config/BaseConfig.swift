@@ -14,10 +14,6 @@ let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
-let PHONE_PHONE = "PHONE_PHONE"
-
-let SESSION_SESSION = "SESSION_SESSION"
-
 let StatusBarHeight = StatusBarConfig.getStatusBarHeight()
 
 extension UIColor {
@@ -70,7 +66,7 @@ extension UIFont {
 }
 
 extension UIView {
-
+    
     func setTopCorners(radius: CGFloat) {
         let path = UIBezierPath(
             roundedRect: self.bounds,
@@ -133,5 +129,33 @@ extension UIButton {
         }
         self.titleEdgeInsets = labelEdgeInset
         self.imageEdgeInsets = imageEdgeInset
+    }
+}
+
+class LoadingIndicator {
+    static let shared = LoadingIndicator()
+
+    private var activityIndicator: UIActivityIndicatorView?
+    private var backgroundView: UIView?
+
+    private init() {}
+
+    func showLoading(on view: UIView) {
+        if activityIndicator != nil { return }
+        backgroundView = UIView(frame: view.bounds)
+        backgroundView?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        view.addSubview(backgroundView!)
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator?.center = view.center
+        activityIndicator?.startAnimating()
+        view.addSubview(activityIndicator!)
+    }
+
+    func hideLoading() {
+        activityIndicator?.stopAnimating()
+        activityIndicator?.removeFromSuperview()
+        backgroundView?.removeFromSuperview()
+        activityIndicator = nil
+        backgroundView = nil
     }
 }

@@ -7,10 +7,13 @@
 
 import UIKit
 import RxSwift
+import Moya
 
 class BaseViewController: UIViewController {
     
     let disposeBag = DisposeBag()
+    
+    let provider = MoyaProvider<LargeLoanAPI>()
     
     lazy var headView: HeadView = {
         let headView = HeadView()

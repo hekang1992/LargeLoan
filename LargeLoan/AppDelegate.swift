@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = LoginViewController()
-        noti()
+        NotificationCenter.default.addObserver(self, selector: #selector(rootVc(_ :)), name: NSNotification.Name(ROOT_VC), object: nil)
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.enable = true
         window?.makeKeyAndVisible()
         return true
     }
@@ -25,12 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     
-    private func noti() {
-        NotificationCenter.default.addObserver(self, selector: #selector(rootVc(_ :)), name: NSNotification.Name(ROOT_VC), object: nil)
-    }
-    
     @objc private func rootVc(_ notification: Notification) {
-        let isLogin = UserDefaults.standard.object(forKey: PHONE_PHONE) as? String ?? ""
+        let isLogin = UserDefaults.standard.object(forKey: LOGIN_TWO) as? String ?? ""
         window?.rootViewController = isLogin.isEmpty ? BaseNavigationController(rootViewController: BaseTabBarViewController()) : BaseNavigationController(rootViewController: BaseTabBarViewController())
     }
 }
