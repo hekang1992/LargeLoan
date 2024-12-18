@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TYAlertController
 
 class SetViewController: BaseViewController {
     
@@ -71,8 +72,6 @@ class SetViewController: BaseViewController {
             make.height.equalTo(StatusBarHeight + 50)
         }
         
-        backInfo()
-        
         homeImageView.addSubview(jImageView)
         jImageView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom).offset(27)
@@ -121,6 +120,17 @@ class SetViewController: BaseViewController {
             make.size.equalTo(CGSize(width: 343, height: 60))
             make.top.equalTo(logoutBtn.snp.bottom).offset(10)
         }
+        
+        
+        logoutBtn.rx.tap.subscribe(onNext: { [weak self] in
+            self?.log()
+        }).disposed(by: disposeBag)
+        
+        delBtn.rx.tap.subscribe(onNext: { [weak self] in
+            self?.del()
+        }).disposed(by: disposeBag)
+        
+        
     }
     
 
@@ -129,6 +139,214 @@ class SetViewController: BaseViewController {
 
 extension SetViewController {
     
+    func log() {
+        let logoutView = LogoutView(frame: self.view.bounds)
+        ShowalertConfig.alertShow(form: logoutView, vc: self)
+        logoutView.oneBtn.rx.tap.subscribe(onNext: {
+            self.dismiss(animated: true)
+        }).disposed(by: disposeBag)
+        logoutView.twoBtn.rx.tap.subscribe(onNext: {
+            self.dismiss(animated: true)
+        }).disposed(by: disposeBag)
+        logoutView.threeBtn.rx.tap.subscribe(onNext: {
+            self.dismiss(animated: true) {
+                self.out()
+            }
+        }).disposed(by: disposeBag)
+    }
     
+    func del() {
+        let logoutView = DelInfoView(frame: self.view.bounds)
+        ShowalertConfig.alertShow(form: logoutView, vc: self)
+        logoutView.oneBtn.rx.tap.subscribe(onNext: {
+            self.dismiss(animated: true)
+        }).disposed(by: disposeBag)
+        logoutView.twoBtn.rx.tap.subscribe(onNext: {
+            self.dismiss(animated: true)
+        }).disposed(by: disposeBag)
+        logoutView.threeBtn.rx.tap.subscribe(onNext: {
+            self.dismiss(animated: true) {
+                self.oiont()
+            }
+        }).disposed(by: disposeBag)
+    }
+    
+    func out() {
+        LoadingIndicator.shared.showLoading()
+        provider.request(.tologOut) { [weak self] result in
+            LoadingIndicator.shared.hideLoading()
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                do {
+                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                    let anyone = model.anyone
+                    if anyone == "0" || anyone == "0" {
+                        LoginFactory.removeLoginInfo()
+                        PushRootVcConfig.goRootVc()
+                    }
+                    ToastConfig.show(form: view, message: model.coldly)
+                } catch {
+                    print("JSON: \(error)")
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+    }
+    
+    func oiont() {
+        LoadingIndicator.shared.showLoading()
+        provider.request(.todeleinfo) { [weak self] result in
+            LoadingIndicator.shared.hideLoading()
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                do {
+                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                    let anyone = model.anyone
+                    if anyone == "0" || anyone == "0" {
+                        LoginFactory.removeLoginInfo()
+                        PushRootVcConfig.goRootVc()
+                    }
+                    ToastConfig.show(form: view, message: model.coldly)
+                } catch {
+                    print("JSON: \(error)")
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+    }
     
 }
+
+
+
+
+class LogoutView: BaseView {
+    
+    lazy var bgImageView: UIImageView = {
+        let bgImageView = UIImageView()
+        bgImageView.isUserInteractionEnabled = true
+        bgImageView.image = UIImage(named: "logoutimgefad")
+        return bgImageView
+    }()
+    
+    lazy var oneBtn: UIButton = {
+        let oneBtn = UIButton(type: .custom)
+        return oneBtn
+    }()
+    
+    lazy var twoBtn: UIButton = {
+        let twoBtn = UIButton(type: .custom)
+        return twoBtn
+    }()
+    
+    lazy var threeBtn: UIButton = {
+        let threeBtn = UIButton(type: .custom)
+        return threeBtn
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(bgImageView)
+        bgImageView.addSubview(oneBtn)
+        bgImageView.addSubview(twoBtn)
+        bgImageView.addSubview(threeBtn)
+        
+        bgImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: 303, height: 282))
+        }
+        oneBtn.snp.makeConstraints { make in
+            make.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.size.equalTo(CGSize(width: 40, height: 40))
+        }
+        twoBtn.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(148)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
+            make.height.equalTo(48)
+        }
+        threeBtn.snp.makeConstraints { make in
+            make.top.equalTo(twoBtn.snp.bottom).offset(18)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
+            make.height.equalTo(48)
+        }
+    }
+    
+    @MainActor required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+
+class DelInfoView: BaseView {
+    
+    lazy var bgImageView: UIImageView = {
+        let bgImageView = UIImageView()
+        bgImageView.isUserInteractionEnabled = true
+        bgImageView.image = UIImage(named: "deleimgeino")
+        return bgImageView
+    }()
+    
+    lazy var oneBtn: UIButton = {
+        let oneBtn = UIButton(type: .custom)
+        return oneBtn
+    }()
+    
+    lazy var twoBtn: UIButton = {
+        let twoBtn = UIButton(type: .custom)
+        return twoBtn
+    }()
+    
+    lazy var threeBtn: UIButton = {
+        let threeBtn = UIButton(type: .custom)
+        return threeBtn
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(bgImageView)
+        bgImageView.addSubview(oneBtn)
+        bgImageView.addSubview(twoBtn)
+        bgImageView.addSubview(threeBtn)
+        
+        bgImageView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: 315, height: 370))
+        }
+        oneBtn.snp.makeConstraints { make in
+            make.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.size.equalTo(CGSize(width: 40, height: 40))
+        }
+        twoBtn.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(193)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
+            make.height.equalTo(48)
+        }
+        threeBtn.snp.makeConstraints { make in
+            make.top.equalTo(twoBtn.snp.bottom).offset(18)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
+            make.height.equalTo(48)
+        }
+    }
+    
+    @MainActor required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+
+
+

@@ -7,6 +7,7 @@
 
 import DeviceKit
 import SAMKeychain
+import TYAlertController
 
 let LargeLoan_one = "LargeLoan_one"
 let LargeLoan_two = "LargeLoan_two"
@@ -17,11 +18,9 @@ let but = Device.current.description
 let narrated = GetIdfv.getIDFV()
 let slow = UIDevice.current.systemVersion
 let process = "large"
-let nonstop = UserDefaults.standard.object(forKey: LOGIN_TWO) as? String ?? ""
 let trembling = narrated
 let loveMe = "ture"
 
-let loginConfig = GetDengLuConfig.loginConfig()
 
 class GetIdfv {
     static func getIDFV() -> String {
@@ -41,6 +40,11 @@ class GetIdfv {
 class GetDengLuConfig {
     
     static func loginConfig() -> [String: String] {
+        var nonstop: String = ""
+        if let sessionId: String = UserDefaults.standard.object(forKey: LOGIN_TWO) as? String {
+            nonstop = sessionId
+        }
+        
         let onedict = ["point": point,
                        "process": process,
                        "nonstop": nonstop]
@@ -86,9 +90,19 @@ class LoginFactory {
         UserDefaults.standard.synchronize()
     }
     
-    static func removeLoginInfo(one: String, two: String) {
+    static func removeLoginInfo() {
         UserDefaults.standard.setValue("", forKey: LOGIN_ONE)
         UserDefaults.standard.setValue("", forKey: LOGIN_TWO)
         UserDefaults.standard.synchronize()
     }
+}
+
+
+class ShowalertConfig {
+    
+    static func alertShow(form view: UIView, vc: BaseViewController, style: TYAlertControllerStyle = .alert ) {
+        let alertVc = TYAlertController(alert: view, preferredStyle: style)!
+        vc.present(alertVc, animated: true)
+    }
+    
 }

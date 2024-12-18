@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxRelay
 
 class HomeViewController: BaseViewController {
     
@@ -13,26 +14,106 @@ class HomeViewController: BaseViewController {
         let subView = HomeSubView()
         return subView
     }()
-
+    
+    var homeModel = BehaviorRelay<BaseModel?>(value: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         view.addSubview(subView)
         subView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        subView.applyImageView
+            .rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.apply()
+            }).disposed(by: disposeBag)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getHomedata()
+        
     }
-    */
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+}
 
+extension HomeViewController {
+    
+    private func getHomedata() {
+        LoadingIndicator.shared.showLoading()
+        provider.request(.toHomeData) { [weak self] result in
+            LoadingIndicator.shared.hideLoading()
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                do {
+                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                    let anyone = model.anyone
+                    if anyone == "0" || anyone == "0" {
+                        self.homeModel.accept(model)
+                    }
+                } catch {
+                    print("JSON: \(error)")
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+        
+    }
+    
+    private func apply() {
+        let digging = self.homeModel.value?.exuding.palms?.something?.first?.digging ?? 0
+        LoadingIndicator.shared.showLoading()
+        provider.request(.applyInfo(productId: String(digging))) { [weak self] result in
+//            LoadingIndicator.shared.hideLoading()
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                do {
+                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                    let anyone = model.anyone
+                    if anyone == "0" || anyone == "0" {
+                        self.productInfo(form: model.exuding.raised ?? "")
+                    }
+                } catch {
+                    print("JSON: \(error)")
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+    }
+    
+    private func productInfo(form with: String?) {
+        if let url = with, !url.isEmpty, url.hasPrefix(urlScheme), let sc = URL(string: url) {
+            if let productId = jiequzifu(url: sc) {
+                self.getProductDetailInfo(form: productId, complete: { [weak self] model in
+                    let pushVc = ZTViewController()
+                    pushVc.model = model
+                    self?.navigationController?.pushViewController(pushVc, animated: true)
+                })
+            }
+        }
+    }
+    
 }

@@ -9,13 +9,29 @@ import Foundation
 
 
 struct BaseModel: Codable {
-    let anyone: String
-    let coldly: String
-    let exuding: exudingModel
+    var anyone: String
+    var coldly: String
+    var exuding: exudingModel
 }
 
 struct exudingModel: Codable {
-    let nonstop: String?
-    let surroundings: String?
-    let ad: String?
+    var nonstop: String?
+    var surroundings: String?
+    var ad: String?
+    var raised: String?
+    var palms: palmsModel?
+    var guess: guessModel?
+}
+
+struct palmsModel: Codable {
+    var large: String?
+    var something: [somethingModel]?
+}
+
+struct somethingModel: Codable {
+    var digging: Int?
+}
+
+struct guessModel: Codable {
+    var pungent: String?
 }

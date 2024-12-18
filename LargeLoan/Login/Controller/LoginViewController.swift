@@ -24,8 +24,7 @@ class LoginViewController: BaseViewController {
         loginView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        tapClick()
-        PushRootVcConfig.goRootVc()
+        tapClick()        
     }
     
 }
@@ -51,7 +50,7 @@ extension LoginViewController {
             ToastConfig.show(form: self.view, message: "Please enter your phone number!")
             return
         }
-        LoadingIndicator.shared.showLoading(on: view)
+        LoadingIndicator.shared.showLoading()
         provider.request(.tocode(phone: self.loginView.phoneTx.text ?? "")) { [weak self] result in
             LoadingIndicator.shared.hideLoading()
             guard let self = self else { return }
@@ -97,7 +96,7 @@ extension LoginViewController {
             ToastConfig.show(form: self.view, message: "Please enter your phone number!")
             return
         }
-        LoadingIndicator.shared.showLoading(on: view)
+        LoadingIndicator.shared.showLoading()
         provider.request(.tologin(phone: self.loginView.phoneTx.text ?? "", code: self.loginView.codeTx.text ?? "")) { [weak self] result in
             LoadingIndicator.shared.hideLoading()
             guard let self = self else { return }

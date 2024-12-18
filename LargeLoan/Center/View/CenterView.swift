@@ -32,7 +32,7 @@ class CenterView: BaseView {
     
     lazy var phonelabel: UILabel = {
         let phonelabel = UILabel()
-        phonelabel.text = "999434151"
+        phonelabel.text = UserDefaults.standard.object(forKey: LOGIN_ONE) as? String ?? ""
         phonelabel.textColor = .white
         phonelabel.textAlignment = .left
         phonelabel.font = .regularFontOfSize(size: 24)

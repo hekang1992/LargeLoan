@@ -134,23 +134,26 @@ extension UIButton {
 
 class LoadingIndicator {
     static let shared = LoadingIndicator()
-
+    
     private var activityIndicator: UIActivityIndicatorView?
     private var backgroundView: UIView?
-
+    
     private init() {}
-
-    func showLoading(on view: UIView) {
+    
+    func showLoading() {
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else {
+            return
+        }
         if activityIndicator != nil { return }
-        backgroundView = UIView(frame: view.bounds)
+        backgroundView = UIView(frame: window.bounds)
         backgroundView?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        view.addSubview(backgroundView!)
+        window.addSubview(backgroundView!)
         activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator?.center = view.center
+        activityIndicator?.center = window.center
         activityIndicator?.startAnimating()
-        view.addSubview(activityIndicator!)
+        window.addSubview(activityIndicator!)
     }
-
+    
     func hideLoading() {
         activityIndicator?.stopAnimating()
         activityIndicator?.removeFromSuperview()

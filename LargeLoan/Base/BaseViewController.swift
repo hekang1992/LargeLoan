@@ -25,6 +25,7 @@ class BaseViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
+        backInfo()
     }
     
 
@@ -50,4 +51,34 @@ extension BaseViewController {
         }).disposed(by: disposeBag)
     }
     
+    func jiequzifu(url: URL) -> String? {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let queryItem = components.queryItems?.last,
+              let value = queryItem.value else {
+            return nil
+        }
+        return value
+    }
+    
+    func getProductDetailInfo(form old: String, complete: @escaping ((BaseModel) -> Void)) {
+        LoadingIndicator.shared.showLoading()
+        provider.request(.productDetailInfo(productId: old)) { result in
+            LoadingIndicator.shared.hideLoading()
+            switch result {
+            case .success(let response):
+                do {
+                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                    let anyone = model.anyone
+                    if anyone == "0" || anyone == "0" {
+                        complete(model)
+                    }
+                } catch {
+                    print("JSON: \(error)")
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+    }
 }
