@@ -14,8 +14,6 @@ let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
-let StatusBarHeight = StatusBarConfig.getStatusBarHeight()
-
 extension UIColor {
     convenience init?(cssStr: String) {
         let hexString = cssStr.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()

@@ -19,8 +19,12 @@ struct exudingModel: Codable {
     var surroundings: String?
     var ad: String?
     var raised: String?
+    var blow: Int?
     var palms: palmsModel?
     var guess: guessModel?
+    var her: herModel?
+    var smiled: smiledModel?
+    var big: [[String]]?
 }
 
 struct palmsModel: Codable {
@@ -35,3 +39,13 @@ struct somethingModel: Codable {
 struct guessModel: Codable {
     var pungent: String?
 }
+
+struct herModel: Codable {
+    var digging: String?
+}
+
+struct smiledModel: Codable {
+    var ever: Int?
+    var raised: String?
+}
+

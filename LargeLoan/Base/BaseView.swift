@@ -12,6 +12,8 @@ class BaseView: UIView {
 
     let disposeBag = DisposeBag()
     
+    let StatusBarHeight = StatusBarConfig.getStatusBarHeight()
+    
     lazy var headView: HeadView = {
         let headView = HeadView()
         return headView

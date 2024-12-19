@@ -15,9 +15,20 @@ class BaseViewController: UIViewController {
     
     let provider = MoyaProvider<LargeLoanAPI>()
     
+    let StatusBarHeight = StatusBarConfig.getStatusBarHeight()
+    
+    let tabBarHeight = StatusBarConfig.tabBarHeight
+    
     lazy var headView: HeadView = {
         let headView = HeadView()
         return headView
+    }()
+    
+    lazy var homeImageView: UIImageView = {
+        let homeImageView = UIImageView()
+        homeImageView.image = UIImage(named: "homebg")
+        homeImageView.isUserInteractionEnabled = true
+        return homeImageView
     }()
 
     override func viewDidLoad() {
@@ -81,4 +92,5 @@ extension BaseViewController {
             }
         }
     }
+    
 }

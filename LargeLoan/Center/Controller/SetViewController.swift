@@ -10,13 +10,6 @@ import TYAlertController
 
 class SetViewController: BaseViewController {
     
-    lazy var homeImageView: UIImageView = {
-        let homeImageView = UIImageView()
-        homeImageView.image = UIImage(named: "homebg")
-        homeImageView.isUserInteractionEnabled = true
-        return homeImageView
-    }()
-    
     lazy var jImageView: UIImageView = {
         let jImageView = UIImageView()
         jImageView.image = UIImage(named: "jianbainsebg")

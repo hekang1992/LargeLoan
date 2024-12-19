@@ -20,6 +20,7 @@ enum LargeLoanAPI {
     case toHomeData
     case applyInfo(productId: String)
     case productDetailInfo(productId: String)
+    case southern(old: String)
 }
 
 extension LargeLoanAPI: TargetType {
@@ -36,7 +37,7 @@ extension LargeLoanAPI: TargetType {
         switch self {
         case .tocode, .tologin, .applyInfo, .productDetailInfo:
             return .post
-        case .tologOut, .todeleinfo, .toHomeData:
+        case .tologOut, .todeleinfo, .toHomeData, .southern:
             return .get
         }
     }
@@ -57,6 +58,8 @@ extension LargeLoanAPI: TargetType {
             return .requestParameters(parameters: ["old": productId, "thirty": "30", "type": "apply"], encoding: URLEncoding.default)
         case .productDetailInfo(productId: let productId):
             return .requestParameters(parameters: ["old": productId, "whispers": "10", "type": "productDetailInfo"], encoding: URLEncoding.default)
+        case .southern(old: let old):
+            return .requestParameters(parameters: ["old": old, "knew": "y1", "type": "allow"], encoding: URLEncoding.default)
         }
         
     }
@@ -83,8 +86,10 @@ extension LargeLoanAPI: TargetType {
             return "/allow/wolves"
         case .applyInfo:
             return "/allow/unkempt"
-        case .productDetailInfo(productId: let productId):
+        case .productDetailInfo:
             return "/allow/earlier"
+        case .southern:
+            return "/allow/southern"
         }
         
     }

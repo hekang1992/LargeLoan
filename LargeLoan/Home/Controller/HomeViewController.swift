@@ -110,6 +110,7 @@ extension HomeViewController {
                 self.getProductDetailInfo(form: productId, complete: { [weak self] model in
                     let pushVc = ZTViewController()
                     pushVc.model = model
+                    pushVc.proid = productId
                     self?.navigationController?.pushViewController(pushVc, animated: true)
                 })
             }

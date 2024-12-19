@@ -11,6 +11,10 @@
 		734312DD2CF96A9F007FB9AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734312D72CF96A9F007FB9AB /* Assets.xcassets */; };
 		734312DF2CF96A9F007FB9AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 734312DA2CF96A9F007FB9AB /* LaunchScreen.storyboard */; };
 		734312E92CF97481007FB9AB /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734312E82CF97481007FB9AB /* RequestManager.swift */; };
+		734C6CDC2D14687300B2DB98 /* KFCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C6CDB2D14687300B2DB98 /* KFCViewController.swift */; };
+		734C6CDE2D14790900B2DB98 /* KFCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C6CDD2D14790900B2DB98 /* KFCTableViewCell.swift */; };
+		734C6CE02D147B5600B2DB98 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734C6CDF2D147B5600B2DB98 /* PhotoViewController.swift */; };
+		734F7D932D144E760086A214 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734F7D922D144E760086A214 /* StepView.swift */; };
 		7374160D2D0D56EB00E6CD23 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7374160C2D0D56EB00E6CD23 /* LoginView.swift */; };
 		737416112D0D581700E6CD23 /* BaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737416102D0D581700E6CD23 /* BaseConfig.swift */; };
 		737416132D0D5FFA00E6CD23 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737416122D0D5FFA00E6CD23 /* LoginViewController.swift */; };
@@ -25,7 +29,7 @@
 		737416522D10610C00E6CD23 /* LConig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737416512D1060F900E6CD23 /* LConig.swift */; };
 		737416542D1069AF00E6CD23 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737416532D1069AF00E6CD23 /* Model.swift */; };
 		73C8B4552D132A2700B10C07 /* ZTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C8B4542D132A2700B10C07 /* ZTViewController.swift */; };
-		73E56BDF2D11B9070015BF34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E56BDE2D11B9070015BF34 /* ViewController.swift */; };
+		73E56BDF2D11B9070015BF34 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E56BDE2D11B9070015BF34 /* LaunchViewController.swift */; };
 		73EEE7AD2D0B399F00001E22 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EEE7AC2D0B399F00001E22 /* BaseViewController.swift */; };
 		73EEE7AF2D0B39BD00001E22 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EEE7AE2D0B39BD00001E22 /* BaseTabBarViewController.swift */; };
 		73EEE7B12D0B39D300001E22 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EEE7B02D0B39D300001E22 /* BaseNavigationController.swift */; };
@@ -42,6 +46,10 @@
 		734312D82CF96A9F007FB9AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		734312D92CF96A9F007FB9AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		734312E82CF97481007FB9AB /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		734C6CDB2D14687300B2DB98 /* KFCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFCViewController.swift; sourceTree = "<group>"; };
+		734C6CDD2D14790900B2DB98 /* KFCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFCTableViewCell.swift; sourceTree = "<group>"; };
+		734C6CDF2D147B5600B2DB98 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		734F7D922D144E760086A214 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
 		7374160C2D0D56EB00E6CD23 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		737416102D0D581700E6CD23 /* BaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseConfig.swift; sourceTree = "<group>"; };
 		737416122D0D5FFA00E6CD23 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +64,7 @@
 		737416512D1060F900E6CD23 /* LConig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LConig.swift; sourceTree = "<group>"; };
 		737416532D1069AF00E6CD23 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		73C8B4542D132A2700B10C07 /* ZTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTViewController.swift; sourceTree = "<group>"; };
-		73E56BDE2D11B9070015BF34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		73E56BDE2D11B9070015BF34 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		73EEE7A62D0B315100001E22 /* LargeLoan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LargeLoan.entitlements; sourceTree = "<group>"; };
 		73EEE7AC2D0B399F00001E22 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		73EEE7AE2D0B39BD00001E22 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +156,8 @@
 			children = (
 				737416142D0D6F3D00E6CD23 /* HomeViewController.swift */,
 				73C8B4542D132A2700B10C07 /* ZTViewController.swift */,
+				734C6CDB2D14687300B2DB98 /* KFCViewController.swift */,
+				734C6CDF2D147B5600B2DB98 /* PhotoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -157,6 +167,8 @@
 			children = (
 				7374161C2D0E92CA00E6CD23 /* HomeSubView.swift */,
 				7374161E2D0E92D700E6CD23 /* HomeMainView.swift */,
+				734F7D922D144E760086A214 /* StepView.swift */,
+				734C6CDD2D14790900B2DB98 /* KFCTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,7 +198,7 @@
 				73EEE7AC2D0B399F00001E22 /* BaseViewController.swift */,
 				73EEE7AE2D0B39BD00001E22 /* BaseTabBarViewController.swift */,
 				73EEE7B02D0B39D300001E22 /* BaseNavigationController.swift */,
-				73E56BDE2D11B9070015BF34 /* ViewController.swift */,
+				73E56BDE2D11B9070015BF34 /* LaunchViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -359,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				737416192D0D6F5000E6CD23 /* CenterViewController.swift in Sources */,
+				734C6CDE2D14790900B2DB98 /* KFCTableViewCell.swift in Sources */,
 				737416292D0EAF5C00E6CD23 /* SetViewController.swift in Sources */,
 				734312DC2CF96A9F007FB9AB /* AppDelegate.swift in Sources */,
 				734312E92CF97481007FB9AB /* RequestManager.swift in Sources */,
@@ -366,7 +379,9 @@
 				737416252D0EA0CC00E6CD23 /* HeadView.swift in Sources */,
 				737416522D10610C00E6CD23 /* LConig.swift in Sources */,
 				73EEE7B32D0B3A2F00001E22 /* BaseView.swift in Sources */,
+				734C6CDC2D14687300B2DB98 /* KFCViewController.swift in Sources */,
 				7374161D2D0E92CA00E6CD23 /* HomeSubView.swift in Sources */,
+				734F7D932D144E760086A214 /* StepView.swift in Sources */,
 				73EEE7B52D0B3A4300001E22 /* BaseTableViewCell.swift in Sources */,
 				737416232D0E9CA100E6CD23 /* CenterView.swift in Sources */,
 				73EEE7B12D0B39D300001E22 /* BaseNavigationController.swift in Sources */,
@@ -377,9 +392,10 @@
 				737416542D1069AF00E6CD23 /* Model.swift in Sources */,
 				737416112D0D581700E6CD23 /* BaseConfig.swift in Sources */,
 				737416132D0D5FFA00E6CD23 /* LoginViewController.swift in Sources */,
-				73E56BDF2D11B9070015BF34 /* ViewController.swift in Sources */,
+				73E56BDF2D11B9070015BF34 /* LaunchViewController.swift in Sources */,
 				7374161F2D0E92D700E6CD23 /* HomeMainView.swift in Sources */,
 				73EEE7AF2D0B39BD00001E22 /* BaseTabBarViewController.swift in Sources */,
+				734C6CE02D147B5600B2DB98 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
