@@ -5,6 +5,7 @@
 //  Created by 何康 on 2024/12/16.
 //
 
+import Kingfisher
 import DeviceKit
 import SAMKeychain
 import TYAlertController
@@ -103,6 +104,45 @@ class ShowalertConfig {
     static func alertShow(form view: UIView, vc: BaseViewController, style: TYAlertControllerStyle = .alert ) {
         let alertVc = TYAlertController(alert: view, preferredStyle: style)!
         vc.present(alertVc, animated: true)
+    }
+    
+    // MARK: - 显示跳转设置的提示框
+     static func showSettingsAlert(from viewController: BaseViewController, feature: String) {
+        let alert = UIAlertController(
+            title: "\(feature) Permission denied",
+            message: "Please go to the settings page to enable it",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Go", style: .default) { _ in
+            openSettings()
+        })
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - 打开设置页面
+     static func openSettings() {
+        if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+            if UIApplication.shared.canOpenURL(settingsURL) {
+                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
+}
+
+
+extension Data {
+    
+    static func compressImageTo1MB(image: UIImage) -> Data? {
+        var compression: CGFloat = 0.8
+        var compressedData = image.jpegData(compressionQuality: compression)
+        while compressedData?.count ?? 0 > 1_000_000 && compression > 0.1 {
+            compression -= 0.1
+            compressedData = image.jpegData(compressionQuality: compression)
+        }
+        
+        return compressedData
     }
     
 }

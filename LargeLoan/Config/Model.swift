@@ -18,13 +18,16 @@ struct exudingModel: Codable {
     var nonstop: String?
     var surroundings: String?
     var ad: String?
-    var raised: String?
+    var raised: String?//facetoimge
     var blow: Int?
     var palms: palmsModel?
     var guess: guessModel?
     var her: herModel?
     var smiled: smiledModel?
     var big: [[String]]?
+    var bed: String?
+    var strong: String?
+    var willpower: String?
 }
 
 struct palmsModel: Codable {
@@ -46,6 +49,17 @@ struct herModel: Codable {
 
 struct smiledModel: Codable {
     var ever: Int?
-    var raised: String?
+    var raised: String?//idtoimage
+    var determination: determinationModel?
 }
 
+struct determinationModel: Codable {
+    var oneName: String?
+    var twoNumbe: String?
+    var threeDate: String?
+    enum CodingKeys: String, CodingKey {
+        case oneName = "bed"
+        case twoNumbe = "willpower"
+        case threeDate = "strong"
+    }
+}

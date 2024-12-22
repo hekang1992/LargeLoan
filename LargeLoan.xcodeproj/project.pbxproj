@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7303751F2D18107300C0885F /* EnterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7303751E2D18107300C0885F /* EnterTextView.swift */; };
+		730375212D18108A00C0885F /* EnterBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730375202D18108A00C0885F /* EnterBtnView.swift */; };
+		730375232D18150500C0885F /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730375222D18150500C0885F /* PermissionManager.swift */; };
+		730375252D18211600C0885F /* PopAuthDescView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730375242D18211600C0885F /* PopAuthDescView.swift */; };
+		730375272D184F7700C0885F /* PopSelectPcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730375262D184F7700C0885F /* PopSelectPcView.swift */; };
+		730375292D185AF200C0885F /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730375282D185AF200C0885F /* FaceViewController.swift */; };
+		7303752B2D1870F300C0885F /* AuthYIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7303752A2D1870F300C0885F /* AuthYIViewController.swift */; };
 		734312DC2CF96A9F007FB9AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734312D62CF96A9F007FB9AB /* AppDelegate.swift */; };
 		734312DD2CF96A9F007FB9AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734312D72CF96A9F007FB9AB /* Assets.xcassets */; };
 		734312DF2CF96A9F007FB9AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 734312DA2CF96A9F007FB9AB /* LaunchScreen.storyboard */; };
@@ -40,6 +47,13 @@
 
 /* Begin PBXFileReference section */
 		0485EC6366670F1DB4F68924 /* Pods_LargeLoan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LargeLoan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7303751E2D18107300C0885F /* EnterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTextView.swift; sourceTree = "<group>"; };
+		730375202D18108A00C0885F /* EnterBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterBtnView.swift; sourceTree = "<group>"; };
+		730375222D18150500C0885F /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
+		730375242D18211600C0885F /* PopAuthDescView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAuthDescView.swift; sourceTree = "<group>"; };
+		730375262D184F7700C0885F /* PopSelectPcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSelectPcView.swift; sourceTree = "<group>"; };
+		730375282D185AF200C0885F /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
+		7303752A2D1870F300C0885F /* AuthYIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthYIViewController.swift; sourceTree = "<group>"; };
 		734312A92CF9693A007FB9AB /* LargeLoan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LargeLoan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		734312D62CF96A9F007FB9AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		734312D72CF96A9F007FB9AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,9 +122,9 @@
 		734312DB2CF96A9F007FB9AB /* LargeLoan */ = {
 			isa = PBXGroup;
 			children = (
-				73EEE7A62D0B315100001E22 /* LargeLoan.entitlements */,
 				734312D82CF96A9F007FB9AB /* Info.plist */,
 				734312D72CF96A9F007FB9AB /* Assets.xcassets */,
+				73EEE7A62D0B315100001E22 /* LargeLoan.entitlements */,
 				734312D62CF96A9F007FB9AB /* AppDelegate.swift */,
 				734312DA2CF96A9F007FB9AB /* LaunchScreen.storyboard */,
 				734312E02CF96AAC007FB9AB /* Config */,
@@ -126,11 +140,12 @@
 		734312E02CF96AAC007FB9AB /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				737416532D1069AF00E6CD23 /* Model.swift */,
 				737416512D1060F900E6CD23 /* LConig.swift */,
 				737416242D0EA0CC00E6CD23 /* HeadView.swift */,
 				737416102D0D581700E6CD23 /* BaseConfig.swift */,
 				734312E82CF97481007FB9AB /* RequestManager.swift */,
-				737416532D1069AF00E6CD23 /* Model.swift */,
+				730375222D18150500C0885F /* PermissionManager.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -158,6 +173,8 @@
 				73C8B4542D132A2700B10C07 /* ZTViewController.swift */,
 				734C6CDB2D14687300B2DB98 /* KFCViewController.swift */,
 				734C6CDF2D147B5600B2DB98 /* PhotoViewController.swift */,
+				730375282D185AF200C0885F /* FaceViewController.swift */,
+				7303752A2D1870F300C0885F /* AuthYIViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +186,10 @@
 				7374161E2D0E92D700E6CD23 /* HomeMainView.swift */,
 				734F7D922D144E760086A214 /* StepView.swift */,
 				734C6CDD2D14790900B2DB98 /* KFCTableViewCell.swift */,
+				7303751E2D18107300C0885F /* EnterTextView.swift */,
+				730375202D18108A00C0885F /* EnterBtnView.swift */,
+				730375242D18211600C0885F /* PopAuthDescView.swift */,
+				730375262D184F7700C0885F /* PopSelectPcView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				737416192D0D6F5000E6CD23 /* CenterViewController.swift in Sources */,
+				730375292D185AF200C0885F /* FaceViewController.swift in Sources */,
 				734C6CDE2D14790900B2DB98 /* KFCTableViewCell.swift in Sources */,
 				737416292D0EAF5C00E6CD23 /* SetViewController.swift in Sources */,
 				734312DC2CF96A9F007FB9AB /* AppDelegate.swift in Sources */,
@@ -379,22 +401,28 @@
 				737416252D0EA0CC00E6CD23 /* HeadView.swift in Sources */,
 				737416522D10610C00E6CD23 /* LConig.swift in Sources */,
 				73EEE7B32D0B3A2F00001E22 /* BaseView.swift in Sources */,
+				730375252D18211600C0885F /* PopAuthDescView.swift in Sources */,
 				734C6CDC2D14687300B2DB98 /* KFCViewController.swift in Sources */,
 				7374161D2D0E92CA00E6CD23 /* HomeSubView.swift in Sources */,
 				734F7D932D144E760086A214 /* StepView.swift in Sources */,
 				73EEE7B52D0B3A4300001E22 /* BaseTableViewCell.swift in Sources */,
 				737416232D0E9CA100E6CD23 /* CenterView.swift in Sources */,
+				7303752B2D1870F300C0885F /* AuthYIViewController.swift in Sources */,
 				73EEE7B12D0B39D300001E22 /* BaseNavigationController.swift in Sources */,
 				7374160D2D0D56EB00E6CD23 /* LoginView.swift in Sources */,
 				737416172D0D6F4800E6CD23 /* OrdersViewController.swift in Sources */,
 				73C8B4552D132A2700B10C07 /* ZTViewController.swift in Sources */,
+				730375212D18108A00C0885F /* EnterBtnView.swift in Sources */,
+				730375272D184F7700C0885F /* PopSelectPcView.swift in Sources */,
 				737416152D0D6F3D00E6CD23 /* HomeViewController.swift in Sources */,
 				737416542D1069AF00E6CD23 /* Model.swift in Sources */,
 				737416112D0D581700E6CD23 /* BaseConfig.swift in Sources */,
 				737416132D0D5FFA00E6CD23 /* LoginViewController.swift in Sources */,
+				7303751F2D18107300C0885F /* EnterTextView.swift in Sources */,
 				73E56BDF2D11B9070015BF34 /* LaunchViewController.swift in Sources */,
 				7374161F2D0E92D700E6CD23 /* HomeMainView.swift in Sources */,
 				73EEE7AF2D0B39BD00001E22 /* BaseTabBarViewController.swift in Sources */,
+				730375232D18150500C0885F /* PermissionManager.swift in Sources */,
 				734C6CE02D147B5600B2DB98 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +462,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,7 +503,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

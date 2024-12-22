@@ -24,6 +24,7 @@ class ZTViewController: BaseViewController {
         }
     }
     
+    var typeModel = BehaviorRelay<BaseModel?>(value: nil)
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -186,12 +187,23 @@ class ZTViewController: BaseViewController {
                                 listVc.productID = self.proid
                                 self.navigationController?.pushViewController(listVc, animated: true)
                             }else {
-                                
+                                let faceVc = FaceViewController()
+                                faceVc.productID = self.proid
+                                self.navigationController?.pushViewController(faceVc, animated: true)
                             }
+                        }else {
+                            let phoVc = PhotoViewController()
+                            phoVc.productID = self.proid
+                            self.navigationController?.pushViewController(phoVc, animated: true)
                         }
                         break
                     case self.twoSetp:
-                        print("Two step clicked")
+                        let type = self.model?.exuding.guess?.pungent ?? ""
+                        if type >= "solargeg" {
+                            let oneVc = AuthYIViewController()
+                            oneVc.productID = self.proid
+                            self.navigationController?.pushViewController(oneVc, animated: true)
+                        }
                         break
                     case self.threeSetp:
                         print("Three step clicked")
@@ -208,10 +220,29 @@ class ZTViewController: BaseViewController {
                 }).disposed(by: disposeBag)
             
         }
-        
-        if let model = self.model {
-            self.getTupuInfo(form: model)
-        }
+
+        btn.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self, let model = self.typeModel.value, let type = model.exuding.guess?.pungent else { return }
+            if type == "solargef" {
+                let dataModel = self.dataModel.value
+                if let smiled = dataModel?.exuding.smiled, let ever = smiled.ever {
+                    if ever == 0 {
+                        let listVc = KFCViewController()
+                        listVc.array = dataModel?.exuding.big
+                        listVc.productID = self.proid
+                        self.navigationController?.pushViewController(listVc, animated: true)
+                    }else {
+                        let faceVc = FaceViewController()
+                        faceVc.productID = self.proid
+                        self.navigationController?.pushViewController(faceVc, animated: true)
+                    }
+                }
+            }else if type == "solargeg" {
+                let oneVc = AuthYIViewController()
+                oneVc.productID = self.proid
+                self.navigationController?.pushViewController(oneVc, animated: true)
+            }
+        }).disposed(by: disposeBag)
         
     }
     
@@ -220,42 +251,29 @@ class ZTViewController: BaseViewController {
 
 extension ZTViewController {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getProductDetailInfo(form: proid ?? "", complete: { [weak self] model in
+            self?.typeModel.accept(model)
+            self?.getTupuInfo(form: model)
+        })
+    }
+    
     private func getTupuInfo(form model: BaseModel) {
         self.pushVcWithType(model: model)
     }
     
+    //状态
     func pushVcWithType(model: BaseModel) {
         let type = model.exuding.guess?.pungent ?? ""
         if type == "solargef" {
-            allowEnter(from: model.exuding.her?.digging ?? "")
-        }else {
-            
+            allowEnter(from: model.exuding.her?.digging ?? "", complete: { model in
+                self.dataModel.accept(model)
+            })
+        }else if type == "solargeg" {
+            self.oneSetp.ricon.image = UIImage(named: "vselimage")
         }
     }
-    
-    private func allowEnter(from old: String) {
-        LoadingIndicator.shared.showLoading()
-        provider.request(.southern(old: old)) { [weak self] result in
-            LoadingIndicator.shared.hideLoading()
-            switch result {
-            case .success(let response):
-                do {
-                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
-                    let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
-                        self?.dataModel.accept(model)
-                    }
-                } catch {
-                    print("JSON: \(error)")
-                }
-            case .failure(_):
-                break
-            }
-        }
-    }
-    
-//    listimagebg
-    
 }
 
 

@@ -37,6 +37,7 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         backInfo()
+        
     }
     
 
@@ -57,9 +58,19 @@ extension BaseViewController {
     
     
     func backInfo() {
-        self.headView.backBtn.rx.tap.subscribe(onNext: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }).disposed(by: disposeBag)
+        if self is FaceViewController {
+            self.headView.backBtn.rx.tap.subscribe(onNext: { [weak self] in
+                if let targetViewController = self?.navigationController?.viewControllers.first(where: { $0 is ZTViewController }) {
+                    self?.navigationController?.popToViewController(targetViewController, animated: true)
+                }else {
+                    self?.navigationController?.popViewController(animated: true)
+                }
+            }).disposed(by: disposeBag)
+        }else {
+            self.headView.backBtn.rx.tap.subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }).disposed(by: disposeBag)
+        }
     }
     
     func jiequzifu(url: URL) -> String? {
@@ -87,6 +98,27 @@ extension BaseViewController {
                     print("JSON: \(error)")
                 }
                 break
+            case .failure(_):
+                break
+            }
+        }
+    }
+    
+    func allowEnter(from old: String, complete: @escaping ((BaseModel) -> Void)) {
+        LoadingIndicator.shared.showLoading()
+        provider.request(.southern(old: old)) { result in
+            LoadingIndicator.shared.hideLoading()
+            switch result {
+            case .success(let response):
+                do {
+                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                    let anyone = model.anyone
+                    if anyone == "0" || anyone == "0" {
+                        complete(model)
+                    }
+                } catch {
+                    print("JSON: \(error)")
+                }
             case .failure(_):
                 break
             }
