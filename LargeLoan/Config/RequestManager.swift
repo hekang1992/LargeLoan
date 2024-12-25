@@ -23,6 +23,11 @@ enum LargeLoanAPI {
     case southern(old: String)
     case uploadPhotoImage(dict: [String: Any], difficult: Data)
     case saveNameInfo(old: String, name: String, num: String, date: String, defeated: String)
+    case getTwoInfo(old: String)
+    case getRegion
+    case saveTPinfo(emptyDict: [String: Any])
+    case getTttInfo(old: String)
+    case saveTtPinfo(emptyDict: [String: Any])
 }
 
 extension LargeLoanAPI: TargetType {
@@ -42,12 +47,19 @@ extension LargeLoanAPI: TargetType {
                 .applyInfo,
                 .productDetailInfo,
                 .uploadPhotoImage,
-                .saveNameInfo:
+                .saveNameInfo,
+                .getTwoInfo,
+                .saveTPinfo,
+                .getTttInfo,
+                .saveTtPinfo
+            :
             return .post
         case .tologOut,
                 .todeleinfo,
                 .toHomeData,
-                .southern:
+                .southern,
+                .getRegion
+            :
             return .get
         }
     }
@@ -58,35 +70,35 @@ extension LargeLoanAPI: TargetType {
             return .requestParameters(parameters: ["shall": phone,
                                                    "type": "code"],
                                       encoding: URLEncoding.default)
+       
         case .tologin(phone: let surroundings, code: let surveyed):
             return .requestParameters(parameters: ["surroundings": surroundings,
                                                    "surveyed": surveyed,
                                                    "type": "login"],
                                       encoding: URLEncoding.default)
-        case .tologOut:
+       
+        case .tologOut, .getRegion, .todeleinfo, .toHomeData:
             return .requestParameters(parameters: [String: Any](),
                                       encoding: URLEncoding.default)
-        case .todeleinfo:
-            return .requestParameters(parameters: [String: Any](),
-                                      encoding: URLEncoding.default)
-        case .toHomeData:
-            return .requestParameters(parameters: [String: Any](),
-                                      encoding: URLEncoding.default)
+       
         case .applyInfo(productId: let productId):
             return .requestParameters(parameters: ["old": productId,
                                                    "thirty": "30",
                                                    "type": "apply"],
                                       encoding: URLEncoding.default)
+       
         case .productDetailInfo(productId: let productId):
             return .requestParameters(parameters: ["old": productId,
                                                    "whispers": "10",
                                                    "type": "productDetailInfo"],
                                       encoding: URLEncoding.default)
+       
         case .southern(old: let old):
             return .requestParameters(parameters: ["old": old,
                                                    "knew": "y1",
                                                    "type": "allow"],
                                       encoding: URLEncoding.default)
+       
         case .uploadPhotoImage(dict: let parameters, difficult: let data):
             var formData: [Moya.MultipartFormData] = []
             let imageFormData = Moya.MultipartFormData(provider: .data(data),
@@ -101,6 +113,7 @@ extension LargeLoanAPI: TargetType {
                 }
             }
             return .uploadMultipart(formData)
+        
         case .saveNameInfo(old: let old, name: let name, num: let num, date: let date, defeated: let defeated):
             return .requestParameters(parameters: ["old": old,
                                                    "bed": name,
@@ -109,6 +122,29 @@ extension LargeLoanAPI: TargetType {
                                                    "defeated": defeated,
                                                    "large": "11",
                                                    "stabilize": "idcard"],
+                                      encoding: URLEncoding.default)
+        
+        case .getTwoInfo(old: let old):
+            return .requestParameters(parameters: ["old": old,
+                                                   "bedfly": "name",
+                                                   "weak": "onedate",
+                                                   "define": "young",
+                                                   "small": "11"],
+                                      encoding: URLEncoding.default)
+     
+        case .saveTPinfo(emptyDict: let emptyDict):
+            return .requestParameters(parameters: emptyDict,
+                                      encoding: URLEncoding.default)
+            
+            
+        case .getTttInfo(old: let old):
+            return .requestParameters(parameters: ["old": old,
+                                                   "bbq": "1",
+                                                   "porcuse": "buy"],
+                                      encoding: URLEncoding.default)
+            
+        case .saveTtPinfo(emptyDict: let emptyDict):
+            return .requestParameters(parameters: emptyDict,
                                       encoding: URLEncoding.default)
         }
         
@@ -124,9 +160,9 @@ extension LargeLoanAPI: TargetType {
     
     var path: String {
         switch self {
-        case .tocode(_):
+        case .tocode:
             return "/allow/embroiled"
-        case .tologin(_, _):
+        case .tologin:
             return "/allow/hunting"
         case .tologOut:
             return "/allow/while"
@@ -144,6 +180,16 @@ extension LargeLoanAPI: TargetType {
             return "/allow/forward"
         case .saveNameInfo:
             return "/allow/stood"
+        case .getTwoInfo:
+            return "/allow/palace"
+        case .getRegion:
+            return "/allow/inchsu"
+        case .saveTPinfo:
+            return "/allow/guards"
+        case .getTttInfo:
+            return "/allow/leave"
+        case .saveTtPinfo:
+            return "/allow/suddenly"
         }
         
     }

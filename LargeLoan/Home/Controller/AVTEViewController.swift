@@ -1,5 +1,5 @@
 //
-//  AuthYIViewController.swift
+//  AVTEViewController.swift
 //  LargeLoan
 //
 //  Created by 何康 on 2024/12/23.
@@ -9,7 +9,7 @@ import UIKit
 import RxRelay
 import BRPickerView
 
-class AuthYIViewController: BaseViewController {
+class AVTEViewController: BaseViewController {
     
     var productID: String? {
         didSet {
@@ -26,7 +26,7 @@ class AuthYIViewController: BaseViewController {
     
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
-        bigManLabel.text = "Personal Information"
+        bigManLabel.text = "Work Information"
         bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
         bigManLabel.textAlignment = .center
         bigManLabel.font = .boldFontOfSize(size: 18)
@@ -93,7 +93,7 @@ class AuthYIViewController: BaseViewController {
         
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
-        getTeoInfo()
+        getwoInfo()
         
         model.asObservable().subscribe(onNext: { [weak self] model in
             if let self = self, let model = model {
@@ -110,13 +110,9 @@ class AuthYIViewController: BaseViewController {
                     cell.selectionStyle = .none
                     cell.enterView.bigManLabel.text = model.smile ?? ""
                     cell.enterView.enterTx.placeholder = model.medicine ?? ""
-                    cell.enterView.enterTx.text = model.breathing
-                    cell.enterView.enterTx.rx.controlEvent(.editingChanged)
-                        .withLatestFrom(cell.enterView.enterTx.rx.text.orEmpty)
-                        .subscribe(onNext: { text in
-                            model.breathing = text
-                        })
-                        .disposed(by: disposeBag)
+                    cell.enterView.enterTx.rx.text.orEmpty.subscribe(onNext: { text in
+                        model.breathing = text
+                    }).disposed(by: disposeBag)
                     return cell
                 }
             }else {
@@ -129,22 +125,18 @@ class AuthYIViewController: BaseViewController {
                         self?.tapClick(form: btn, tx: tx, model: model)
                         self?.view.endEditing(true)
                     }
-                    cell.enterBtnView.enterTx.text = model.breathing
                     return cell
                 }
             }
             return UITableViewCell()
         }.disposed(by: disposeBag)
         
-        
-        
-        
     }
     
 }
 
 
-extension AuthYIViewController: UITableViewDelegate {
+extension AVTEViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let bgView = UIView()
@@ -189,8 +181,9 @@ extension AuthYIViewController: UITableViewDelegate {
                 : model.large
                 emptyDict[anyone] = value
             }
-            emptyDict["heavily"] = "c4"
+            emptyDict["dozens"] = "0"
             emptyDict["old"] = self.productID ?? ""
+            emptyDict["support"] = "1"
             self.sumothing(from: emptyDict)
         }).disposed(by: disposeBag)
         
@@ -201,9 +194,9 @@ extension AuthYIViewController: UITableViewDelegate {
         return 68
     }
     
-    func getTeoInfo() {
+    func getwoInfo() {
         LoadingIndicator.shared.showLoading()
-        provider.request(.getTwoInfo(old: productID ?? "")) { result in
+        provider.request(.getTttInfo(old: productID ?? "")) { result in
             LoadingIndicator.shared.hideLoading()
             switch result {
             case .success(let response):
@@ -241,7 +234,7 @@ extension AuthYIViewController: UITableViewDelegate {
     
 }
 
-extension AuthYIViewController {
+extension AVTEViewController {
     
     private func getCinof() {
         LoadingIndicator.shared.showLoading()
@@ -272,7 +265,7 @@ extension AuthYIViewController {
     
     func sumothing(from emptyDict: [String: Any]) {
         LoadingIndicator.shared.showLoading()
-        provider.request(.saveTPinfo(emptyDict: emptyDict)) { [weak self] result in
+        provider.request(.saveTtPinfo(emptyDict: emptyDict)) { [weak self] result in
             LoadingIndicator.shared.hideLoading()
             guard let self = self else { return }
             switch result {
@@ -298,7 +291,7 @@ extension AuthYIViewController {
     private func getPD() {
         self.getProductDetailInfo(form: self.productID ?? "") { [weak self] model in
             let type = model.exuding.guess?.pungent ?? ""
-            if type == "solargeh" {
+            if type == "solargeg" {
                 let oneVc = AVTEViewController()
                 oneVc.productID = self?.productID
                 self?.navigationController?.pushViewController(oneVc, animated: true)

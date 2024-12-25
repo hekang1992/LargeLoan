@@ -93,7 +93,7 @@ class KFCViewController: BaseViewController {
         let dataSource = RxTableViewSectionedReloadDataSource<SectionModel>(
             configureCell: { (dataSource, tableView, indexPath, item) in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "KFCTableViewCell", for: indexPath) as? KFCTableViewCell
-                cell?.mlabel.text = item
+                cell?.bigManLabel.text = item
                 return cell ?? UITableViewCell()
             }
         )

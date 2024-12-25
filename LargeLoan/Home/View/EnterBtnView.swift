@@ -8,14 +8,15 @@
 import UIKit
 
 class EnterBtnView: BaseView {
+    
+    var block: ((UIButton, UITextField) -> Void)?
 
-    lazy var mlabel: UILabel = {
-        let mlabel = UILabel()
-        mlabel.text = "fads"
-        mlabel.textColor = UIColor.init(cssStr: "#2B170A")
-        mlabel.textAlignment = .left
-        mlabel.font = .regularFontOfSize(size: 14)
-        return mlabel
+    lazy var bigManLabel: UILabel = {
+        let bigManLabel = UILabel()
+        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textAlignment = .left
+        bigManLabel.font = .regularFontOfSize(size: 14)
+        return bigManLabel
     }()
     
     lazy var bgView: UIView = {
@@ -34,6 +35,7 @@ class EnterBtnView: BaseView {
         enterTx.attributedPlaceholder = attrString
         enterTx.font = .mediumFontOfSize(size: 14)
         enterTx.textColor = UIColor.init(cssStr: "#2B170A")
+        enterTx.isEnabled = false
         return enterTx
     }()
     
@@ -42,29 +44,30 @@ class EnterBtnView: BaseView {
         return clickBtn
     }()
     
-    lazy var ctImageView: UIImageView = {
-        let ctImageView = UIImageView()
-        ctImageView.image = UIImage(named: "blackiamgejiant")
-        return ctImageView
+    lazy var pereImageView: UIImageView = {
+        let pereImageView = UIImageView()
+        pereImageView.image = UIImage(named: "blackiamgejiant")
+        return pereImageView
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(mlabel)
+        addSubview(bigManLabel)
         addSubview(bgView)
         bgView.addSubview(enterTx)
         bgView.addSubview(clickBtn)
-        bgView.addSubview(ctImageView)
-        mlabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+        bgView.addSubview(pereImageView)
+        bigManLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(2)
             make.height.equalTo(17)
             make.left.equalToSuperview().offset(14)
         }
         bgView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(14)
-            make.top.equalTo(mlabel.snp.bottom).offset(10)
+            make.top.equalTo(bigManLabel.snp.bottom).offset(10)
             make.height.equalTo(46)
+            make.bottom.equalToSuperview().offset(-20)
         }
         enterTx.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(14)
@@ -73,11 +76,17 @@ class EnterBtnView: BaseView {
         clickBtn.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        ctImageView.snp.makeConstraints { make in
+        pereImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-14)
             make.size.equalTo(CGSize(width: 12, height: 12))
         }
+        
+        clickBtn.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.block?(clickBtn, enterTx)
+        }).disposed(by: disposeBag)
+        
     }
     
     @MainActor required init?(coder: NSCoder) {

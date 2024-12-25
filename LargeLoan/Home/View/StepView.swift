@@ -33,12 +33,12 @@ class StepView: BaseView {
         return r1icon
     }()
     
-    lazy var mlabel: UILabel = {
-        let mlabel = UILabel()
-        mlabel.textColor = UIColor.init(cssStr: "#101D37")
-        mlabel.textAlignment = .left
-        mlabel.font = .mediumFontOfSize(size: 16)
-        return mlabel
+    lazy var bigManLabel: UILabel = {
+        let bigManLabel = UILabel()
+        bigManLabel.textColor = UIColor.init(cssStr: "#101D37")
+        bigManLabel.textAlignment = .left
+        bigManLabel.font = .mediumFontOfSize(size: 16)
+        return bigManLabel
     }()
     
     override init(frame: CGRect) {
@@ -47,7 +47,7 @@ class StepView: BaseView {
         bgView.addSubview(licon)
         bgView.addSubview(ricon)
         bgView.addSubview(r1icon)
-        bgView.addSubview(mlabel)
+        bgView.addSubview(bigManLabel)
         bgView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(16)
@@ -69,7 +69,7 @@ class StepView: BaseView {
             make.left.equalToSuperview().offset(16)
             make.size.equalTo(CGSize(width: 32, height: 32))
         }
-        mlabel.snp.makeConstraints { make in
+        bigManLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalTo(licon.snp.right).offset(20)
             make.height.equalTo(40)

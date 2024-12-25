@@ -37,13 +37,13 @@ class LoginView: BaseView {
         return cView
     }()
     
-    lazy var mlabel: UILabel = {
-        let mlabel = UILabel()
-        mlabel.text = "+63"
-        mlabel.textColor = UIColor.init(cssStr: "#2B170A")
-        mlabel.textAlignment = .center
-        mlabel.font = .regularFontOfSize(size: 14)
-        return mlabel
+    lazy var bigManLabel: UILabel = {
+        let bigManLabel = UILabel()
+        bigManLabel.text = "+63"
+        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textAlignment = .center
+        bigManLabel.font = .regularFontOfSize(size: 14)
+        return bigManLabel
     }()
     
     lazy var phoneTx: UITextField = {
@@ -106,7 +106,7 @@ class LoginView: BaseView {
         addSubview(bgImage)
         addSubview(bgView)
         bgView.addSubview(pView)
-        pView.addSubview(mlabel)
+        pView.addSubview(bigManLabel)
         pView.addSubview(phoneTx)
         bgView.addSubview(cView)
         cView.addSubview(codeTx)
@@ -128,7 +128,7 @@ class LoginView: BaseView {
             make.top.equalToSuperview().offset(30)
             make.height.equalTo(50)
         }
-        mlabel.snp.makeConstraints { make in
+        bigManLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(4)
             make.height.equalTo(50)
@@ -138,7 +138,7 @@ class LoginView: BaseView {
             make.right.equalToSuperview()
             make.height.equalTo(50)
             make.centerY.equalToSuperview()
-            make.left.equalTo(mlabel.snp.right)
+            make.left.equalTo(bigManLabel.snp.right)
         }
         cView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()

@@ -9,6 +9,74 @@ import UIKit
 import BRPickerView
 import RxRelay
 
+class PView: BaseView {
+    
+    lazy var pereImageView: UIImageView = {
+        let pereImageView = UIImageView()
+        pereImageView.isUserInteractionEnabled = true
+        pereImageView.image = UIImage(named: "popselecimge")
+        return pereImageView
+    }()
+    
+    lazy var oneBtn: UIButton = {
+        let oneBtn = UIButton(type: .custom)
+        return oneBtn
+    }()
+    
+    lazy var twoBtn: UIButton = {
+        let twoBtn = UIButton(type: .custom)
+        return twoBtn
+    }()
+    
+    lazy var threeBtn: UIButton = {
+        let threeBtn = UIButton(type: .custom)
+        return threeBtn
+    }()
+    
+    lazy var cancelBtn: UIButton = {
+        let cancelBtn = UIButton(type: .custom)
+        return cancelBtn
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(pereImageView)
+        pereImageView.addSubview(oneBtn)
+        pereImageView.addSubview(twoBtn)
+        pereImageView.addSubview(threeBtn)
+        pereImageView.addSubview(cancelBtn)
+        pereImageView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(280)
+        }
+        cancelBtn.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(6)
+            make.right.equalToSuperview().offset(-6)
+            make.size.equalTo(CGSize(width: 30, height: 30))
+        }
+        oneBtn.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(50)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(46)
+        }
+        twoBtn.snp.makeConstraints { make in
+            make.top.equalTo(oneBtn.snp.bottom).offset(25)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(46)
+        }
+        threeBtn.snp.makeConstraints { make in
+            make.top.equalTo(twoBtn.snp.bottom).offset(15)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(50)
+        }
+    }
+    
+    @MainActor required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
 class PhotoViewController: BaseViewController {
     
     var type: String? {
@@ -27,6 +95,11 @@ class PhotoViewController: BaseViewController {
     
     var dataModel = BehaviorRelay<BaseModel?>(value: nil)
     
+    lazy var aupView: PView = {
+        let aupView = PView(frame: self.view.bounds)
+        return aupView
+    }()
+    
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
@@ -36,22 +109,22 @@ class PhotoViewController: BaseViewController {
         return scrollView
     }()
     
-    lazy var mlabel: UILabel = {
-        let mlabel = UILabel()
-        mlabel.text = "Verify Identity"
-        mlabel.textColor = UIColor.init(cssStr: "#2B170A")
-        mlabel.textAlignment = .center
-        mlabel.font = .mediumFontOfSize(size: 18)
-        return mlabel
+    lazy var bigManLabel: UILabel = {
+        let bigManLabel = UILabel()
+        bigManLabel.text = "Verify Identity"
+        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textAlignment = .center
+        bigManLabel.font = .mediumFontOfSize(size: 18)
+        return bigManLabel
     }()
     
-    lazy var desclabel: UILabel = {
-        let desclabel = UILabel()
-        desclabel.text = "Verify Identity and name information"
-        desclabel.textColor = UIColor.init(cssStr: "#2B170A")
-        desclabel.textAlignment = .center
-        desclabel.font = .mediumFontOfSize(size: 13)
-        return desclabel
+    lazy var minSoulLabel: UILabel = {
+        let minSoulLabel = UILabel()
+        minSoulLabel.text = "Verify Identity and name information"
+        minSoulLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        minSoulLabel.textAlignment = .center
+        minSoulLabel.font = .mediumFontOfSize(size: 13)
+        return minSoulLabel
     }()
     
     lazy var photoImageView: UIImageView = {
@@ -107,30 +180,23 @@ class PhotoViewController: BaseViewController {
     
     lazy var oneView: EnterTextView = {
         let oneView = EnterTextView()
-        oneView.mlabel.text = "Full Name"
+        oneView.bigManLabel.text = "Full Name"
         oneView.bgView.isUserInteractionEnabled = false
         return oneView
     }()
     
     lazy var twoView: EnterTextView = {
         let twoView = EnterTextView()
-        twoView.mlabel.text = "ID No."
+        twoView.bigManLabel.text = "ID No."
         twoView.bgView.isUserInteractionEnabled = false
         return twoView
     }()
     
     lazy var threeView: EnterBtnView = {
         let threeView = EnterBtnView()
-        threeView.mlabel.text = "Date of Birth"
+        threeView.bigManLabel.text = "Date of Birth"
         threeView.bgView.isUserInteractionEnabled = false
         return threeView
-    }()
-    
-    lazy var imagePicker: UIImagePickerController = {
-        imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        return imagePicker
     }()
     
     lazy var descView: PopAuthDescView = {
@@ -171,24 +237,24 @@ class PhotoViewController: BaseViewController {
             make.left.bottom.top.equalToSuperview()
         }
         
-        scrollView.addSubview(mlabel)
-        scrollView.addSubview(desclabel)
+        scrollView.addSubview(bigManLabel)
+        scrollView.addSubview(minSoulLabel)
         
-        mlabel.snp.makeConstraints { make in
+        bigManLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(20)
             make.height.equalTo(22)
         }
-        desclabel.snp.makeConstraints { make in
+        minSoulLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(mlabel.snp.bottom).offset(10)
+            make.top.equalTo(bigManLabel.snp.bottom).offset(10)
             make.height.equalTo(16)
         }
         
         scrollView.addSubview(photoImageView)
         photoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(desclabel.snp.bottom).offset(20)
+            make.top.equalTo(minSoulLabel.snp.bottom).offset(20)
             make.size.equalTo(CGSize(width: 355, height: 411))
         }
         
@@ -261,9 +327,9 @@ class PhotoViewController: BaseViewController {
         phpClick()
         
         dataModel.asObservable().subscribe(onNext: { [weak self] model in
-            guard let self = self, let model = model else { return }
+            guard let self = self, let model = model, let imageUrl = model.exuding.smiled?.raised, !imageUrl.isEmpty else { return }
             self.clickImageView.isUserInteractionEnabled = false
-            self.clickImageView.kf.setImage(with: URL(string: model.exuding.smiled?.raised ?? "")) { result in
+            self.clickImageView.kf.setImage(with: URL(string: model.exuding.smiled?.raised ?? ""), placeholder: UIImage(named: "caputifimage")) { result in
                 switch result {
                 case .success(let value):
                     print("Image successfully loaded: \(value.image)")
@@ -317,15 +383,43 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
     }
     
     private func clickPhoto() {
-        PermissionManager.checkPhotoLibraryPermission(from: self) { [weak self] granted in
-            if granted {
-                if let self = self {
-                    self.present(self.imagePicker, animated: true)
+        ShowalertConfig.alertShow(form: self.aupView, vc: self, style: .actionSheet)
+        self.aupView.cancelBtn.rx.tap.subscribe(onNext: { [weak self] in
+            self?.dismiss(animated: true)
+        }).disposed(by: disposeBag)
+        self.aupView.threeBtn.rx.tap.subscribe(onNext: { [weak self] in
+            self?.dismiss(animated: true)
+        }).disposed(by: disposeBag)
+        self.aupView.oneBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            guard let self = self else { return }
+            self.dismiss(animated: true, completion: {
+                PermissionManager.checkPhotoLibraryPermission(from: self) { [weak self] granted in
+                    if granted {
+                        if let self = self {
+                            self.present(imagePicker, animated: true)
+                        }
+                    }
                 }
-            }else {
-                
-            }
-        }
+            })
+        }).disposed(by: disposeBag)
+        self.aupView.twoBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .camera
+            guard let self = self else { return }
+            self.dismiss(animated: true, completion: {
+                PermissionManager.checkCameraPermission(from: self) { [weak self] granted in
+                    if granted {
+                        if let self = self {
+                            self.present(imagePicker, animated: true)
+                        }
+                    }
+                }
+            })
+        }).disposed(by: disposeBag)
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -445,7 +539,7 @@ extension PhotoViewController {
                 tx.text = timeStr
             }
         }
-        let customStyle = configureDatePickerStyle()
+        let customStyle = ColorEnemConfig.configureStyle()
         datePickerView.pickerStyle = customStyle
         datePickerView.show()
     }
@@ -473,11 +567,5 @@ extension PhotoViewController {
         return datePickerView
     }
 
-    private func configureDatePickerStyle() -> BRPickerStyle {
-        let customStyle = BRPickerStyle()
-        customStyle.pickerColor = .white
-        customStyle.pickerTextFont = .mediumFontOfSize(size: 16)
-        customStyle.selectRowTextColor = .black
-        return customStyle
-    }
+    
 }

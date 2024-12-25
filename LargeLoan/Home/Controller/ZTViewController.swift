@@ -36,35 +36,35 @@ class ZTViewController: BaseViewController {
     lazy var oneSetp: StepView = {
         let oneSetp = StepView()
         oneSetp.licon.image = UIImage(named: "dunpaiimage")
-        oneSetp.mlabel.text = "Verify Identity"
+        oneSetp.bigManLabel.text = "Verify Identity"
         return oneSetp
     }()
     
     lazy var twoSetp: StepView = {
         let twoSetp = StepView()
         twoSetp.licon.image = UIImage(named: "sheimage")
-        twoSetp.mlabel.text = "Personal Information"
+        twoSetp.bigManLabel.text = "Personal Information"
         return twoSetp
     }()
     
     lazy var threeSetp: StepView = {
         let threeSetp = StepView()
         threeSetp.licon.image = UIImage(named: "dagongzhaiimge")
-        threeSetp.mlabel.text = "Work Information"
+        threeSetp.bigManLabel.text = "Work Information"
         return threeSetp
     }()
     
     lazy var fourSetp: StepView = {
         let fourSetp = StepView()
         fourSetp.licon.image = UIImage(named: "phoneiamgea")
-        fourSetp.mlabel.text = "Contact Information"
+        fourSetp.bigManLabel.text = "Contact Information"
         return fourSetp
     }()
     
     lazy var fiveSetp: StepView = {
         let fiveSetp = StepView()
         fiveSetp.licon.image = UIImage(named: "qiongbibank")
-        fiveSetp.mlabel.text = "Bank Card Info"
+        fiveSetp.bigManLabel.text = "Bank Card Info"
         return fiveSetp
     }()
     
@@ -272,6 +272,9 @@ extension ZTViewController {
             })
         }else if type == "solargeg" {
             self.oneSetp.ricon.image = UIImage(named: "vselimage")
+        }else if type == "solargeh" {
+            self.oneSetp.ricon.image = UIImage(named: "vselimage")
+            self.twoSetp.ricon.image = UIImage(named: "vselimage")
         }
     }
 }

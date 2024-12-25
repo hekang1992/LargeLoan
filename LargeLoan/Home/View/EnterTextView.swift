@@ -9,12 +9,12 @@ import UIKit
 
 class EnterTextView: BaseView {
     
-    lazy var mlabel: UILabel = {
-        let mlabel = UILabel()
-        mlabel.textColor = UIColor.init(cssStr: "#2B170A")
-        mlabel.textAlignment = .left
-        mlabel.font = .regularFontOfSize(size: 14)
-        return mlabel
+    lazy var bigManLabel: UILabel = {
+        let bigManLabel = UILabel()
+        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textAlignment = .left
+        bigManLabel.font = .regularFontOfSize(size: 14)
+        return bigManLabel
     }()
     
     lazy var bgView: UIView = {
@@ -38,20 +38,21 @@ class EnterTextView: BaseView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(mlabel)
+        addSubview(bigManLabel)
         addSubview(bgView)
         bgView.addSubview(enterTx)
         
-        mlabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+        bigManLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(2)
             make.height.equalTo(17)
             make.left.equalToSuperview().offset(14)
         }
         bgView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(14)
-            make.top.equalTo(mlabel.snp.bottom).offset(10)
+            make.top.equalTo(bigManLabel.snp.bottom).offset(10)
             make.height.equalTo(46)
+            make.bottom.equalToSuperview().offset(-20)
         }
         enterTx.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(14)

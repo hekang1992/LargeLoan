@@ -29,14 +29,14 @@ class FaceViewController: BaseViewController {
         return scrollView
     }()
     
-    lazy var mlabel: UILabel = {
-        let mlabel = UILabel()
-        mlabel.text = "To ensere that loan is operated br you,the plaform needs to cerify your identity"
-        mlabel.textColor = UIColor.init(cssStr: "#2B170A")
-        mlabel.textAlignment = .center
-        mlabel.numberOfLines = 0
-        mlabel.font = .mediumFontOfSize(size: 18)
-        return mlabel
+    lazy var bigManLabel: UILabel = {
+        let bigManLabel = UILabel()
+        bigManLabel.text = "To ensere that loan is operated br you,the plaform needs to cerify your identity"
+        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textAlignment = .center
+        bigManLabel.numberOfLines = 0
+        bigManLabel.font = .mediumFontOfSize(size: 18)
+        return bigManLabel
     }()
     
     lazy var photoImageView: UIImageView = {
@@ -104,9 +104,9 @@ class FaceViewController: BaseViewController {
         }
         
         
-        scrollView.addSubview(mlabel)
+        scrollView.addSubview(bigManLabel)
         
-        mlabel.snp.makeConstraints { make in
+        bigManLabel.snp.makeConstraints { make in
             make.left.equalToSuperview()
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(20)
@@ -115,7 +115,7 @@ class FaceViewController: BaseViewController {
         scrollView.addSubview(photoImageView)
         photoImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(mlabel.snp.bottom).offset(20)
+            make.top.equalTo(bigManLabel.snp.bottom).offset(20)
             make.size.equalTo(CGSize(width: 355, height: 411))
         }
         
@@ -144,10 +144,10 @@ class FaceViewController: BaseViewController {
         phpClick()
         
         dataModel.asObservable().subscribe(onNext: { [weak self] model in
-            guard let self = self, let model = model else { return }
+            guard let self = self, let model = model, let imageUrl = model.exuding.raised, !imageUrl.isEmpty else { return }
             self.clickImageView.isUserInteractionEnabled = false
             self.rise = model.exuding.raised ?? ""
-            self.clickImageView.kf.setImage(with: URL(string: model.exuding.raised ?? "")) { result in
+            self.clickImageView.kf.setImage(with: URL(string: model.exuding.raised ?? ""), placeholder: UIImage(named: "facelock9i")) { result in
                 switch result {
                 case .success(let value):
                     print("Image successfully loaded: \(value.image)")

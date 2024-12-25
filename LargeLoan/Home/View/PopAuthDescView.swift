@@ -9,11 +9,11 @@ import UIKit
 
 class PopAuthDescView: BaseView {
 
-    lazy var ctImageView: UIImageView = {
-        let ctImageView = UIImageView()
-        ctImageView.image = UIImage(named: "alketimageii")
-        ctImageView.isUserInteractionEnabled = true
-        return ctImageView
+    lazy var pereImageView: UIImageView = {
+        let pereImageView = UIImageView()
+        pereImageView.image = UIImage(named: "alketimageii")
+        pereImageView.isUserInteractionEnabled = true
+        return pereImageView
     }()
     
     lazy var ttlabel: UILabel = {
@@ -33,29 +33,29 @@ class PopAuthDescView: BaseView {
     
     lazy var oneView: EnterTextView = {
         let oneView = EnterTextView()
-        oneView.mlabel.text = "Full Name"
+        oneView.bigManLabel.text = "Full Name"
         return oneView
     }()
     
     lazy var twoView: EnterTextView = {
         let twoView = EnterTextView()
-        twoView.mlabel.text = "ID No."
+        twoView.bigManLabel.text = "ID No."
         return twoView
     }()
     
     lazy var threeView: EnterBtnView = {
         let threeView = EnterBtnView()
-        threeView.mlabel.text = "Date of Birth"
+        threeView.bigManLabel.text = "Date of Birth"
         return threeView
     }()
     
-    lazy var mlabel: UILabel = {
-        let mlabel = UILabel()
-        mlabel.text = "*Please confirm relevant information"
-        mlabel.textColor = UIColor.init(cssStr: "#FF0000")
-        mlabel.textAlignment = .center
-        mlabel.font = .mediumFontOfSize(size: 14)
-        return mlabel
+    lazy var bigManLabel: UILabel = {
+        let bigManLabel = UILabel()
+        bigManLabel.text = "*Please confirm relevant information"
+        bigManLabel.textColor = UIColor.init(cssStr: "#FF0000")
+        bigManLabel.textAlignment = .center
+        bigManLabel.font = .mediumFontOfSize(size: 14)
+        return bigManLabel
     }()
     
     lazy var sageBtn: UIButton = {
@@ -66,15 +66,15 @@ class PopAuthDescView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(ctImageView)
-        ctImageView.addSubview(backBtn)
-        ctImageView.addSubview(ttlabel)
-        ctImageView.addSubview(oneView)
-        ctImageView.addSubview(twoView)
-        ctImageView.addSubview(threeView)
-        ctImageView.addSubview(mlabel)
-        ctImageView.addSubview(sageBtn)
-        ctImageView.snp.makeConstraints { make in
+        addSubview(pereImageView)
+        pereImageView.addSubview(backBtn)
+        pereImageView.addSubview(ttlabel)
+        pereImageView.addSubview(oneView)
+        pereImageView.addSubview(twoView)
+        pereImageView.addSubview(threeView)
+        pereImageView.addSubview(bigManLabel)
+        pereImageView.addSubview(sageBtn)
+        pereImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 315, height: 456))
         }
@@ -109,14 +109,14 @@ class PopAuthDescView: BaseView {
             make.height.equalTo(73)
         }
         
-        mlabel.snp.makeConstraints { make in
+        bigManLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(threeView.snp.bottom).offset(15)
             make.height.equalTo(18)
         }
         sageBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(mlabel.snp.bottom).offset(4)
+            make.top.equalTo(bigManLabel.snp.bottom).offset(4)
             make.size.equalTo(CGSize(width: 271, height: 52))
         }
     }

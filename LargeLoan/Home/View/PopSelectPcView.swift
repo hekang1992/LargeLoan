@@ -9,10 +9,10 @@ import UIKit
 
 class PopSelectPcView: BaseView {
 
-    lazy var ctImageView: UIImageView = {
-        let ctImageView = UIImageView()
-        ctImageView.image = UIImage(named: "opimgert")
-        return ctImageView
+    lazy var pereImageView: UIImageView = {
+        let pereImageView = UIImageView()
+        pereImageView.image = UIImage(named: "opimgert")
+        return pereImageView
     }()
     
     lazy var bgView: UIView = {
@@ -29,8 +29,8 @@ class PopSelectPcView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(ctImageView)
-        ctImageView.snp.makeConstraints { make in
+        addSubview(pereImageView)
+        pereImageView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(280)
         }

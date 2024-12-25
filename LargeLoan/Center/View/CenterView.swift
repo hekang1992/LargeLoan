@@ -21,13 +21,13 @@ class CenterView: BaseView {
         return iconImageView
     }()
 
-    lazy var desclabel: UILabel = {
-        let desclabel = UILabel()
-        desclabel.text = "Hello!"
-        desclabel.textColor = .white
-        desclabel.textAlignment = .left
-        desclabel.font = .regularFontOfSize(size: 24)
-        return desclabel
+    lazy var minSoulLabel: UILabel = {
+        let minSoulLabel = UILabel()
+        minSoulLabel.text = "Hello!"
+        minSoulLabel.textColor = .white
+        minSoulLabel.textAlignment = .left
+        minSoulLabel.font = .regularFontOfSize(size: 24)
+        return minSoulLabel
     }()
     
     lazy var phonelabel: UILabel = {
@@ -108,7 +108,7 @@ class CenterView: BaseView {
         self.headView.namelabel.text = "Private Center"
         bgImageView.addSubview(self.headView)
         bgImageView.addSubview(iconImageView)
-        bgImageView.addSubview(desclabel)
+        bgImageView.addSubview(minSoulLabel)
         bgImageView.addSubview(phonelabel)
         
         addSubview(whiteView)
@@ -135,13 +135,13 @@ class CenterView: BaseView {
             make.size.equalTo(CGSize(width: 80, height: 80))
             make.top.equalTo(headView.snp.bottom)
         }
-        desclabel.snp.makeConstraints { make in
+        minSoulLabel.snp.makeConstraints { make in
             make.top.equalTo(iconImageView.snp.top).offset(7)
             make.left.equalTo(iconImageView.snp.right).offset(12)
             make.height.equalTo(33)
         }
         phonelabel.snp.makeConstraints { make in
-            make.top.equalTo(desclabel.snp.bottom).offset(4)
+            make.top.equalTo(minSoulLabel.snp.bottom).offset(4)
             make.left.equalTo(iconImageView.snp.right).offset(12)
             make.height.equalTo(29)
         }
