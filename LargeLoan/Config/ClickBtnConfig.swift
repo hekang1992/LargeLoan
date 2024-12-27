@@ -16,7 +16,7 @@ class ClickTypeModel {
             }
             let provinceModel = BRProvinceModel().apply {
                 $0.name = provinceDic.bed
-                $0.code = String(provinceDic.large ?? 0)
+                $0.code = provinceDic.large ?? ""
                 $0.index = index
             }
             return provinceModel
@@ -87,13 +87,13 @@ extension ClickTypeModel {
             guard let provinceData = data as? essenceModel else { return nil }
 
             let provinceModel = BRProvinceModel()
-            provinceModel.code = String(provinceData.large ?? 0)
+            provinceModel.code = provinceData.large ?? ""
             provinceModel.name = provinceData.bed ?? ""
             provinceModel.index = dataArray.firstIndex { $0 as AnyObject === provinceData as AnyObject } ?? 0
 
             provinceModel.citylist = provinceData.essence?.compactMap { cityData in
                 let cityModel = BRCityModel()
-                cityModel.code = String(cityData.large ?? 0)
+                cityModel.code = cityData.large ?? ""
                 cityModel.name = cityData.bed ?? ""
                 cityModel.index = provinceData.essence?.firstIndex { $0 as AnyObject === cityData as AnyObject } ?? 0
                 

@@ -261,8 +261,10 @@ extension ConLULUlemonViewController {
     }
     
     func upsumang(from modelStr: String) {
+        LoadingIndicator.shared.showLoading()
         let dict = ["exuding": modelStr, "large": "3"]
         provider.request(.uploadPhoneInfo(emptyDict: dict)) { [weak self] result in
+            LoadingIndicator.shared.hideLoading()
             switch result {
             case .success(let response):
                 do {

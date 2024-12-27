@@ -22,7 +22,6 @@ struct exudingModel: Codable {
     var blow: Int?
     var palms: palmsModel?
     var guess: guessModel?
-    var her: herModel?
     var smiled: smiledModel?
     var big: [[String]]?
     var bed: String?
@@ -31,6 +30,7 @@ struct exudingModel: Codable {
     var common: [commonModel]?
     var region: [letModel]?
     var unfortunately: unfortunatelyModel?
+    var her: herModel?
     enum CodingKeys: String, CodingKey {
         case nonstop
         case surroundings
@@ -73,6 +73,7 @@ struct guessModel: Codable {
 
 struct herModel: Codable {
     var digging: String?
+    var older: String?
 }
 
 struct smiledModel: Codable {
@@ -101,26 +102,50 @@ class commonModel: Codable {
     var breathing: String?//huixie
     var large: String?//huixiekey
     var essence: [essenceModel]?
-    init(anyone: String? = nil, nourishing: Int? = nil, smile: String? = nil, medicine: String? = nil, pill: String? = nil, breathing: String? = nil, large: String? = nil, essence: [essenceModel]? = nil) {
-        self.anyone = anyone
-        self.nourishing = nourishing
-        self.smile = smile
-        self.medicine = medicine
-        self.pill = pill
-        self.breathing = breathing
-        self.large = large
-        self.essence = essence
+    var common: [commonModel]?
+    
+    enum CodingKeys: String, CodingKey {
+        case anyone = "anyone"
+        case nourishing = "nourishing"
+        case smile = "smile"
+        case medicine = "medicine"
+        case pill = "pill"
+        case breathing = "breathing"
+        case large = "large"
+        case essence = "essence"
+        case common = "common"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.anyone = try container.decodeIfPresent(String.self, forKey: .anyone)
+        self.nourishing = try container.decodeIfPresent(Int.self, forKey: .nourishing)
+        self.smile = try container.decodeIfPresent(String.self, forKey: .smile)
+        self.medicine = try container.decodeIfPresent(String.self, forKey: .medicine)
+        self.pill = try container.decodeIfPresent(String.self, forKey: .pill)
+        self.breathing = try container.decodeIfPresent(String.self, forKey: .breathing)
+        if let largeNumber = try? container.decode(Int.self, forKey: .large) {
+            large = String(largeNumber)
+        } else if let largeString = try? container.decode(String.self, forKey: .large) {
+            large = largeString
+        } else {
+            throw DecodingError.typeMismatch(String.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Expected a String or Int for 'large'."))
+        }
+        self.essence = try container.decodeIfPresent([essenceModel].self, forKey: .essence)
+        self.common = try container.decodeIfPresent([commonModel].self, forKey: .common)
     }
 }
 
 class essenceModel: Codable {
     var bed: String?
-    var large: Int?
+    var large: String?
+    var die: String?
     var essence: [essenceModel]?
     enum CodingKeys: String, CodingKey {
         case bed = "bed"
         case large = "large"
         case essence = "essence"
+        case die = "die"
     }
     required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -132,12 +157,13 @@ class essenceModel: Codable {
             self.bed = nil
         }
         if let intValue = try? container.decodeIfPresent(Int.self, forKey: .large) {
-            self.large = intValue
+            self.large = String(intValue)
         } else if let stringValue = try? container.decodeIfPresent(String.self, forKey: .large) {
-            self.large = Int(stringValue)
+            self.large = stringValue
         } else {
             self.large = nil
         }
+        self.die = try container.decodeIfPresent(String.self, forKey: .die)
         self.essence = try container.decodeIfPresent([essenceModel].self, forKey: .essence)
     }
 }

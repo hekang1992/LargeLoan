@@ -35,6 +35,8 @@
 		737416292D0EAF5C00E6CD23 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737416282D0EAF5C00E6CD23 /* SetViewController.swift */; };
 		737416522D10610C00E6CD23 /* LConig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737416512D1060F900E6CD23 /* LConig.swift */; };
 		737416542D1069AF00E6CD23 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737416532D1069AF00E6CD23 /* Model.swift */; };
+		7393C2AB2D1F0DC10013F566 /* PushGoldenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2AA2D1F0DC10013F566 /* PushGoldenView.swift */; };
+		7393C2AD2D1F15B80013F566 /* WebpageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2AC2D1F15B80013F566 /* WebpageViewController.swift */; };
 		73C752382D19A50900C47187 /* EnterWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752372D19A50900C47187 /* EnterWordsCell.swift */; };
 		73C7523A2D19A55000C47187 /* ClockWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752392D19A55000C47187 /* ClockWordsCell.swift */; };
 		73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */; };
@@ -87,6 +89,8 @@
 		737416282D0EAF5C00E6CD23 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		737416512D1060F900E6CD23 /* LConig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LConig.swift; sourceTree = "<group>"; };
 		737416532D1069AF00E6CD23 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		7393C2AA2D1F0DC10013F566 /* PushGoldenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushGoldenView.swift; sourceTree = "<group>"; };
+		7393C2AC2D1F15B80013F566 /* WebpageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebpageViewController.swift; sourceTree = "<group>"; };
 		73C752372D19A50900C47187 /* EnterWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWordsCell.swift; sourceTree = "<group>"; };
 		73C752392D19A55000C47187 /* ClockWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockWordsCell.swift; sourceTree = "<group>"; };
 		73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBtnConfig.swift; sourceTree = "<group>"; };
@@ -196,12 +200,13 @@
 				737416142D0D6F3D00E6CD23 /* HomeViewController.swift */,
 				73C8B4542D132A2700B10C07 /* ZTViewController.swift */,
 				734C6CDB2D14687300B2DB98 /* KFCViewController.swift */,
-				7303752A2D1870F300C0885F /* AuthYIViewController.swift */,
 				734C6CDF2D147B5600B2DB98 /* PhotoViewController.swift */,
 				730375282D185AF200C0885F /* FaceViewController.swift */,
+				7303752A2D1870F300C0885F /* AuthYIViewController.swift */,
 				73C7523F2D1B090A00C47187 /* AVTEViewController.swift */,
 				73C752412D1C487A00C47187 /* ConLULULemonViewController.swift */,
 				73C752512D1D9ACA00C47187 /* GoldenViewController.swift */,
+				7393C2AC2D1F15B80013F566 /* WebpageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				73C752372D19A50900C47187 /* EnterWordsCell.swift */,
 				73C752392D19A55000C47187 /* ClockWordsCell.swift */,
 				73C752452D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift */,
+				7393C2AA2D1F0DC10013F566 /* PushGoldenView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -432,6 +438,7 @@
 				73C752382D19A50900C47187 /* EnterWordsCell.swift in Sources */,
 				737416522D10610C00E6CD23 /* LConig.swift in Sources */,
 				73EEE7B32D0B3A2F00001E22 /* BaseView.swift in Sources */,
+				7393C2AB2D1F0DC10013F566 /* PushGoldenView.swift in Sources */,
 				73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */,
 				730375252D18211600C0885F /* PopAuthDescView.swift in Sources */,
 				73C752422D1C487A00C47187 /* ConLULULemonViewController.swift in Sources */,
@@ -443,6 +450,7 @@
 				73C752522D1D9ACA00C47187 /* GoldenViewController.swift in Sources */,
 				7303752B2D1870F300C0885F /* AuthYIViewController.swift in Sources */,
 				73EEE7B12D0B39D300001E22 /* BaseNavigationController.swift in Sources */,
+				7393C2AD2D1F15B80013F566 /* WebpageViewController.swift in Sources */,
 				7374160D2D0D56EB00E6CD23 /* LoginView.swift in Sources */,
 				737416172D0D6F4800E6CD23 /* OrdersViewController.swift in Sources */,
 				73C752402D1B090A00C47187 /* AVTEViewController.swift in Sources */,

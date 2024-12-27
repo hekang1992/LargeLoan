@@ -32,6 +32,9 @@ enum LargeLoanAPI {
     case savelululemoninfo(emptyDict: [String: Any])
     case uploadPhoneInfo(emptyDict: [String: Any])
     case savePPoneInfo(emptyDict: [String: Any])
+    case hqGoldenInfo(sparring: String, mistake: String)
+    case saveGoldenInfo(emptyDict: [String: Any])
+    case tonexturl(emptyDict: [String: Any])
 }
 
 extension LargeLoanAPI: TargetType {
@@ -59,14 +62,17 @@ extension LargeLoanAPI: TargetType {
                 .getlululemonInfo,
                 .savelululemoninfo,
                 .uploadPhoneInfo,
-                .savePPoneInfo
+                .savePPoneInfo,
+                .saveGoldenInfo,
+                .tonexturl
             :
             return .post
         case .tologOut,
                 .todeleinfo,
                 .toHomeData,
                 .southern,
-                .getRegion
+                .getRegion,
+                .hqGoldenInfo
             :
             return .get
         }
@@ -78,35 +84,35 @@ extension LargeLoanAPI: TargetType {
             return .requestParameters(parameters: ["shall": phone,
                                                    "type": "code"],
                                       encoding: URLEncoding.default)
-       
+            
         case .tologin(phone: let surroundings, code: let surveyed):
             return .requestParameters(parameters: ["surroundings": surroundings,
                                                    "surveyed": surveyed,
                                                    "type": "login"],
                                       encoding: URLEncoding.default)
-       
+            
         case .tologOut, .getRegion, .todeleinfo, .toHomeData:
             return .requestParameters(parameters: [String: Any](),
                                       encoding: URLEncoding.default)
-       
+            
         case .applyInfo(productId: let productId):
             return .requestParameters(parameters: ["old": productId,
                                                    "thirty": "30",
                                                    "type": "apply"],
                                       encoding: URLEncoding.default)
-       
+            
         case .productDetailInfo(productId: let productId):
             return .requestParameters(parameters: ["old": productId,
                                                    "whispers": "10",
                                                    "type": "productDetailInfo"],
                                       encoding: URLEncoding.default)
-       
+            
         case .southern(old: let old):
             return .requestParameters(parameters: ["old": old,
                                                    "knew": "y1",
                                                    "type": "allow"],
                                       encoding: URLEncoding.default)
-       
+            
         case .uploadPhotoImage(dict: let parameters, difficult: let data):
             var formData: [Moya.MultipartFormData] = []
             let imageFormData = Moya.MultipartFormData(provider: .data(data),
@@ -121,7 +127,7 @@ extension LargeLoanAPI: TargetType {
                 }
             }
             return .uploadMultipart(formData)
-        
+            
         case .saveNameInfo(old: let old, name: let name, num: let num, date: let date, defeated: let defeated):
             return .requestParameters(parameters: ["old": old,
                                                    "bed": name,
@@ -131,7 +137,7 @@ extension LargeLoanAPI: TargetType {
                                                    "large": "11",
                                                    "stabilize": "idcard"],
                                       encoding: URLEncoding.default)
-        
+            
         case .getTwoInfo(old: let old):
             return .requestParameters(parameters: ["old": old,
                                                    "bedfly": "name",
@@ -139,7 +145,7 @@ extension LargeLoanAPI: TargetType {
                                                    "define": "young",
                                                    "small": "11"],
                                       encoding: URLEncoding.default)
-     
+            
         case .saveTPinfo(emptyDict: let emptyDict):
             return .requestParameters(parameters: emptyDict,
                                       encoding: URLEncoding.default)
@@ -162,9 +168,11 @@ extension LargeLoanAPI: TargetType {
                                                    "lemon": "laji"],
                                       encoding: URLEncoding.default)
             
-        case .savelululemoninfo(emptyDict: let emptyDict):
+        case .savelululemoninfo(emptyDict: let emptyDict), .saveGoldenInfo(emptyDict: let emptyDict),
+                .tonexturl(emptyDict: let emptyDict):
             return .requestParameters(parameters: emptyDict,
                                       encoding: URLEncoding.default)
+            
         case .uploadPhoneInfo(emptyDict: let emptyDict), .savePPoneInfo(emptyDict: let emptyDict):
             var formData: [Moya.MultipartFormData] = []
             for (key, value) in emptyDict {
@@ -174,8 +182,10 @@ extension LargeLoanAPI: TargetType {
                 }
             }
             return .uploadMultipart(formData)
+            
+        case .hqGoldenInfo(sparring: let sparring, mistake: let mistake):
+            return .requestParameters(parameters: ["sparring": sparring, "mistake": mistake, "ap": "one"], encoding: URLEncoding.default)
         }
-        
     }
     
     var headers: [String: String]? {
@@ -226,6 +236,12 @@ extension LargeLoanAPI: TargetType {
             return "/allow/expressionless"
         case .savePPoneInfo:
             return "/allow/silently"
+        case .hqGoldenInfo:
+            return "/allow/knife"
+        case .saveGoldenInfo:
+            return "/allow/midway"
+        case .tonexturl:
+            return "/allow/would"
         }
         
     }

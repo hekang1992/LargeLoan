@@ -26,13 +26,14 @@ class CenterView: BaseView {
         minSoulLabel.text = "Hello!"
         minSoulLabel.textColor = .white
         minSoulLabel.textAlignment = .left
-        minSoulLabel.font = .regularFontOfSize(size: 24)
+        minSoulLabel.font = .mediumFontOfSize(size: 24)
         return minSoulLabel
     }()
     
     lazy var phonelabel: UILabel = {
         let phonelabel = UILabel()
-        phonelabel.text = UserDefaults.standard.object(forKey: LOGIN_ONE) as? String ?? ""
+        let phone = UserDefaults.standard.object(forKey: LOGIN_ONE) as? String ?? ""
+        phonelabel.text = PhoneNumberFormatter.formatPhoneNumber(phoneNumber: phone)
         phonelabel.textColor = .white
         phonelabel.textAlignment = .left
         phonelabel.font = .regularFontOfSize(size: 24)
@@ -209,4 +210,17 @@ extension CenterView {
         threeBtn.layoutButtonEdgeInsets(style: .top, space: 11)
     }
     
+}
+
+
+class PhoneNumberFormatter {
+    static func formatPhoneNumber(phoneNumber: String) -> String {
+        if phoneNumber.count == 10 {
+            let start = phoneNumber.prefix(3)
+            let end = phoneNumber.suffix(4)
+            let masked = String(repeating: "*", count: phoneNumber.count - 7)
+            return start + masked + end
+        }
+        return phoneNumber
+    }
 }

@@ -268,6 +268,8 @@ class ZTViewController: BaseViewController {
                 let oneVc = GoldenViewController()
                 oneVc.productID = self.proid
                 self.navigationController?.pushViewController(oneVc, animated: true)
+            }else {
+                
             }
         }).disposed(by: disposeBag)
         
@@ -311,6 +313,12 @@ extension ZTViewController {
             self.twoSetp.ricon.image = UIImage(named: "vselimage")
             self.threeSetp.ricon.image = UIImage(named: "vselimage")
             self.fourSetp.ricon.image = UIImage(named: "vselimage")
+        }else {
+            self.oneSetp.ricon.image = UIImage(named: "vselimage")
+            self.twoSetp.ricon.image = UIImage(named: "vselimage")
+            self.threeSetp.ricon.image = UIImage(named: "vselimage")
+            self.fourSetp.ricon.image = UIImage(named: "vselimage")
+            self.fiveSetp.ricon.image = UIImage(named: "vselimage")
         }
     }
 }

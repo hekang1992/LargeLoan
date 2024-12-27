@@ -104,16 +104,24 @@ extension HomeViewController {
         }
     }
     
-    private func productInfo(form with: String?) {
-        if let url = with, !url.isEmpty, url.hasPrefix(urlScheme), let sc = URL(string: url) {
+    private func productInfo(form withUrl: String?) {
+        if let url = withUrl, !url.isEmpty, url.hasPrefix(urlScheme), let sc = URL(string: url) {
             if let productId = jiequzifu(url: sc) {
                 self.getProductDetailInfo(form: productId, complete: { [weak self] model in
-                    let pushVc = ZTViewController()
-                    pushVc.model = model
-                    pushVc.proid = productId
-                    self?.navigationController?.pushViewController(pushVc, animated: true)
+                    let older = model.exuding.her?.older ?? ""
+                    if !older.isEmpty {
+                        self?.ddOrderinfo(from: older)
+                    }else {
+                        let pushVc = ZTViewController()
+                        pushVc.model = model
+                        pushVc.proid = productId
+                        self?.navigationController?.pushViewController(pushVc, animated: true)
+                    }
                 })
             }
+        }else {
+            LoadingIndicator.shared.hideLoading()
+            self.pushnetwork(from: withUrl ?? "")
         }
     }
     

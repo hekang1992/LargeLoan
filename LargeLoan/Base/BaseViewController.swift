@@ -30,27 +30,27 @@ class BaseViewController: UIViewController {
         homeImageView.isUserInteractionEnabled = true
         return homeImageView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         backInfo()
         
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 
@@ -93,6 +93,8 @@ extension BaseViewController {
                     let anyone = model.anyone
                     if anyone == "0" || anyone == "0" {
                         complete(model)
+                    }else {
+                        ToastConfig.show(form: self.view, message: model.coldly)
                     }
                 } catch {
                     print("JSON: \(error)")
@@ -128,5 +130,41 @@ extension BaseViewController {
 }
 
 extension BaseViewController {
+    
+    func ddOrderinfo(from olderId: String) {
+        LoadingIndicator.shared.showLoading()
+        let dict = ["fowls": "flowers",
+                    "thought": olderId,
+                    "soul": "love",
+                    "dogs": "happy"]
+        provider.request(.tonexturl(emptyDict: dict)) { [weak self] result in
+            guard let self = self else { return }
+            LoadingIndicator.shared.hideLoading()
+            switch result {
+            case .success(let response):
+                do {
+                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                    let anyone = model.anyone
+                    if anyone == "0" || anyone == "0" {
+                        if let url = model.exuding.raised {
+                            pushnetwork(from: url)
+                        }
+                    }
+                } catch {
+                    print("JSON: \(error)")
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+    }
+    
+     func pushnetwork(from url: String) {
+        let wpVc = WebpageViewController()
+        let pageUrl = DictToString.appendters(url: url, parameters: GetDengLuConfig.loginConfig()) ?? "".replacingOccurrences(of: " ", with: "%20")
+        wpVc.webUrl.accept(pageUrl)
+        self.navigationController?.pushViewController(wpVc, animated: true)
+    }
     
 }
