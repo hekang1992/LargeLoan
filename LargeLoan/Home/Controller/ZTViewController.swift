@@ -2,7 +2,7 @@
 //  ZTViewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/19.
+//  Created by TRUMP on 2024/12/19.
 //
 
 import UIKit
@@ -81,7 +81,7 @@ class ZTViewController: BaseViewController {
         }
         
         view.addSubview(self.headView)
-        self.headView.bgView.backgroundColor = .clear
+        self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "Verify Step"
         headView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
@@ -104,25 +104,25 @@ class ZTViewController: BaseViewController {
             make.size.equalTo(CGSize(width: 392, height: 225))
         }
         
-        let bgView = UIView()
-        bgView.backgroundColor = .white
-        scrollView.addSubview(bgView)
-        bgView.snp.makeConstraints { make in
+        let lemonView = UIView()
+        lemonView.backgroundColor = .white
+        scrollView.addSubview(lemonView)
+        lemonView.snp.makeConstraints { make in
             make.left.equalToSuperview()
             make.width.equalTo(SCREEN_WIDTH)
             make.top.equalTo(bgIcon.snp.bottom)
             make.height.equalTo(SCREEN_HEIGHT - 225 - StatusBarHeight - 50)
             make.bottom.equalToSuperview()
         }
-        bgView.layoutIfNeeded()
-        bgView.setTopCorners(radius: 20)
+        lemonView.layoutIfNeeded()
+        lemonView.setTopCorners(radius: 20)
         
         
-        bgView.addSubview(oneSetp)
-        bgView.addSubview(twoSetp)
-        bgView.addSubview(threeSetp)
-        bgView.addSubview(fourSetp)
-        bgView.addSubview(fiveSetp)
+        lemonView.addSubview(oneSetp)
+        lemonView.addSubview(twoSetp)
+        lemonView.addSubview(threeSetp)
+        lemonView.addSubview(fourSetp)
+        lemonView.addSubview(fiveSetp)
         
         oneSetp.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -161,7 +161,7 @@ class ZTViewController: BaseViewController {
         
         let btn = UIButton(type: .custom)
         btn.setImage(UIImage(named: "nextimagep"), for: .normal)
-        bgView.addSubview(btn)
+        lemonView.addSubview(btn)
         btn.snp.makeConstraints { make in
             make.top.equalTo(fiveSetp.snp.bottom).offset(55)
             make.centerX.equalToSuperview()
@@ -172,7 +172,7 @@ class ZTViewController: BaseViewController {
         
         steps.forEach { [weak self] step in
             guard let self = self else { return }
-            step.bgView
+            step.lemonView
                 .rx
                 .tapGesture()
                 .when(.recognized)
@@ -206,13 +206,28 @@ class ZTViewController: BaseViewController {
                         }
                         break
                     case self.threeSetp:
-                        print("Three step clicked")
+                        let type = self.model?.exuding.guess?.pungent ?? ""
+                        if type >= "solargeh" {
+                            let twoVc = AVTEViewController()
+                            twoVc.productID = self.proid
+                            self.navigationController?.pushViewController(twoVc, animated: true)
+                        }
                         break
                     case self.fourSetp:
-                        print("four step clicked")
+                        let type = self.model?.exuding.guess?.pungent ?? ""
+                        if type >= "solargei" {
+                            let threeVc = ConLULUlemonViewController()
+                            threeVc.productID = self.proid
+                            self.navigationController?.pushViewController(threeVc, animated: true)
+                        }
                         break
                     case self.fiveSetp:
-                        print("five step clicked")
+                        let type = self.model?.exuding.guess?.pungent ?? ""
+                        if type >= "solargej" {
+                            let fourVc = GoldenViewController()
+                            fourVc.productID = self.proid
+                            self.navigationController?.pushViewController(fourVc, animated: true)
+                        }
                         break
                     default:
                         break
@@ -239,6 +254,18 @@ class ZTViewController: BaseViewController {
                 }
             }else if type == "solargeg" {
                 let oneVc = AuthYIViewController()
+                oneVc.productID = self.proid
+                self.navigationController?.pushViewController(oneVc, animated: true)
+            }else if type == "solargeh" {
+                let oneVc = AVTEViewController()
+                oneVc.productID = self.proid
+                self.navigationController?.pushViewController(oneVc, animated: true)
+            }else if type == "solargei" {
+                let oneVc = ConLULUlemonViewController()
+                oneVc.productID = self.proid
+                self.navigationController?.pushViewController(oneVc, animated: true)
+            }else if type == "solargej"{
+                let oneVc = GoldenViewController()
                 oneVc.productID = self.proid
                 self.navigationController?.pushViewController(oneVc, animated: true)
             }
@@ -275,6 +302,15 @@ extension ZTViewController {
         }else if type == "solargeh" {
             self.oneSetp.ricon.image = UIImage(named: "vselimage")
             self.twoSetp.ricon.image = UIImage(named: "vselimage")
+        }else if type == "solargei" {
+            self.oneSetp.ricon.image = UIImage(named: "vselimage")
+            self.twoSetp.ricon.image = UIImage(named: "vselimage")
+            self.threeSetp.ricon.image = UIImage(named: "vselimage")
+        }else if type == "solargej" {
+            self.oneSetp.ricon.image = UIImage(named: "vselimage")
+            self.twoSetp.ricon.image = UIImage(named: "vselimage")
+            self.threeSetp.ricon.image = UIImage(named: "vselimage")
+            self.fourSetp.ricon.image = UIImage(named: "vselimage")
         }
     }
 }

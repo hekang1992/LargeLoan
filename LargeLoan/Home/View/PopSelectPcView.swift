@@ -2,7 +2,7 @@
 //  PopSelectPcView.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/22.
+//  Created by TRUMP on 2024/12/22.
 //
 
 import UIKit
@@ -15,16 +15,16 @@ class PopSelectPcView: BaseView {
         return pereImageView
     }()
     
-    lazy var bgView: UIView = {
-        let bgView = UIView()
-        bgView.layer.cornerRadius = 4
-        return bgView
+    lazy var lemonView: UIView = {
+        let lemonView = UIView()
+        lemonView.layer.cornerRadius = 4
+        return lemonView
     }()
     
-    lazy var bgView1: UIView = {
-        let bgView1 = UIView()
-        bgView1.layer.cornerRadius = 4
-        return bgView1
+    lazy var lemonView1: UIView = {
+        let lemonView1 = UIView()
+        lemonView1.layer.cornerRadius = 4
+        return lemonView1
     }()
     
     override init(frame: CGRect) {

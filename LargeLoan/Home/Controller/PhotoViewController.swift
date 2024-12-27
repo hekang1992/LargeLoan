@@ -2,7 +2,7 @@
 //  PhotoViewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/20.
+//  Created by TRUMP on 2024/12/20.
 //
 
 import UIKit
@@ -181,21 +181,21 @@ class PhotoViewController: BaseViewController {
     lazy var oneView: EnterTextView = {
         let oneView = EnterTextView()
         oneView.bigManLabel.text = "Full Name"
-        oneView.bgView.isUserInteractionEnabled = false
+        oneView.lemonView.isUserInteractionEnabled = false
         return oneView
     }()
     
     lazy var twoView: EnterTextView = {
         let twoView = EnterTextView()
         twoView.bigManLabel.text = "ID No."
-        twoView.bgView.isUserInteractionEnabled = false
+        twoView.lemonView.isUserInteractionEnabled = false
         return twoView
     }()
     
     lazy var threeView: EnterBtnView = {
         let threeView = EnterBtnView()
         threeView.bigManLabel.text = "Date of Birth"
-        threeView.bgView.isUserInteractionEnabled = false
+        threeView.lemonView.isUserInteractionEnabled = false
         return threeView
     }()
     
@@ -218,7 +218,7 @@ class PhotoViewController: BaseViewController {
         }
         
         view.addSubview(self.headView)
-        self.headView.bgView.backgroundColor = .clear
+        self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "Identity Information"
         headView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
@@ -276,7 +276,7 @@ class PhotoViewController: BaseViewController {
         layerView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(photoImageView.snp.bottom).offset(17)
-            make.size.equalTo(CGSize(width: 343, height: 325))
+            make.size.equalTo(CGSize(width: 343, height: 365))
         }
         
         scrollView.addSubview(nextBtn)
@@ -301,28 +301,25 @@ class PhotoViewController: BaseViewController {
         corView.layoutIfNeeded()
         corView.setTopCorners(radius: 20)
         
-        
-        
-        
         oneView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(52)
             make.left.equalToSuperview()
             make.centerX.equalToSuperview()
-            make.height.equalTo(73)
+            make.height.equalTo(83)
         }
         
         twoView.snp.makeConstraints { make in
-            make.top.equalTo(oneView.snp.bottom).offset(20)
+            make.top.equalTo(oneView.snp.bottom).offset(15)
             make.left.equalToSuperview()
             make.centerX.equalToSuperview()
-            make.height.equalTo(73)
+            make.height.equalTo(83)
         }
         
         threeView.snp.makeConstraints { make in
-            make.top.equalTo(twoView.snp.bottom).offset(20)
+            make.top.equalTo(twoView.snp.bottom).offset(15)
             make.left.equalToSuperview()
             make.centerX.equalToSuperview()
-            make.height.equalTo(73)
+            make.height.equalTo(83)
         }
         phpClick()
         

@@ -2,7 +2,7 @@
 //  AVTEViewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/23.
+//  Created by TRUMP on 2024/12/23.
 //
 
 import UIKit
@@ -18,10 +18,10 @@ class AVTEViewController: BaseViewController {
         }
     }
     
-    lazy var bgView: UIView = {
-        let bgView = UIView()
-        bgView.backgroundColor = .white
-        return bgView
+    lazy var lemonView: UIView = {
+        let lemonView = UIView()
+        lemonView.backgroundColor = .white
+        return lemonView
     }()
     
     lazy var bigManLabel: UILabel = {
@@ -35,7 +35,7 @@ class AVTEViewController: BaseViewController {
     
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
-        minSoulLabel.text = "Please fill in your real name information"
+        minSoulLabel.text = "Please fill in your job information"
         minSoulLabel.textColor = UIColor.init(cssStr: "#2B170A")
         minSoulLabel.textAlignment = .center
         minSoulLabel.font = .regularFontOfSize(size: 13)
@@ -70,23 +70,23 @@ class AVTEViewController: BaseViewController {
         }
         
         view.addSubview(self.headView)
-        self.headView.bgView.backgroundColor = .clear
+        self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "Personal Information"
         headView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(StatusBarHeight + 50)
         }
         
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { make in
+        view.addSubview(lemonView)
+        lemonView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom).offset(10)
             make.left.right.bottom.equalToSuperview()
         }
-        bgView.layoutIfNeeded()
-        bgView.setTopCorners(radius: 20)
+        lemonView.layoutIfNeeded()
+        lemonView.setTopCorners(radius: 20)
         
         
-        bgView.addSubview(tableView)
+        lemonView.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -110,9 +110,13 @@ class AVTEViewController: BaseViewController {
                     cell.selectionStyle = .none
                     cell.enterView.bigManLabel.text = model.smile ?? ""
                     cell.enterView.enterTx.placeholder = model.medicine ?? ""
-                    cell.enterView.enterTx.rx.text.orEmpty.subscribe(onNext: { text in
-                        model.breathing = text
-                    }).disposed(by: disposeBag)
+                    cell.enterView.enterTx.text = model.breathing
+                    cell.enterView.enterTx.rx.controlEvent(.editingChanged)
+                        .withLatestFrom(cell.enterView.enterTx.rx.text.orEmpty)
+                        .subscribe(onNext: { text in
+                            model.breathing = text
+                        })
+                        .disposed(by: disposeBag)
                     return cell
                 }
             }else {
@@ -125,6 +129,7 @@ class AVTEViewController: BaseViewController {
                         self?.tapClick(form: btn, tx: tx, model: model)
                         self?.view.endEditing(true)
                     }
+                    cell.enterBtnView.enterTx.text = model.breathing
                     return cell
                 }
             }
@@ -139,10 +144,10 @@ class AVTEViewController: BaseViewController {
 extension AVTEViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let bgView = UIView()
-        bgView.backgroundColor = .white
-        bgView.addSubview(bigManLabel)
-        bgView.addSubview(minSoulLabel)
+        let lemonView = UIView()
+        lemonView.backgroundColor = .white
+        lemonView.addSubview(bigManLabel)
+        lemonView.addSubview(minSoulLabel)
         
         bigManLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -154,7 +159,7 @@ extension AVTEViewController: UITableViewDelegate {
             make.top.equalTo(bigManLabel.snp.bottom).offset(10)
             make.height.equalTo(16)
         }
-        return bgView
+        return lemonView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -218,12 +223,18 @@ extension AVTEViewController: UITableViewDelegate {
     
     private func tapClick(form btn: UIButton, tx: UITextField, model: commonModel) {
         let pill = model.pill ?? ""
+        let smile = model.smile ?? ""
         if pill == "solargek" {
-            let modelArray = ClickTypeModel.oneArray(dataArray: model.essence ?? [])
-            ShowEnumConfig.popConfig(from: model, tx: tx, dataSource: modelArray, model: .province)
+            if smile.contains("Pay") {
+                let modelArray = ClickTypeModel.twoArray(dataArray: model.essence ?? [])
+                ShowEnumConfig.popConfig(from: model, tx: tx, dataSource: modelArray, model: .city)
+            }else {
+                let modelArray = ClickTypeModel.oneArray(dataArray: model.essence ?? [])
+                ShowEnumConfig.popConfig(from: model, tx: tx, dataSource: modelArray, model: .province)
+            }
         } else if pill == "solargem" {
             self.regionArray.asObservable().subscribe(onNext: { [weak self] modelArray in
-                guard let self = self, let modelArray = modelArray, modelArray.count > 0 else {
+                guard let modelArray = modelArray, modelArray.count > 0 else {
                     self?.getCinof()
                     return
                 }
@@ -290,12 +301,9 @@ extension AVTEViewController {
     
     private func getPD() {
         self.getProductDetailInfo(form: self.productID ?? "") { [weak self] model in
+            guard let self = self else { return }
             let type = model.exuding.guess?.pungent ?? ""
-            if type == "solargeg" {
-                let oneVc = AVTEViewController()
-                oneVc.productID = self?.productID
-                self?.navigationController?.pushViewController(oneVc, animated: true)
-            }
+            ConLULULemonCong.tpuType(from: type, old: self.productID ?? "", vc: self)
         }
     }
     

@@ -2,7 +2,7 @@
 //  SetViewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/15.
+//  Created by TRUMP on 2024/12/15.
 //
 
 import UIKit
@@ -59,7 +59,7 @@ class SetViewController: BaseViewController {
         }
         homeImageView.addSubview(self.headView)
         self.headView.namelabel.text = "Set Up"
-        self.headView.bgView.backgroundColor = .clear
+        self.headView.lemonView.backgroundColor = .clear
         headView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(StatusBarHeight + 50)

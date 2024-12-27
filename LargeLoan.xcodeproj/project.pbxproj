@@ -40,6 +40,11 @@
 		73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */; };
 		73C7523E2D1AEA5100C47187 /* PillConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7523D2D1AEA4500C47187 /* PillConfig.swift */; };
 		73C752402D1B090A00C47187 /* AVTEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7523F2D1B090A00C47187 /* AVTEViewController.swift */; };
+		73C752422D1C487A00C47187 /* ConLULULemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752412D1C487A00C47187 /* ConLULULemonViewController.swift */; };
+		73C752442D1C4CBE00C47187 /* ConLULULemonCong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752432D1C4CBE00C47187 /* ConLULULemonCong.swift */; };
+		73C752462D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752452D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift */; };
+		73C752502D1D8D3D00C47187 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7524F2D1D8D3C00C47187 /* ContactManager.swift */; };
+		73C752522D1D9ACA00C47187 /* GoldenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752512D1D9ACA00C47187 /* GoldenViewController.swift */; };
 		73C8B4552D132A2700B10C07 /* ZTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C8B4542D132A2700B10C07 /* ZTViewController.swift */; };
 		73E56BDF2D11B9070015BF34 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E56BDE2D11B9070015BF34 /* LaunchViewController.swift */; };
 		73EEE7AD2D0B399F00001E22 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EEE7AC2D0B399F00001E22 /* BaseViewController.swift */; };
@@ -87,6 +92,11 @@
 		73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBtnConfig.swift; sourceTree = "<group>"; };
 		73C7523D2D1AEA4500C47187 /* PillConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillConfig.swift; sourceTree = "<group>"; };
 		73C7523F2D1B090A00C47187 /* AVTEViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVTEViewController.swift; sourceTree = "<group>"; };
+		73C752412D1C487A00C47187 /* ConLULULemonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConLULULemonViewController.swift; sourceTree = "<group>"; };
+		73C752432D1C4CBE00C47187 /* ConLULULemonCong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConLULULemonCong.swift; sourceTree = "<group>"; };
+		73C752452D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConLULULemonCongTableViewCell.swift; sourceTree = "<group>"; };
+		73C7524F2D1D8D3C00C47187 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		73C752512D1D9ACA00C47187 /* GoldenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldenViewController.swift; sourceTree = "<group>"; };
 		73C8B4542D132A2700B10C07 /* ZTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZTViewController.swift; sourceTree = "<group>"; };
 		73E56BDE2D11B9070015BF34 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		73EEE7A62D0B315100001E22 /* LargeLoan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LargeLoan.entitlements; sourceTree = "<group>"; };
@@ -150,6 +160,7 @@
 		734312E02CF96AAC007FB9AB /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				73C7524F2D1D8D3C00C47187 /* ContactManager.swift */,
 				737416532D1069AF00E6CD23 /* Model.swift */,
 				737416512D1060F900E6CD23 /* LConig.swift */,
 				737416242D0EA0CC00E6CD23 /* HeadView.swift */,
@@ -158,6 +169,7 @@
 				730375222D18150500C0885F /* PermissionManager.swift */,
 				73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */,
 				73C7523D2D1AEA4500C47187 /* PillConfig.swift */,
+				73C752432D1C4CBE00C47187 /* ConLULULemonCong.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -184,10 +196,12 @@
 				737416142D0D6F3D00E6CD23 /* HomeViewController.swift */,
 				73C8B4542D132A2700B10C07 /* ZTViewController.swift */,
 				734C6CDB2D14687300B2DB98 /* KFCViewController.swift */,
+				7303752A2D1870F300C0885F /* AuthYIViewController.swift */,
 				734C6CDF2D147B5600B2DB98 /* PhotoViewController.swift */,
 				730375282D185AF200C0885F /* FaceViewController.swift */,
-				7303752A2D1870F300C0885F /* AuthYIViewController.swift */,
 				73C7523F2D1B090A00C47187 /* AVTEViewController.swift */,
+				73C752412D1C487A00C47187 /* ConLULULemonViewController.swift */,
+				73C752512D1D9ACA00C47187 /* GoldenViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -205,6 +219,7 @@
 				730375262D184F7700C0885F /* PopSelectPcView.swift */,
 				73C752372D19A50900C47187 /* EnterWordsCell.swift */,
 				73C752392D19A55000C47187 /* ClockWordsCell.swift */,
+				73C752452D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -419,11 +434,13 @@
 				73EEE7B32D0B3A2F00001E22 /* BaseView.swift in Sources */,
 				73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */,
 				730375252D18211600C0885F /* PopAuthDescView.swift in Sources */,
+				73C752422D1C487A00C47187 /* ConLULULemonViewController.swift in Sources */,
 				734C6CDC2D14687300B2DB98 /* KFCViewController.swift in Sources */,
 				7374161D2D0E92CA00E6CD23 /* HomeSubView.swift in Sources */,
 				734F7D932D144E760086A214 /* StepView.swift in Sources */,
 				73EEE7B52D0B3A4300001E22 /* BaseTableViewCell.swift in Sources */,
 				737416232D0E9CA100E6CD23 /* CenterView.swift in Sources */,
+				73C752522D1D9ACA00C47187 /* GoldenViewController.swift in Sources */,
 				7303752B2D1870F300C0885F /* AuthYIViewController.swift in Sources */,
 				73EEE7B12D0B39D300001E22 /* BaseNavigationController.swift in Sources */,
 				7374160D2D0D56EB00E6CD23 /* LoginView.swift in Sources */,
@@ -431,7 +448,9 @@
 				73C752402D1B090A00C47187 /* AVTEViewController.swift in Sources */,
 				73C8B4552D132A2700B10C07 /* ZTViewController.swift in Sources */,
 				730375212D18108A00C0885F /* EnterBtnView.swift in Sources */,
+				73C752462D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift in Sources */,
 				730375272D184F7700C0885F /* PopSelectPcView.swift in Sources */,
+				73C752502D1D8D3D00C47187 /* ContactManager.swift in Sources */,
 				737416152D0D6F3D00E6CD23 /* HomeViewController.swift in Sources */,
 				737416542D1069AF00E6CD23 /* Model.swift in Sources */,
 				737416112D0D581700E6CD23 /* BaseConfig.swift in Sources */,
@@ -442,6 +461,7 @@
 				73E56BDF2D11B9070015BF34 /* LaunchViewController.swift in Sources */,
 				7374161F2D0E92D700E6CD23 /* HomeMainView.swift in Sources */,
 				73EEE7AF2D0B39BD00001E22 /* BaseTabBarViewController.swift in Sources */,
+				73C752442D1C4CBE00C47187 /* ConLULULemonCong.swift in Sources */,
 				730375232D18150500C0885F /* PermissionManager.swift in Sources */,
 				734C6CE02D147B5600B2DB98 /* PhotoViewController.swift in Sources */,
 			);

@@ -2,7 +2,7 @@
 //  KFCViewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/19.
+//  Created by TRUMP on 2024/12/19.
 //
 
 import UIKit
@@ -67,7 +67,7 @@ class KFCViewController: BaseViewController {
         }
         
         view.addSubview(self.headView)
-        self.headView.bgView.backgroundColor = .clear
+        self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "E-KYC"
         headView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()

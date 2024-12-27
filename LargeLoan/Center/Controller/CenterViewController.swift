@@ -2,7 +2,7 @@
 //  CenterViewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/14.
+//  Created by TRUMP on 2024/12/14.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  CenterView.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/15.
+//  Created by TRUMP on 2024/12/15.
 //
 
 import UIKit
@@ -45,11 +45,11 @@ class CenterView: BaseView {
         return whiteView
     }()
     
-    lazy var bgView: UIView = {
-        let bgView = UIView()
-        bgView.layer.cornerRadius = 16
-        bgView.backgroundColor = UIColor.init(cssStr: "#FF7F38")
-        return bgView
+    lazy var lemonView: UIView = {
+        let lemonView = UIView()
+        lemonView.layer.cornerRadius = 16
+        lemonView.backgroundColor = UIColor.init(cssStr: "#FF7F38")
+        return lemonView
     }()
     
     lazy var oneBtn: UIButton = {
@@ -104,7 +104,7 @@ class CenterView: BaseView {
         super.init(frame: frame)
         addSubview(bgImageView)
         self.headView.backBtn.isHidden = true
-        self.headView.bgView.backgroundColor = .clear
+        self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "Private Center"
         bgImageView.addSubview(self.headView)
         bgImageView.addSubview(iconImageView)
@@ -112,10 +112,10 @@ class CenterView: BaseView {
         bgImageView.addSubview(phonelabel)
         
         addSubview(whiteView)
-        addSubview(bgView)
-        bgView.addSubview(oneBtn)
-        bgView.addSubview(threeBtn)
-        bgView.addSubview(twoBtn)
+        addSubview(lemonView)
+        lemonView.addSubview(oneBtn)
+        lemonView.addSubview(threeBtn)
+        lemonView.addSubview(twoBtn)
         
         whiteView.addSubview(serviceBtn)
         whiteView.addSubview(agreeBtn)
@@ -149,7 +149,7 @@ class CenterView: BaseView {
             make.top.equalTo(bgImageView.snp.bottom).offset(-44)
             make.left.right.bottom.equalToSuperview()
         }
-        bgView.snp.makeConstraints { make in
+        lemonView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(whiteView.snp.top).offset(-30)
             make.size.equalTo(CGSize(width: 343, height: 90))

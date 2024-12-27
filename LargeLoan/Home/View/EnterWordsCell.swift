@@ -2,7 +2,7 @@
 //  EnterWordsCell.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/23.
+//  Created by TRUMP on 2024/12/23.
 //
 
 import UIKit

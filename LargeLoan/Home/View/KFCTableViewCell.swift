@@ -2,7 +2,7 @@
 //  KFCTableViewCell.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/19.
+//  Created by TRUMP on 2024/12/19.
 //
 
 import UIKit
@@ -23,10 +23,10 @@ class KFCTableViewCell: BaseTableViewCell {
         return pereImageView
     }()
     
-    lazy var lineView: UIView = {
-        let lineView = UIView()
-        lineView.backgroundColor = .init(cssStr: "#EEEEEE")
-        return lineView
+    lazy var littleLineView: UIView = {
+        let littleLineView = UIView()
+        littleLineView.backgroundColor = .init(cssStr: "#EEEEEE")
+        return littleLineView
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

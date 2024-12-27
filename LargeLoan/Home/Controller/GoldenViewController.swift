@@ -1,19 +1,25 @@
 //
-//  ViewController.swift
+//  GoldenViewController.swift
 //  LargeLoan
 //
-//  Created by TRUMP on 2024/12/17.
+//  Created by 何康 on 2024/12/26.
 //
 
 import UIKit
 
-class LaunchViewController: BaseViewController {
+class GoldenViewController: BaseViewController {
+    
+    var productID: String? {
+        didSet {
+            guard let productID = productID else { return }
+            print("photo====productID======\(productID)")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        PushRootVcConfig.goRootVc()
     }
     
 

@@ -2,7 +2,7 @@
 //  RequestManager.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/11/29.
+//  Created by TRUMP on 2024/11/29.
 //
 
 import Moya
@@ -28,6 +28,10 @@ enum LargeLoanAPI {
     case saveTPinfo(emptyDict: [String: Any])
     case getTttInfo(old: String)
     case saveTtPinfo(emptyDict: [String: Any])
+    case getlululemonInfo(old: String)
+    case savelululemoninfo(emptyDict: [String: Any])
+    case uploadPhoneInfo(emptyDict: [String: Any])
+    case savePPoneInfo(emptyDict: [String: Any])
 }
 
 extension LargeLoanAPI: TargetType {
@@ -51,7 +55,11 @@ extension LargeLoanAPI: TargetType {
                 .getTwoInfo,
                 .saveTPinfo,
                 .getTttInfo,
-                .saveTtPinfo
+                .saveTtPinfo,
+                .getlululemonInfo,
+                .savelululemoninfo,
+                .uploadPhoneInfo,
+                .savePPoneInfo
             :
             return .post
         case .tologOut,
@@ -146,6 +154,26 @@ extension LargeLoanAPI: TargetType {
         case .saveTtPinfo(emptyDict: let emptyDict):
             return .requestParameters(parameters: emptyDict,
                                       encoding: URLEncoding.default)
+            
+        case .getlululemonInfo(old: let old):
+            return .requestParameters(parameters: ["pp": "special",
+                                                   "old": old,
+                                                   "lulu": "more",
+                                                   "lemon": "laji"],
+                                      encoding: URLEncoding.default)
+            
+        case .savelululemoninfo(emptyDict: let emptyDict):
+            return .requestParameters(parameters: emptyDict,
+                                      encoding: URLEncoding.default)
+        case .uploadPhoneInfo(emptyDict: let emptyDict), .savePPoneInfo(emptyDict: let emptyDict):
+            var formData: [Moya.MultipartFormData] = []
+            for (key, value) in emptyDict {
+                if let valueData = "\(value)".data(using: .utf8) {
+                    let paramFormData = Moya.MultipartFormData(provider: .data(valueData), name: key)
+                    formData.append(paramFormData)
+                }
+            }
+            return .uploadMultipart(formData)
         }
         
     }
@@ -190,6 +218,14 @@ extension LargeLoanAPI: TargetType {
             return "/allow/leave"
         case .saveTtPinfo:
             return "/allow/suddenly"
+        case .getlululemonInfo:
+            return "/allow/country"
+        case .savelululemoninfo:
+            return "/allow/silently"
+        case .uploadPhoneInfo:
+            return "/allow/expressionless"
+        case .savePPoneInfo:
+            return "/allow/silently"
         }
         
     }

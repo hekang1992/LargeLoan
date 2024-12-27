@@ -2,7 +2,7 @@
 //  LoginView.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/14.
+//  Created by TRUMP on 2024/12/14.
 //
 
 import UIKit
@@ -17,10 +17,10 @@ class LoginView: BaseView {
         return bgImage
     }()
     
-    lazy var bgView: UIView = {
-        let bgView = UIView()
-        bgView.backgroundColor = .white
-        return bgView
+    lazy var lemonView: UIView = {
+        let lemonView = UIView()
+        lemonView.backgroundColor = .white
+        return lemonView
     }()
     
     lazy var pView: UIView = {
@@ -104,11 +104,11 @@ class LoginView: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgImage)
-        addSubview(bgView)
-        bgView.addSubview(pView)
+        addSubview(lemonView)
+        lemonView.addSubview(pView)
         pView.addSubview(bigManLabel)
         pView.addSubview(phoneTx)
-        bgView.addSubview(cView)
+        lemonView.addSubview(cView)
         cView.addSubview(codeTx)
         cView.addSubview(codeBtn)
         addSubview(loginBtn)
@@ -118,7 +118,7 @@ class LoginView: BaseView {
             make.left.top.right.equalToSuperview()
             make.height.equalTo(219)
         }
-        bgView.snp.makeConstraints { make in
+        lemonView.snp.makeConstraints { make in
             make.left.bottom.right.equalToSuperview()
             make.top.equalTo(bgImage.snp.bottom).offset(-20)
         }
@@ -186,7 +186,7 @@ extension LoginView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        bgView.setTopCorners(radius: 20)
+        lemonView.setTopCorners(radius: 20)
     }
     
     func addEnterWord() {

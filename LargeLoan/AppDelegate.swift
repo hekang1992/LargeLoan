@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/11/29.
+//  Created by TRUMP on 2024/11/29.
 //
 
 import UIKit

@@ -2,7 +2,7 @@
 //  AuthYIViewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/23.
+//  Created by TRUMP on 2024/12/23.
 //
 
 import UIKit
@@ -18,10 +18,10 @@ class AuthYIViewController: BaseViewController {
         }
     }
     
-    lazy var bgView: UIView = {
-        let bgView = UIView()
-        bgView.backgroundColor = .white
-        return bgView
+    lazy var lemonView: UIView = {
+        let lemonView = UIView()
+        lemonView.backgroundColor = .white
+        return lemonView
     }()
     
     lazy var bigManLabel: UILabel = {
@@ -70,23 +70,23 @@ class AuthYIViewController: BaseViewController {
         }
         
         view.addSubview(self.headView)
-        self.headView.bgView.backgroundColor = .clear
+        self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "Personal Information"
         headView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(StatusBarHeight + 50)
         }
         
-        view.addSubview(bgView)
-        bgView.snp.makeConstraints { make in
+        view.addSubview(lemonView)
+        lemonView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom).offset(10)
             make.left.right.bottom.equalToSuperview()
         }
-        bgView.layoutIfNeeded()
-        bgView.setTopCorners(radius: 20)
+        lemonView.layoutIfNeeded()
+        lemonView.setTopCorners(radius: 20)
         
         
-        bgView.addSubview(tableView)
+        lemonView.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -117,6 +117,12 @@ class AuthYIViewController: BaseViewController {
                             model.breathing = text
                         })
                         .disposed(by: disposeBag)
+                    let nourishing = model.nourishing ?? 0
+                    if nourishing == 0 {
+                        cell.enterView.enterTx.keyboardType = .default
+                    }else {
+                        cell.enterView.enterTx.keyboardType = .phonePad
+                    }
                     return cell
                 }
             }else {
@@ -147,10 +153,10 @@ class AuthYIViewController: BaseViewController {
 extension AuthYIViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let bgView = UIView()
-        bgView.backgroundColor = .white
-        bgView.addSubview(bigManLabel)
-        bgView.addSubview(minSoulLabel)
+        let lemonView = UIView()
+        lemonView.backgroundColor = .white
+        lemonView.addSubview(bigManLabel)
+        lemonView.addSubview(minSoulLabel)
         
         bigManLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -162,7 +168,7 @@ extension AuthYIViewController: UITableViewDelegate {
             make.top.equalTo(bigManLabel.snp.bottom).offset(10)
             make.height.equalTo(16)
         }
-        return bgView
+        return lemonView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -297,12 +303,9 @@ extension AuthYIViewController {
     
     private func getPD() {
         self.getProductDetailInfo(form: self.productID ?? "") { [weak self] model in
+            guard let self = self else { return }
             let type = model.exuding.guess?.pungent ?? ""
-            if type == "solargeh" {
-                let oneVc = AVTEViewController()
-                oneVc.productID = self?.productID
-                self?.navigationController?.pushViewController(oneVc, animated: true)
-            }
+            ConLULULemonCong.tpuType(from: type, old: self.productID ?? "", vc: self)
         }
     }
     

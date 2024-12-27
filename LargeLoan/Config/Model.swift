@@ -2,7 +2,7 @@
 //  Model.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/16.
+//  Created by TRUMP on 2024/12/16.
 //
 
 import Foundation
@@ -30,6 +30,7 @@ struct exudingModel: Codable {
     var willpower: String?
     var common: [commonModel]?
     var region: [letModel]?
+    var unfortunately: unfortunatelyModel?
     enum CodingKeys: String, CodingKey {
         case nonstop
         case surroundings
@@ -45,7 +46,15 @@ struct exudingModel: Codable {
         case strong
         case willpower
         case common
-        case region = "let" // 需要自定义映射
+        case region = "let"
+        case unfortunately
+    }
+}
+
+struct unfortunatelyModel: Codable {
+    var region: [letModel]?
+    enum CodingKeys: String, CodingKey {
+        case region = "let"
     }
 }
 
@@ -107,19 +116,59 @@ class commonModel: Codable {
 class essenceModel: Codable {
     var bed: String?
     var large: Int?
-    init(bed: String? = nil, large: Int? = nil) {
-        self.bed = bed
-        self.large = large
+    var essence: [essenceModel]?
+    enum CodingKeys: String, CodingKey {
+        case bed = "bed"
+        case large = "large"
+        case essence = "essence"
+    }
+    required init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let intValue = try? container.decodeIfPresent(Int.self, forKey: .bed) {
+            self.bed = String(intValue)
+        } else if let stringValue = try? container.decodeIfPresent(String.self, forKey: .bed) {
+            self.bed = stringValue
+        } else {
+            self.bed = nil
+        }
+        if let intValue = try? container.decodeIfPresent(Int.self, forKey: .large) {
+            self.large = intValue
+        } else if let stringValue = try? container.decodeIfPresent(String.self, forKey: .large) {
+            self.large = Int(stringValue)
+        } else {
+            self.large = nil
+        }
+        self.essence = try container.decodeIfPresent([essenceModel].self, forKey: .essence)
     }
 }
 
-struct letModel: Codable {
+class letModel: Codable {
     var bed: String?
     var digging: Int?
     var region: [letModel]?
+    var cried: String?
+    var mortals: String?
+    var storm: String?
+    var went: String?
+    var armies: String?
+    var normal: [essenceModel]?
+    var outcome: String?
+    var might: String?
+    var relationText: String?
+    var arrows: String?
     enum CodingKeys: String, CodingKey {
+        case might = "might"
+        case relationText = "relationText"
+        case outcome = "outcome"
         case bed = "bed"
         case digging = "digging"
         case region = "let"
+        case cried = "cried"
+        case mortals = "mortals"
+        case storm = "storm"
+        case went = "went"
+        case normal = "normal"
+        case armies = "armies"
+        case arrows = "arrows"
     }
 }

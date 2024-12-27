@@ -2,7 +2,7 @@
 //  HeadView.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/15.
+//  Created by TRUMP on 2024/12/15.
 //
 
 import UIKit
@@ -43,10 +43,10 @@ class HeadView: BaseView {
         return namelabel
     }()
     
-    lazy var bgView: UIView = {
-        let bgView = UIView()
-        bgView.backgroundColor = .white
-        return bgView
+    lazy var lemonView: UIView = {
+        let lemonView = UIView()
+        lemonView.backgroundColor = .white
+        return lemonView
     }()
     
     lazy var addBtn: UIButton = {
@@ -57,12 +57,12 @@ class HeadView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(bgView)
-        bgView.addSubview(backBtn)
-        bgView.addSubview(namelabel)
-        bgView.addSubview(addBtn)
+        addSubview(lemonView)
+        lemonView.addSubview(backBtn)
+        lemonView.addSubview(namelabel)
+        lemonView.addSubview(addBtn)
         
-        bgView.snp.makeConstraints { make in
+        lemonView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         backBtn.snp.makeConstraints { make in

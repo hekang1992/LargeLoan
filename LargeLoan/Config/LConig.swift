@@ -2,7 +2,7 @@
 //  LConig.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/16.
+//  Created by TRUMP on 2024/12/16.
 //
 
 import Kingfisher

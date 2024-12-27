@@ -2,18 +2,18 @@
 //  StepView.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/19.
+//  Created by TRUMP on 2024/12/19.
 //
 
 import UIKit
 
 class StepView: BaseView {
 
-    lazy var bgView: UIView = {
-        let bgView = UIView()
-        bgView.backgroundColor = .init(cssStr: "#FF7F38")
-        bgView.layer.cornerRadius = 12
-        return bgView
+    lazy var lemonView: UIView = {
+        let lemonView = UIView()
+        lemonView.backgroundColor = .init(cssStr: "#FF7F38")
+        lemonView.layer.cornerRadius = 12
+        return lemonView
     }()
     
     lazy var licon: UIImageView = {
@@ -43,12 +43,12 @@ class StepView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(bgView)
-        bgView.addSubview(licon)
-        bgView.addSubview(ricon)
-        bgView.addSubview(r1icon)
-        bgView.addSubview(bigManLabel)
-        bgView.snp.makeConstraints { make in
+        addSubview(lemonView)
+        lemonView.addSubview(licon)
+        lemonView.addSubview(ricon)
+        lemonView.addSubview(r1icon)
+        lemonView.addSubview(bigManLabel)
+        lemonView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(16)
             make.top.equalToSuperview()

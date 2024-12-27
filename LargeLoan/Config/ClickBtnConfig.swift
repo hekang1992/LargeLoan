@@ -2,7 +2,7 @@
 //  ClickBtnConfig.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/24.
+//  Created by TRUMP on 2024/12/24.
 //
 
 import UIKit
@@ -80,6 +80,29 @@ extension ClickTypeModel {
 }
 
 
+extension ClickTypeModel {
+    
+    static func twoArray(dataArray: [Any]) -> [BRProvinceModel] {
+        return dataArray.compactMap { data in
+            guard let provinceData = data as? essenceModel else { return nil }
 
+            let provinceModel = BRProvinceModel()
+            provinceModel.code = String(provinceData.large ?? 0)
+            provinceModel.name = provinceData.bed ?? ""
+            provinceModel.index = dataArray.firstIndex { $0 as AnyObject === provinceData as AnyObject } ?? 0
+
+            provinceModel.citylist = provinceData.essence?.compactMap { cityData in
+                let cityModel = BRCityModel()
+                cityModel.code = String(cityData.large ?? 0)
+                cityModel.name = cityData.bed ?? ""
+                cityModel.index = provinceData.essence?.firstIndex { $0 as AnyObject === cityData as AnyObject } ?? 0
+                
+                return cityModel
+            } ?? []
+
+            return provinceModel
+        }
+    }
+}
 
 

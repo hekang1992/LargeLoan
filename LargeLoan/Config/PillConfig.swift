@@ -2,7 +2,7 @@
 //  PillConfig.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/24.
+//  Created by TRUMP on 2024/12/24.
 //
 
 import UIKit
@@ -10,6 +10,27 @@ import BRPickerView
 
 
 class ShowEnumConfig {
+    
+    static func popPhoneConfig(from letmodel: letModel,
+                          tx: UITextField,
+                          dataSource: [BRProvinceModel],
+                          model: BRAddressPickerMode) {
+        let pickerView = BRAddressPickerView()
+        pickerView.pickerMode = model
+        pickerView.title = letmodel.went ?? ""
+        pickerView.selectIndexs = [0, 0, 0]
+        pickerView.dataSourceArr = dataSource
+        pickerView.resultBlock = { province, city, area in
+            let (addressString, code) = generateAddressAndCode(province: province, city: city, area: area)
+            letmodel.relationText = addressString
+            letmodel.might = code
+            tx.text = addressString
+        }
+        pickerView.pickerStyle = ColorEnemConfig.configureStyle()
+        pickerView.show()
+    }
+    
+    
     static func popConfig(from commonModel: commonModel,
                           tx: UITextField,
                           dataSource: [BRProvinceModel],

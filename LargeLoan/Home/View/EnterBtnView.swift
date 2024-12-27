@@ -2,7 +2,7 @@
 //  EnterBtnView.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/22.
+//  Created by TRUMP on 2024/12/22.
 //
 
 import UIKit
@@ -19,11 +19,11 @@ class EnterBtnView: BaseView {
         return bigManLabel
     }()
     
-    lazy var bgView: UIView = {
-        let bgView = UIView()
-        bgView.layer.cornerRadius = 12
-        bgView.backgroundColor = .init(cssStr: "#FFFFFF")
-        return bgView
+    lazy var lemonView: UIView = {
+        let lemonView = UIView()
+        lemonView.layer.cornerRadius = 12
+        lemonView.backgroundColor = .init(cssStr: "#FFFFFF")
+        return lemonView
     }()
     
     lazy var enterTx: UITextField = {
@@ -53,16 +53,16 @@ class EnterBtnView: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bigManLabel)
-        addSubview(bgView)
-        bgView.addSubview(enterTx)
-        bgView.addSubview(clickBtn)
-        bgView.addSubview(pereImageView)
+        addSubview(lemonView)
+        lemonView.addSubview(enterTx)
+        lemonView.addSubview(clickBtn)
+        lemonView.addSubview(pereImageView)
         bigManLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(2)
             make.height.equalTo(17)
             make.left.equalToSuperview().offset(14)
         }
-        bgView.snp.makeConstraints { make in
+        lemonView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(14)
             make.top.equalTo(bigManLabel.snp.bottom).offset(10)

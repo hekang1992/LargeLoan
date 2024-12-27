@@ -2,7 +2,7 @@
 //  FaceViewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/22.
+//  Created by TRUMP on 2024/12/22.
 //
 
 import UIKit
@@ -90,7 +90,7 @@ class FaceViewController: BaseViewController {
         }
         
         view.addSubview(self.headView)
-        self.headView.bgView.backgroundColor = .clear
+        self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "Identity Information"
         headView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
@@ -259,12 +259,9 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
     
     private func toProductDetailInfo() {
         self.getProductDetailInfo(form: self.productID ?? "") { [weak self] model in
+            guard let self = self else { return }
             let type = model.exuding.guess?.pungent ?? ""
-            if type == "solargeg" {
-                let oneVc = AuthYIViewController()
-                oneVc.productID = self?.productID
-                self?.navigationController?.pushViewController(oneVc, animated: true)
-            }
+            ConLULULemonCong.tpuType(from: type, old: self.productID ?? "", vc: self)
         }
     }
     
