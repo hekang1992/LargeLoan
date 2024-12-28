@@ -36,6 +36,8 @@ enum LargeLoanAPI {
     case saveGoldenInfo(emptyDict: [String: Any])
     case tonexturl(emptyDict: [String: Any])
     case getOListInfo(emptyDict: [String: Any])
+    case scsecurtymessage(exuding: String)
+    case expression(emptyDict: [String: Any])
 }
 
 extension LargeLoanAPI: TargetType {
@@ -50,7 +52,8 @@ extension LargeLoanAPI: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .tocode,
+        case
+                .tocode,
                 .tologin,
                 .applyInfo,
                 .productDetailInfo,
@@ -66,10 +69,13 @@ extension LargeLoanAPI: TargetType {
                 .savePPoneInfo,
                 .saveGoldenInfo,
                 .tonexturl,
-                .getOListInfo
+                .getOListInfo,
+                .scsecurtymessage,
+                .expression
             :
             return .post
-        case .tologOut,
+        case
+                .tologOut,
                 .todeleinfo,
                 .toHomeData,
                 .southern,
@@ -189,6 +195,13 @@ extension LargeLoanAPI: TargetType {
         case .hqGoldenInfo(sparring: let sparring, mistake: let mistake):
             return .requestParameters(parameters: ["sparring": sparring, "mistake": mistake, "ap": "one"], encoding: URLEncoding.default)
             
+        case .scsecurtymessage(exuding: let exuding):
+            return .requestParameters(parameters: ["exuding": exuding,
+                                                   "device": "taiphone"],
+                                      encoding: URLEncoding.default)
+        case .expression(emptyDict: let emptyDict):
+            return .requestParameters(parameters: emptyDict,
+                                      encoding: URLEncoding.default)
         }
     }
     
@@ -248,6 +261,10 @@ extension LargeLoanAPI: TargetType {
             return "/allow/would"
         case .getOListInfo:
             return "/allow/anymore"
+        case .scsecurtymessage:
+            return "/allow/awaythe"
+        case .expression:
+            return "/allow/expression"
         }
         
     }

@@ -89,6 +89,27 @@ class OrdereListviewController: BaseViewController {
             getlIST(from: type)
         })
         
+        
+        self.tableView.rx.modelSelected(letModel.self).subscribe(onNext: { [weak self] model in
+            if let url = model.countries, !url.isEmpty, url.hasPrefix(urlScheme), let sc = URL(string: url) {
+                if let productId = self?.jiequzifu(url: sc) {
+                    self?.getProductDetailInfo(form: productId, complete: { [weak self] model in
+                        let older = model.exuding.her?.older ?? ""
+                        if let guess = model.exuding.guess, let pungent = guess.pungent, !pungent.isEmpty  {
+                            let pushVc = ZTViewController()
+                            pushVc.model = model
+                            pushVc.proid = productId
+                            self?.navigationController?.pushViewController(pushVc, animated: true)
+                        }else {
+                            self?.ddOrderinfo(from: older)
+                        }
+                    })
+                }
+            }else {
+                LoadingIndicator.shared.hideLoading()
+                self?.pushnetwork(from: model.countries ?? "")
+            }
+        }).disposed(by: disposeBag)
     }
 
 }

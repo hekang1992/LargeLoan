@@ -25,6 +25,15 @@ class CenterViewController: BaseViewController {
             self?.navigationController?.pushViewController(setVc, animated: true)
         }).disposed(by: disposeBag)
         
+        centerView.agreeBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let webVc = WebpageViewController()
+            webVc.webUrl.accept("\(h5Host)/sorbetOwlB")
+            self?.navigationController?.pushViewController(webVc, animated: true)
+        }).disposed(by: disposeBag)
+        
+        
+        
+        
         centerView.oneBtn.rx.tap.subscribe(onNext: { [weak self] in
             let vc = OrdereListviewController()
             vc.type = "7"

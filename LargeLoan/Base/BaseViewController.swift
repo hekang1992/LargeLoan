@@ -36,7 +36,10 @@ class BaseViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
-        backInfo()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        if !self.isKind(of: WebpageViewController.self) {
+            backInfo()
+        }
         
     }
     

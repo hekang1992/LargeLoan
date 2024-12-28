@@ -7,6 +7,7 @@
 
 import UIKit
 import RxRelay
+import MJRefresh
 
 class HomeViewController: BaseViewController {
     
@@ -16,6 +17,8 @@ class HomeViewController: BaseViewController {
     }()
     
     var homeModel = BehaviorRelay<BaseModel?>(value: nil)
+    
+    let oneppmage = onePastManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +36,17 @@ class HomeViewController: BaseViewController {
             .subscribe(onNext: { [weak self] _ in
                 self?.apply()
             }).disposed(by: disposeBag)
+        
+        self.subView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            getHomedata()
+        })
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         getHomedata()
-        
     }
     
     /*
@@ -61,6 +68,7 @@ extension HomeViewController {
         provider.request(.toHomeData) { [weak self] result in
             LoadingIndicator.shared.hideLoading()
             guard let self = self else { return }
+            self.subView.scrollView.mj_header?.endRefreshing()
             switch result {
             case .success(let response):
                 do {
@@ -109,7 +117,6 @@ extension HomeViewController {
             if let productId = jiequzifu(url: sc) {
                 self.getProductDetailInfo(form: productId, complete: { [weak self] model in
                     let older = model.exuding.her?.older ?? ""
-                    let guess = model.exuding.guess?.pungent ?? ""
                     if let guess = model.exuding.guess, let pungent = guess.pungent, !pungent.isEmpty  {
                         let pushVc = ZTViewController()
                         pushVc.model = model

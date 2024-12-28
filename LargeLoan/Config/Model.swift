@@ -188,7 +188,11 @@ class letModel: Codable {
     var orderAmount: String?
     var orderStatusDesc: String?
     var statusTextDescButton: String?
+    var replied: Int?
+    var countries: String?
     enum CodingKeys: String, CodingKey {
+        case countries = "countries"
+        case replied = "replied"
         case keeping = "keeping"
         case might = "might"
         case relationText = "relationText"

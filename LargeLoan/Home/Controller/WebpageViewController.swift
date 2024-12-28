@@ -51,6 +51,16 @@ class WebpageViewController: BaseViewController {
             make.height.equalTo(StatusBarHeight + 50)
         }
         
+        self.headView.backBtn.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            if self.webView.canGoBack {
+                self.webView.goBack()
+            }else {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }).disposed(by: disposeBag)
+        
+        
         view.addSubview(webView)
         webView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom).offset(1)
@@ -93,6 +103,45 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         let messageName = message.name
         print("message:\(message.name)")
+        if messageName == "peachTeaS" {//买点
+            
+        }else if messageName == "okraPiano" {//评价
+            DispatchQueue.main.async {
+                if #available(iOS 14.0, *) {
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                        SKStoreReviewController.requestReview(in: windowScene)
+                    }
+                } else {
+                    SKStoreReviewController.requestReview()
+                }
+            }
+        }else if messageName == "appleCila" {
+            PushRootVcConfig.goRootVc()
+        }else if messageName == "kangarooS" {
+            self.navigationController?.popViewController(animated: true)
+        }else if messageName == "sorbetVul" {
+            
+        }else if messageName == "eelPalmAc" {//url 跳转
+            guard let array = message.body as? [String], let pageUrl = array.first else { return }
+            if !pageUrl.isEmpty, pageUrl.hasPrefix(urlScheme), let sc = URL(string: pageUrl) {
+                if let productId = self.jiequzifu(url: sc) {
+                    self.getProductDetailInfo(form: productId, complete: { [weak self] model in
+                        let older = model.exuding.her?.older ?? ""
+                        if let guess = model.exuding.guess, let pungent = guess.pungent, !pungent.isEmpty  {
+                            let pushVc = ZTViewController()
+                            pushVc.model = model
+                            pushVc.proid = productId
+                            self?.navigationController?.pushViewController(pushVc, animated: true)
+                        }else {
+                            self?.ddOrderinfo(from: older)
+                        }
+                    })
+                }
+            }else {
+                LoadingIndicator.shared.hideLoading()
+                self.pushnetwork(from: pageUrl)
+            }
+        }
     }
     
     

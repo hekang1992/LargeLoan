@@ -143,6 +143,22 @@ class OrderViewCell: BaseTableViewCell {
             mlabel.text = model.orderAmount ?? ""
             deslabel.text = model.orderStatusDesc ?? ""
             nextBtn.setTitle(model.statusTextDescButton ?? "", for: .normal)
+            let replied = model.replied ?? 0
+            var colstr: String = ""
+            if replied == 1 {
+                colstr = "#FF5F5E"
+            }else if replied == 2 {
+                colstr = "#FFB95E"
+            }else if replied == 3 {
+                colstr = "#FF7F38"
+            }else if replied == 4 {
+                colstr = "#47E0E3"
+            }else if replied == 5 {
+                colstr = "#D9C5B9"
+            }else {
+                colstr = "#FF7F38"
+            }
+            vw.backgroundColor = UIColor.init(cssStr: colstr)
         }).disposed(by: disposeBag)
         
     }

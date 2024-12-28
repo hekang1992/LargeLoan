@@ -41,6 +41,7 @@
 		7393C2B12D1FC1A80013F566 /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B02D1FC1A80013F566 /* OrderViewCell.swift */; };
 		7393C2B32D1FCE190013F566 /* OrderemptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B22D1FCE190013F566 /* OrderemptyView.swift */; };
 		7393C2B52D1FD42C0013F566 /* OrdereListviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B42D1FD42C0013F566 /* OrdereListviewController.swift */; };
+		7393C2B72D1FE6F60013F566 /* NBOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B62D1FE6E50013F566 /* NBOManager.swift */; };
 		73C752382D19A50900C47187 /* EnterWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752372D19A50900C47187 /* EnterWordsCell.swift */; };
 		73C7523A2D19A55000C47187 /* ClockWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752392D19A55000C47187 /* ClockWordsCell.swift */; };
 		73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */; };
@@ -99,6 +100,7 @@
 		7393C2B02D1FC1A80013F566 /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
 		7393C2B22D1FCE190013F566 /* OrderemptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderemptyView.swift; sourceTree = "<group>"; };
 		7393C2B42D1FD42C0013F566 /* OrdereListviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdereListviewController.swift; sourceTree = "<group>"; };
+		7393C2B62D1FE6E50013F566 /* NBOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBOManager.swift; sourceTree = "<group>"; };
 		73C752372D19A50900C47187 /* EnterWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWordsCell.swift; sourceTree = "<group>"; };
 		73C752392D19A55000C47187 /* ClockWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockWordsCell.swift; sourceTree = "<group>"; };
 		73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBtnConfig.swift; sourceTree = "<group>"; };
@@ -172,7 +174,6 @@
 		734312E02CF96AAC007FB9AB /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				73C7524F2D1D8D3C00C47187 /* ContactManager.swift */,
 				737416532D1069AF00E6CD23 /* Model.swift */,
 				737416512D1060F900E6CD23 /* LConig.swift */,
 				737416242D0EA0CC00E6CD23 /* HeadView.swift */,
@@ -182,6 +183,8 @@
 				73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */,
 				73C7523D2D1AEA4500C47187 /* PillConfig.swift */,
 				73C752432D1C4CBE00C47187 /* ConLULULemonCong.swift */,
+				73C7524F2D1D8D3C00C47187 /* ContactManager.swift */,
+				7393C2B62D1FE6E50013F566 /* NBOManager.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				737416252D0EA0CC00E6CD23 /* HeadView.swift in Sources */,
 				73C752382D19A50900C47187 /* EnterWordsCell.swift in Sources */,
 				737416522D10610C00E6CD23 /* LConig.swift in Sources */,
+				7393C2B72D1FE6F60013F566 /* NBOManager.swift in Sources */,
 				73EEE7B32D0B3A2F00001E22 /* BaseView.swift in Sources */,
 				7393C2AF2D1F1F2D0013F566 /* OrderView.swift in Sources */,
 				7393C2AB2D1F0DC10013F566 /* PushGoldenView.swift in Sources */,

@@ -191,10 +191,6 @@ extension LoginView {
     
     func addEnterWord() {
         
-        clickBtn.rx.tap.subscribe(onNext: { [weak self] in
-            print("隐私协议点击=========")
-        }).disposed(by: disposeBag)
-        
         priBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.priBtn.isSelected.toggle()
             if let loginBtn = self?.loginBtn, let priBtn = self?.priBtn {

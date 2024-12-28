@@ -25,14 +25,14 @@ class LoginViewController: BaseViewController {
         loginView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        tapClick()        
+        appDcLIK()        
     }
     
 }
 
 extension LoginViewController {
     
-    func tapClick() {
+    func appDcLIK() {
         
         loginView.codeBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.getcode()
@@ -40,6 +40,12 @@ extension LoginViewController {
         
         loginView.loginBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.logoin()
+        }).disposed(by: disposeBag)
+        
+        loginView.clickBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let webVc = WebpageViewController()
+            webVc.webUrl.accept("\(h5Host)/sorbetOwlB")
+            self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
         
     }
