@@ -182,7 +182,14 @@ class letModel: Codable {
     var might: String?
     var relationText: String?
     var arrows: String?
+    var keeping: String?
+    var nails: String?
+    var dateValue: String?
+    var orderAmount: String?
+    var orderStatusDesc: String?
+    var statusTextDescButton: String?
     enum CodingKeys: String, CodingKey {
+        case keeping = "keeping"
         case might = "might"
         case relationText = "relationText"
         case outcome = "outcome"
@@ -196,5 +203,10 @@ class letModel: Codable {
         case normal = "normal"
         case armies = "armies"
         case arrows = "arrows"
+        case nails = "nails"
+        case dateValue = "dateValue"
+        case orderAmount = "orderAmount"
+        case orderStatusDesc = "orderStatusDesc"
+        case statusTextDescButton = "statusTextDescButton"
     }
 }

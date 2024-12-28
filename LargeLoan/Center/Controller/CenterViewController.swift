@@ -25,6 +25,27 @@ class CenterViewController: BaseViewController {
             self?.navigationController?.pushViewController(setVc, animated: true)
         }).disposed(by: disposeBag)
         
+        centerView.oneBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let vc = OrdereListviewController()
+            vc.type = "7"
+            vc.name = "Apply Orders"
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: disposeBag)
+        
+        centerView.twoBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let vc = OrdereListviewController()
+            vc.type = "6"
+            vc.name = "Repayment Orders"
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: disposeBag)
+        
+        centerView.threeBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let vc = OrdereListviewController()
+            vc.type = "5"
+            vc.name = "Finished Orders"
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: disposeBag)
+        
     }
     
 

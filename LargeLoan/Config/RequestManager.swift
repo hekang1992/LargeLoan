@@ -35,6 +35,7 @@ enum LargeLoanAPI {
     case hqGoldenInfo(sparring: String, mistake: String)
     case saveGoldenInfo(emptyDict: [String: Any])
     case tonexturl(emptyDict: [String: Any])
+    case getOListInfo(emptyDict: [String: Any])
 }
 
 extension LargeLoanAPI: TargetType {
@@ -64,7 +65,8 @@ extension LargeLoanAPI: TargetType {
                 .uploadPhoneInfo,
                 .savePPoneInfo,
                 .saveGoldenInfo,
-                .tonexturl
+                .tonexturl,
+                .getOListInfo
             :
             return .post
         case .tologOut,
@@ -169,7 +171,8 @@ extension LargeLoanAPI: TargetType {
                                       encoding: URLEncoding.default)
             
         case .savelululemoninfo(emptyDict: let emptyDict), .saveGoldenInfo(emptyDict: let emptyDict),
-                .tonexturl(emptyDict: let emptyDict):
+                .tonexturl(emptyDict: let emptyDict),
+                .getOListInfo(emptyDict: let emptyDict):
             return .requestParameters(parameters: emptyDict,
                                       encoding: URLEncoding.default)
             
@@ -185,6 +188,7 @@ extension LargeLoanAPI: TargetType {
             
         case .hqGoldenInfo(sparring: let sparring, mistake: let mistake):
             return .requestParameters(parameters: ["sparring": sparring, "mistake": mistake, "ap": "one"], encoding: URLEncoding.default)
+            
         }
     }
     
@@ -242,6 +246,8 @@ extension LargeLoanAPI: TargetType {
             return "/allow/midway"
         case .tonexturl:
             return "/allow/would"
+        case .getOListInfo:
+            return "/allow/anymore"
         }
         
     }

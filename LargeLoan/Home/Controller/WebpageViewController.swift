@@ -7,7 +7,7 @@
 
 import UIKit
 import RxRelay
-import WebKit
+@preconcurrency import WebKit
 import StoreKit
 
 class WebpageViewController: BaseViewController {
@@ -91,7 +91,8 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        
+        let messageName = message.name
+        print("message:\(message.name)")
     }
     
     

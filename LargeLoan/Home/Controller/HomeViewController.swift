@@ -109,13 +109,14 @@ extension HomeViewController {
             if let productId = jiequzifu(url: sc) {
                 self.getProductDetailInfo(form: productId, complete: { [weak self] model in
                     let older = model.exuding.her?.older ?? ""
-                    if !older.isEmpty {
-                        self?.ddOrderinfo(from: older)
-                    }else {
+                    let guess = model.exuding.guess?.pungent ?? ""
+                    if let guess = model.exuding.guess, let pungent = guess.pungent, !pungent.isEmpty  {
                         let pushVc = ZTViewController()
                         pushVc.model = model
                         pushVc.proid = productId
                         self?.navigationController?.pushViewController(pushVc, animated: true)
+                    }else {
+                        self?.ddOrderinfo(from: older)
                     }
                 })
             }

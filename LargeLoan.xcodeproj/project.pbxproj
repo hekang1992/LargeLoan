@@ -38,6 +38,9 @@
 		7393C2AB2D1F0DC10013F566 /* PushGoldenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2AA2D1F0DC10013F566 /* PushGoldenView.swift */; };
 		7393C2AD2D1F15B80013F566 /* WebpageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2AC2D1F15B80013F566 /* WebpageViewController.swift */; };
 		7393C2AF2D1F1F2D0013F566 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2AE2D1F1F2D0013F566 /* OrderView.swift */; };
+		7393C2B12D1FC1A80013F566 /* OrderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B02D1FC1A80013F566 /* OrderViewCell.swift */; };
+		7393C2B32D1FCE190013F566 /* OrderemptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B22D1FCE190013F566 /* OrderemptyView.swift */; };
+		7393C2B52D1FD42C0013F566 /* OrdereListviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B42D1FD42C0013F566 /* OrdereListviewController.swift */; };
 		73C752382D19A50900C47187 /* EnterWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752372D19A50900C47187 /* EnterWordsCell.swift */; };
 		73C7523A2D19A55000C47187 /* ClockWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752392D19A55000C47187 /* ClockWordsCell.swift */; };
 		73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */; };
@@ -93,6 +96,9 @@
 		7393C2AA2D1F0DC10013F566 /* PushGoldenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushGoldenView.swift; sourceTree = "<group>"; };
 		7393C2AC2D1F15B80013F566 /* WebpageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebpageViewController.swift; sourceTree = "<group>"; };
 		7393C2AE2D1F1F2D0013F566 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		7393C2B02D1FC1A80013F566 /* OrderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewCell.swift; sourceTree = "<group>"; };
+		7393C2B22D1FCE190013F566 /* OrderemptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderemptyView.swift; sourceTree = "<group>"; };
+		7393C2B42D1FD42C0013F566 /* OrdereListviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdereListviewController.swift; sourceTree = "<group>"; };
 		73C752372D19A50900C47187 /* EnterWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWordsCell.swift; sourceTree = "<group>"; };
 		73C752392D19A55000C47187 /* ClockWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockWordsCell.swift; sourceTree = "<group>"; };
 		73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBtnConfig.swift; sourceTree = "<group>"; };
@@ -275,7 +281,10 @@
 			isa = PBXGroup;
 			children = (
 				7393C2AE2D1F1F2D0013F566 /* OrderView.swift */,
+				7393C2B02D1FC1A80013F566 /* OrderViewCell.swift */,
 				737416162D0D6F4800E6CD23 /* OrdersViewController.swift */,
+				7393C2B22D1FCE190013F566 /* OrderemptyView.swift */,
+				7393C2B42D1FD42C0013F566 /* OrdereListviewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -436,6 +445,7 @@
 				737416292D0EAF5C00E6CD23 /* SetViewController.swift in Sources */,
 				734312DC2CF96A9F007FB9AB /* AppDelegate.swift in Sources */,
 				734312E92CF97481007FB9AB /* RequestManager.swift in Sources */,
+				7393C2B52D1FD42C0013F566 /* OrdereListviewController.swift in Sources */,
 				73EEE7AD2D0B399F00001E22 /* BaseViewController.swift in Sources */,
 				737416252D0EA0CC00E6CD23 /* HeadView.swift in Sources */,
 				73C752382D19A50900C47187 /* EnterWordsCell.swift in Sources */,
@@ -455,6 +465,7 @@
 				7303752B2D1870F300C0885F /* AuthYIViewController.swift in Sources */,
 				73EEE7B12D0B39D300001E22 /* BaseNavigationController.swift in Sources */,
 				7393C2AD2D1F15B80013F566 /* WebpageViewController.swift in Sources */,
+				7393C2B32D1FCE190013F566 /* OrderemptyView.swift in Sources */,
 				7374160D2D0D56EB00E6CD23 /* LoginView.swift in Sources */,
 				737416172D0D6F4800E6CD23 /* OrdersViewController.swift in Sources */,
 				73C752402D1B090A00C47187 /* AVTEViewController.swift in Sources */,
@@ -462,6 +473,7 @@
 				730375212D18108A00C0885F /* EnterBtnView.swift in Sources */,
 				73C752462D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift in Sources */,
 				730375272D184F7700C0885F /* PopSelectPcView.swift in Sources */,
+				7393C2B12D1FC1A80013F566 /* OrderViewCell.swift in Sources */,
 				73C752502D1D8D3D00C47187 /* ContactManager.swift in Sources */,
 				737416152D0D6F3D00E6CD23 /* HomeViewController.swift in Sources */,
 				737416542D1069AF00E6CD23 /* Model.swift in Sources */,

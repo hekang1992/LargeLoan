@@ -76,6 +76,19 @@ extension UIView {
         shapeLayer.path = path.cgPath
         self.layer.mask = shapeLayer
     }
+    
+    func setLeftCorners(radius: CGFloat) {
+        let path = UIBezierPath(
+            roundedRect: self.bounds,
+            byRoundingCorners: [.topLeft, .bottomLeft],
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        self.layer.mask = shapeLayer
+    }
+    
 }
 
 class PushRootVcConfig {

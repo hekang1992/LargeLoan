@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RxRelay
 
 class OrderView: BaseView {
+    
+    var modelArray = BehaviorRelay<[letModel]?>(value: nil)
 
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -51,6 +54,22 @@ class OrderView: BaseView {
         threeBtn.setImage(UIImage(named: "Finishedimge"), for: .normal)
         return threeBtn
     }()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.backgroundColor = .clear
+        tableView.estimatedRowHeight = 44
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(OrderViewCell.self, forCellReuseIdentifier: "OrderViewCell")
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,6 +85,8 @@ class OrderView: BaseView {
         lemonView.addSubview(threeBtn)
         lemonView.addSubview(twoBtn)
         
+        whiteView.addSubview(tableView)
+        
         bgImageView.snp.makeConstraints { make in
             make.top.leading.right.equalToSuperview()
             make.height.equalTo(279)
@@ -75,7 +96,7 @@ class OrderView: BaseView {
             make.height.equalTo(StatusBarHeight + 50)
         }
         whiteView.snp.makeConstraints { make in
-            make.top.equalTo(headView.snp.bottom).offset(70)
+            make.top.equalTo(headView.snp.bottom).offset(50)
             make.left.right.bottom.equalToSuperview()
         }
         lemonView.snp.makeConstraints { make in
@@ -100,6 +121,19 @@ class OrderView: BaseView {
             make.height.equalTo(50)
         }
         
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(lemonView.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-2)
+        }
+        
+        modelArray.compactMap { $0 ?? [] }.asObservable().bind(to: tableView.rx.items(cellIdentifier: "OrderViewCell", cellType: OrderViewCell.self)) { index, model, cell in
+            cell.model.accept(model)
+            cell.selectionStyle = .none
+            cell.backgroundColor = .clear
+        }.disposed(by: disposeBag)
+        
     }
     
     @MainActor required init?(coder: NSCoder) {
@@ -120,3 +154,10 @@ extension OrderView {
     
 }
 
+
+extension OrderView: UITableViewDelegate {
+    
+    
+    
+    
+}

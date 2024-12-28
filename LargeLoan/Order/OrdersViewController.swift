@@ -6,13 +6,18 @@
 //
 
 import UIKit
+import MJRefresh
 
-class OrdersViewController: UIViewController {
+class OrdersViewController: BaseViewController {
+    
+    private let emptyManager = AddEmptyManager()
     
     lazy var orView: OrderView = {
         let orView = OrderView()
         return orView
     }()
+    
+    var tupe: String = "7"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +26,72 @@ class OrdersViewController: UIViewController {
         orView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        self.getlIST(from: "7")
+        orView.oneBtn.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.getlIST(from: "7")
+            self.tupe = "7"
+        }).disposed(by: disposeBag)
+        
+        orView.twoBtn.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.getlIST(from: "6")
+            self.tupe = "6"
+        }).disposed(by: disposeBag)
+        
+        orView.threeBtn.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.getlIST(from: "5")
+            self.tupe = "5"
+        }).disposed(by: disposeBag)
+        
+        self.orView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            getlIST(from: tupe)
+        })
     }
 
+}
+
+extension OrdersViewController {
+    
+    private func getlIST(from type: String) {
+        LoadingIndicator.shared.showLoading()
+        let dict = ["ago": "2",
+                    "wolves": type,
+                    "tears": "1"]
+        provider.request(.getOListInfo(emptyDict: dict)) { [weak self] result in
+            LoadingIndicator.shared.hideLoading()
+            self?.orView.tableView.mj_header?.endRefreshing()
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+                do {
+                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                    let anyone = model.anyone
+                    if anyone == "0" || anyone == "0" {
+                        let regionArray = model.exuding.region ?? []
+                        self.orView.modelArray.accept(regionArray)
+                        if !regionArray.isEmpty {
+                            emptyManager.hideEmptyView()
+                        }else {
+                            emptyManager.showEmptyView(on: self.orView.whiteView)
+                        }
+                    }else {
+                        ToastConfig.show(form: self.view, message: model.coldly)
+                        emptyManager.showEmptyView(on: self.orView.whiteView)
+                    }
+                } catch {
+                    print("JSON: \(error)")
+                    emptyManager.showEmptyView(on: self.orView.whiteView)
+                }
+                break
+            case .failure(_):
+                emptyManager.showEmptyView(on: self.orView.whiteView)
+                break
+            }
+        }
+    }
+    
+    
 }

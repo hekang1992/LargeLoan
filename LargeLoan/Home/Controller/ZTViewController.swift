@@ -178,6 +178,7 @@ class ZTViewController: BaseViewController {
                 .when(.recognized)
                 .subscribe(onNext: { _ in
                     let model = self.dataModel.value
+                    let type = self.typeModel.value?.exuding.guess?.pungent ?? ""
                     switch step {
                     case self.oneSetp:
                         if let smiled = model?.exuding.smiled, let ever = smiled.ever {
@@ -198,7 +199,6 @@ class ZTViewController: BaseViewController {
                         }
                         break
                     case self.twoSetp:
-                        let type = self.model?.exuding.guess?.pungent ?? ""
                         if type >= "solargeg" {
                             let oneVc = AuthYIViewController()
                             oneVc.productID = self.proid
@@ -206,7 +206,6 @@ class ZTViewController: BaseViewController {
                         }
                         break
                     case self.threeSetp:
-                        let type = self.model?.exuding.guess?.pungent ?? ""
                         if type >= "solargeh" {
                             let twoVc = AVTEViewController()
                             twoVc.productID = self.proid
@@ -214,7 +213,6 @@ class ZTViewController: BaseViewController {
                         }
                         break
                     case self.fourSetp:
-                        let type = self.model?.exuding.guess?.pungent ?? ""
                         if type >= "solargei" {
                             let threeVc = ConLULUlemonViewController()
                             threeVc.productID = self.proid
@@ -222,7 +220,6 @@ class ZTViewController: BaseViewController {
                         }
                         break
                     case self.fiveSetp:
-                        let type = self.model?.exuding.guess?.pungent ?? ""
                         if type >= "solargej" {
                             let fourVc = GoldenViewController()
                             fourVc.productID = self.proid
@@ -239,7 +236,7 @@ class ZTViewController: BaseViewController {
         btn.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self, let model = self.typeModel.value, let type = model.exuding.guess?.pungent else { return }
             if type == "solargef" {
-                let dataModel = self.dataModel.value
+                let dataModel = self.typeModel.value
                 if let smiled = dataModel?.exuding.smiled, let ever = smiled.ever {
                     if ever == 0 {
                         let listVc = KFCViewController()

@@ -149,6 +149,8 @@ extension BaseViewController {
                         if let url = model.exuding.raised {
                             pushnetwork(from: url)
                         }
+                    }else {
+                        ToastConfig.show(form: view, message: model.coldly)
                     }
                 } catch {
                     print("JSON: \(error)")

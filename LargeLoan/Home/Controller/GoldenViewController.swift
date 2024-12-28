@@ -275,6 +275,8 @@ extension GoldenViewController: UITableViewDelegate {
                     if anyone == "0" || anyone == "0" {
                         self.model.accept(model)
                         self.commonArray.accept(model.exuding.common?.first?.common ?? [])
+                    }else {
+                        ToastConfig.show(form: self.view, message: model.coldly)
                     }
                 } catch {
                     print("JSON: \(error)")
