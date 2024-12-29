@@ -132,6 +132,10 @@ class HomeViewController: BaseViewController {
     private func updateViewVisibility(hasSkinData: Bool) {
         subView.isHidden = hasSkinData
         mainView.isHidden = !hasSkinData
+        if mainView.isHidden == false {
+            self.mainView.importView.reloadData()
+            self.mainView.notimpView.reloadData()
+        }
     }
     
 }

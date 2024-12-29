@@ -14,6 +14,7 @@
 		730375272D184F7700C0885F /* PopSelectPcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730375262D184F7700C0885F /* PopSelectPcView.swift */; };
 		730375292D185AF200C0885F /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730375282D185AF200C0885F /* FaceViewController.swift */; };
 		7303752B2D1870F300C0885F /* AuthYIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7303752A2D1870F300C0885F /* AuthYIViewController.swift */; };
+		7326103E2D213BA40022C023 /* CycleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7326103D2D213B9B0022C023 /* CycleViewCell.swift */; };
 		734312DC2CF96A9F007FB9AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734312D62CF96A9F007FB9AB /* AppDelegate.swift */; };
 		734312DD2CF96A9F007FB9AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734312D72CF96A9F007FB9AB /* Assets.xcassets */; };
 		734312DF2CF96A9F007FB9AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 734312DA2CF96A9F007FB9AB /* LaunchScreen.storyboard */; };
@@ -78,6 +79,7 @@
 		730375262D184F7700C0885F /* PopSelectPcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSelectPcView.swift; sourceTree = "<group>"; };
 		730375282D185AF200C0885F /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
 		7303752A2D1870F300C0885F /* AuthYIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthYIViewController.swift; sourceTree = "<group>"; };
+		7326103D2D213B9B0022C023 /* CycleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleViewCell.swift; sourceTree = "<group>"; };
 		734312A92CF9693A007FB9AB /* LargeLoan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LargeLoan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		734312D62CF96A9F007FB9AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		734312D72CF96A9F007FB9AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		734312E02CF96AAC007FB9AB /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				7326103D2D213B9B0022C023 /* CycleViewCell.swift */,
 				737416532D1069AF00E6CD23 /* Model.swift */,
 				737416512D1060F900E6CD23 /* LConig.swift */,
 				737416242D0EA0CC00E6CD23 /* HeadView.swift */,
@@ -480,6 +483,7 @@
 				7393C2B72D1FE6F60013F566 /* NBOManager.swift in Sources */,
 				73EEE7B32D0B3A2F00001E22 /* BaseView.swift in Sources */,
 				7393C2AF2D1F1F2D0013F566 /* OrderView.swift in Sources */,
+				7326103E2D213BA40022C023 /* CycleViewCell.swift in Sources */,
 				7393C2AB2D1F0DC10013F566 /* PushGoldenView.swift in Sources */,
 				73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */,
 				730375252D18211600C0885F /* PopAuthDescView.swift in Sources */,

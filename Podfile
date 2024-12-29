@@ -30,6 +30,8 @@ target 'LargeLoan' do
 
   pod 'BRPickerView', '~> 2.9.1'
   
+  pod 'TYCyclePagerView', '~> 1.2.0'
+  
   pod 'SAMKeychain', '~> 1.5.3'
   
   pod 'Toast-Swift', '~> 5.1.1'

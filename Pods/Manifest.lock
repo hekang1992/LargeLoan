@@ -53,6 +53,7 @@ PODS:
   - SystemServices (2.0.1)
   - Toast-Swift (5.1.1)
   - TYAlertController (1.2.0)
+  - TYCyclePagerView (1.2.0)
 
 DEPENDENCIES:
   - BRPickerView (~> 2.9.1)
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - SystemServices (~> 2.0.1)
   - Toast-Swift (~> 5.1.1)
   - TYAlertController (~> 1.2.0)
+  - TYCyclePagerView (~> 1.2.0)
 
 SPEC REPOS:
   trunk:
@@ -91,6 +93,7 @@ SPEC REPOS:
     - SystemServices
     - Toast-Swift
     - TYAlertController
+    - TYCyclePagerView
 
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
@@ -111,7 +114,8 @@ SPEC CHECKSUMS:
   SystemServices: 7af348493ece8951449b476c41532df72569b181
   Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
   TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
+  TYCyclePagerView: 2b051dade0615c70784aa34f40c646feeddb7344
 
-PODFILE CHECKSUM: 7aeffc526d000d7aa0d443f1f1fff2f77bbb7f26
+PODFILE CHECKSUM: 7d3b8e0e36e2207010b2f38d5c287a443e3faa66
 
 COCOAPODS: 1.16.2
