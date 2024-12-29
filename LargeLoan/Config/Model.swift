@@ -31,7 +31,9 @@ struct exudingModel: Codable {
     var region: [letModel]?
     var unfortunately: unfortunatelyModel?
     var her: herModel?
+    var sparkle: Int?
     enum CodingKeys: String, CodingKey {
+        case sparkle
         case nonstop
         case surroundings
         case ad

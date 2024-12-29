@@ -8,6 +8,7 @@
 import UIKit
 import RxRelay
 import MJRefresh
+import CoreLocation
 
 class HomeViewController: BaseViewController {
     
@@ -17,8 +18,6 @@ class HomeViewController: BaseViewController {
     }()
     
     var homeModel = BehaviorRelay<BaseModel?>(value: nil)
-    
-    let oneppmage = onePastManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +33,36 @@ class HomeViewController: BaseViewController {
             .tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                self?.apply()
+                guard let self = self else { return }
+                let sparkle = self.homeModel.value?.exuding.sparkle ?? 0
+                guard sparkle == 1 else {
+                    self.apply()
+                    return
+                }
+                let status: CLAuthorizationStatus
+                if #available(iOS 14.0, *) {
+                    status = CLLocationManager().authorizationStatus
+                } else {
+                    status = CLLocationManager.authorizationStatus()
+                }
+                switch status {
+                case .restricted, .denied:
+                    ShowalertConfig.showSettingsAlert(from: self, feature: "Location")
+                default:
+                    self.apply()
+                }
             }).disposed(by: disposeBag)
         
         self.subView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             getHomedata()
         })
+        
+        
+        let man = LocationManager()
+        man.requestLoaction { model in
+            print("modeltake=======\(model.take)")
+        }
         
     }
     

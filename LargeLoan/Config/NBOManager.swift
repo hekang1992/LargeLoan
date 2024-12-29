@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import Alamofire
 
-class onePastManager {
+class OnePastManager {
     
     func getOSInfo() -> [String: String] {
         
@@ -41,7 +40,7 @@ class onePastManager {
         ]
     }
     
-    func getoneDetails() -> [String: Any] {
+    func getOneInfo() -> [String: Any] {
         var deviceInfo: [String: Any] = [:]
         deviceInfo.merge(getOSInfo()) { (current, _) in current }
         deviceInfo.merge(getLastLoginTime()) { (current, _) in current }
@@ -52,41 +51,9 @@ class onePastManager {
     
 }
 
-class TwoPastManager {
-    
-}
 
-class ThreePastManager {
-    
-}
 
-class NetworkManager {
-    
-    static let shared = NetworkManager()
-    private var reachabilityManager: NetworkReachabilityManager?
-    
-    private init() {
-        self.reachabilityManager = NetworkReachabilityManager()
-    }
-    
-    func startListening() {
-        self.reachabilityManager?.startListening(onUpdatePerforming: { status in
-            switch status {
-            case .notReachable:
-                print("Network is not reachable.")
-            case .reachable(.ethernetOrWiFi):
-                print("Network is reachable via WiFi.")
-            case .reachable(.cellular):
-                print("Network is reachable via Cellular.")
-            case .unknown:
-                print("Network status is unknown.")
-            }
-        })
-    }
-    
-    func stopListening() {
-        self.reachabilityManager?.stopListening()
-    }
-}
+
+
 
 

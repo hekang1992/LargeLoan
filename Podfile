@@ -34,4 +34,6 @@ target 'LargeLoan' do
   
   pod 'Toast-Swift', '~> 5.1.1'
   
+  pod 'SystemServices', '~> 2.0.1'
+  
 end

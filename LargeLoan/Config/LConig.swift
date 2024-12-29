@@ -9,6 +9,7 @@ import Kingfisher
 import DeviceKit
 import SAMKeychain
 import TYAlertController
+import AdSupport
 
 let LargeLoan_one = "LargeLoan_one"
 let LargeLoan_two = "LargeLoan_two"
@@ -36,6 +37,13 @@ class GetIdfv {
     }
     
 }
+
+class GetIdfa {
+    static func getIDFA() -> String {
+        return ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    }
+}
+
 
 
 class GetDengLuConfig {

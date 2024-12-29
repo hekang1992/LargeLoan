@@ -38,6 +38,7 @@ enum LargeLoanAPI {
     case getOListInfo(emptyDict: [String: Any])
     case scsecurtymessage(exuding: String)
     case expression(emptyDict: [String: Any])
+    case soundsInfo(emptyDict: [String: Any])
 }
 
 extension LargeLoanAPI: TargetType {
@@ -71,7 +72,8 @@ extension LargeLoanAPI: TargetType {
                 .tonexturl,
                 .getOListInfo,
                 .scsecurtymessage,
-                .expression
+                .expression,
+                .soundsInfo
             :
             return .post
         case
@@ -154,7 +156,7 @@ extension LargeLoanAPI: TargetType {
                                                    "small": "11"],
                                       encoding: URLEncoding.default)
             
-        case .saveTPinfo(emptyDict: let emptyDict):
+        case .saveTPinfo(emptyDict: let emptyDict), .soundsInfo(emptyDict: let emptyDict):
             return .requestParameters(parameters: emptyDict,
                                       encoding: URLEncoding.default)
             
@@ -265,6 +267,8 @@ extension LargeLoanAPI: TargetType {
             return "/allow/awaythe"
         case .expression:
             return "/allow/expression"
+        case .soundsInfo:
+            return "/allow/sounds"
         }
         
     }

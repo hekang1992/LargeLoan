@@ -42,6 +42,12 @@
 		7393C2B32D1FCE190013F566 /* OrderemptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B22D1FCE190013F566 /* OrderemptyView.swift */; };
 		7393C2B52D1FD42C0013F566 /* OrdereListviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B42D1FD42C0013F566 /* OrdereListviewController.swift */; };
 		7393C2B72D1FE6F60013F566 /* NBOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393C2B62D1FE6E50013F566 /* NBOManager.swift */; };
+		73B1C3502D204837008D2E23 /* Networkmanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C34F2D20482A008D2E23 /* Networkmanager.swift */; };
+		73B1C3522D20517C008D2E23 /* DeSbConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C3512D20517B008D2E23 /* DeSbConfig.swift */; };
+		73B1C3542D205199008D2E23 /* WallenConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C3532D205193008D2E23 /* WallenConfig.swift */; };
+		73B1C3562D2055AF008D2E23 /* WlaninfoConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C3552D2055A7008D2E23 /* WlaninfoConfig.swift */; };
+		73B1C3582D2055C7008D2E23 /* NcBdConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C3572D2055C2008D2E23 /* NcBdConfig.swift */; };
+		73B1C35A2D20FAC5008D2E23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C3592D20FAC5008D2E23 /* LocationManager.swift */; };
 		73C752382D19A50900C47187 /* EnterWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752372D19A50900C47187 /* EnterWordsCell.swift */; };
 		73C7523A2D19A55000C47187 /* ClockWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752392D19A55000C47187 /* ClockWordsCell.swift */; };
 		73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */; };
@@ -101,6 +107,12 @@
 		7393C2B22D1FCE190013F566 /* OrderemptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderemptyView.swift; sourceTree = "<group>"; };
 		7393C2B42D1FD42C0013F566 /* OrdereListviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdereListviewController.swift; sourceTree = "<group>"; };
 		7393C2B62D1FE6E50013F566 /* NBOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBOManager.swift; sourceTree = "<group>"; };
+		73B1C34F2D20482A008D2E23 /* Networkmanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networkmanager.swift; sourceTree = "<group>"; };
+		73B1C3512D20517B008D2E23 /* DeSbConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeSbConfig.swift; sourceTree = "<group>"; };
+		73B1C3532D205193008D2E23 /* WallenConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallenConfig.swift; sourceTree = "<group>"; };
+		73B1C3552D2055A7008D2E23 /* WlaninfoConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WlaninfoConfig.swift; sourceTree = "<group>"; };
+		73B1C3572D2055C2008D2E23 /* NcBdConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NcBdConfig.swift; sourceTree = "<group>"; };
+		73B1C3592D20FAC5008D2E23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		73C752372D19A50900C47187 /* EnterWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWordsCell.swift; sourceTree = "<group>"; };
 		73C752392D19A55000C47187 /* ClockWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockWordsCell.swift; sourceTree = "<group>"; };
 		73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBtnConfig.swift; sourceTree = "<group>"; };
@@ -174,6 +186,7 @@
 		734312E02CF96AAC007FB9AB /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				73B1C34F2D20482A008D2E23 /* Networkmanager.swift */,
 				737416532D1069AF00E6CD23 /* Model.swift */,
 				737416512D1060F900E6CD23 /* LConig.swift */,
 				737416242D0EA0CC00E6CD23 /* HeadView.swift */,
@@ -185,6 +198,11 @@
 				73C752432D1C4CBE00C47187 /* ConLULULemonCong.swift */,
 				73C7524F2D1D8D3C00C47187 /* ContactManager.swift */,
 				7393C2B62D1FE6E50013F566 /* NBOManager.swift */,
+				73B1C3532D205193008D2E23 /* WallenConfig.swift */,
+				73B1C3512D20517B008D2E23 /* DeSbConfig.swift */,
+				73B1C3552D2055A7008D2E23 /* WlaninfoConfig.swift */,
+				73B1C3572D2055C2008D2E23 /* NcBdConfig.swift */,
+				73B1C3592D20FAC5008D2E23 /* LocationManager.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -447,11 +465,14 @@
 				734C6CDE2D14790900B2DB98 /* KFCTableViewCell.swift in Sources */,
 				737416292D0EAF5C00E6CD23 /* SetViewController.swift in Sources */,
 				734312DC2CF96A9F007FB9AB /* AppDelegate.swift in Sources */,
+				73B1C3542D205199008D2E23 /* WallenConfig.swift in Sources */,
 				734312E92CF97481007FB9AB /* RequestManager.swift in Sources */,
 				7393C2B52D1FD42C0013F566 /* OrdereListviewController.swift in Sources */,
 				73EEE7AD2D0B399F00001E22 /* BaseViewController.swift in Sources */,
 				737416252D0EA0CC00E6CD23 /* HeadView.swift in Sources */,
+				73B1C3582D2055C7008D2E23 /* NcBdConfig.swift in Sources */,
 				73C752382D19A50900C47187 /* EnterWordsCell.swift in Sources */,
+				73B1C3522D20517C008D2E23 /* DeSbConfig.swift in Sources */,
 				737416522D10610C00E6CD23 /* LConig.swift in Sources */,
 				7393C2B72D1FE6F60013F566 /* NBOManager.swift in Sources */,
 				73EEE7B32D0B3A2F00001E22 /* BaseView.swift in Sources */,
@@ -477,8 +498,10 @@
 				730375212D18108A00C0885F /* EnterBtnView.swift in Sources */,
 				73C752462D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift in Sources */,
 				730375272D184F7700C0885F /* PopSelectPcView.swift in Sources */,
+				73B1C3562D2055AF008D2E23 /* WlaninfoConfig.swift in Sources */,
 				7393C2B12D1FC1A80013F566 /* OrderViewCell.swift in Sources */,
 				73C752502D1D8D3D00C47187 /* ContactManager.swift in Sources */,
+				73B1C3502D204837008D2E23 /* Networkmanager.swift in Sources */,
 				737416152D0D6F3D00E6CD23 /* HomeViewController.swift in Sources */,
 				737416542D1069AF00E6CD23 /* Model.swift in Sources */,
 				737416112D0D581700E6CD23 /* BaseConfig.swift in Sources */,
@@ -489,6 +512,7 @@
 				73E56BDF2D11B9070015BF34 /* LaunchViewController.swift in Sources */,
 				7374161F2D0E92D700E6CD23 /* HomeMainView.swift in Sources */,
 				73EEE7AF2D0B39BD00001E22 /* BaseTabBarViewController.swift in Sources */,
+				73B1C35A2D20FAC5008D2E23 /* LocationManager.swift in Sources */,
 				73C752442D1C4CBE00C47187 /* ConLULULemonCong.swift in Sources */,
 				730375232D18150500C0885F /* PermissionManager.swift in Sources */,
 				734C6CE02D147B5600B2DB98 /* PhotoViewController.swift in Sources */,
@@ -516,6 +540,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LargeLoan/LargeLoan.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -525,6 +550,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LargeLoan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Large Loan";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -557,6 +586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LargeLoan/LargeLoan.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -566,6 +596,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LargeLoan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Large Loan";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

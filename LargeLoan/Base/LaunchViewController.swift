@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SystemConfiguration.CaptiveNetwork
 
 class LaunchViewController: BaseViewController {
     
@@ -13,7 +14,6 @@ class LaunchViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        fcinofnetwordnewyork()
         PushRootVcConfig.goRootVc()
     }
     
@@ -24,6 +24,4 @@ extension LaunchViewController {
     private func fcinofnetwordnewyork() {
         NetworkManager.shared.startListening()
     }
-    
-    
 }
