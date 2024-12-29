@@ -12,26 +12,39 @@ import RxSwift
 
 class HomeMainView: BaseView {
     
+    lazy var bgImageView: UIImageView = {
+        let bgImageView = UIImageView()
+        bgImageView.isUserInteractionEnabled = true
+        bgImageView.image = UIImage(named: "homebg")
+        return bgImageView
+    }()
+    
+    var bblock: ((String) -> Void)?
+    var bllock: ((String) -> Void)?
+    
     lazy var mainView: UIView = {
         let mainView = UIView()
-        mainView.backgroundColor = .random()
+        mainView.isUserInteractionEnabled = true
         return mainView
     }()
     
     lazy var subView: UIView = {
         let subView = UIView()
+        subView.isUserInteractionEnabled = true
         return subView
     }()
     
     lazy var tiIcon: UIImageView = {
         let tiIcon = UIImageView()
         tiIcon.image = UIImage(named: "tixinimage")
+        tiIcon.isUserInteractionEnabled = true
         return tiIcon
     }()
     
     lazy var liIcon: UIImageView = {
         let liIcon = UIImageView()
         liIcon.image = UIImage(named: "littllabaimage")
+        liIcon.isUserInteractionEnabled = true
         return liIcon
     }()
     
@@ -80,7 +93,11 @@ class HomeMainView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(tableView)
+        addSubview(bgImageView)
+        bgImageView.addSubview(tableView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -118,13 +135,12 @@ extension HomeMainView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headView = UIView()
-        headView.backgroundColor = .random()
         let model = self.headmodel.value?.exuding.knelt
         headView.addSubview(mainView)
         mainView.addSubview(importView)
         mainView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(StatusBarHeight + 10)
-            make.size.equalTo(CGSize(width: SCREEN_WIDTH - 32, height: 120))
+            make.size.equalTo(CGSize(width: 345, height: 120))
             make.centerX.equalToSuperview()
         }
         importView.snp.makeConstraints { make in
@@ -169,9 +185,11 @@ extension HomeMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSource {
     
     func numberOfItems(in pagerView: TYCyclePagerView) -> Int {
         if pagerView == importView {
-            return headmodel.value?.exuding.cut?.something?.count ?? 0
+            let count = headmodel.value?.exuding.cut?.something?.count ?? 0
+            return count
         }else {
-            return headmodel.value?.exuding.knelt?.something?.count ?? 0
+            let count = headmodel.value?.exuding.knelt?.something?.count ?? 0
+            return count
         }
     }
     
@@ -196,18 +214,55 @@ extension HomeMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSource {
         
     }
     
-    func pagerView(_ pagerView: TYCyclePagerView, didSelectItemAt index: Int) {
-        
+    
+    func pagerView(_ pageView: TYCyclePagerView, didSelectedItemCell cell: UICollectionViewCell, at index: Int) {
+        if pageView == importView {
+            if let model = headmodel.value?.exuding.cut?.something?[index], let raised = model.raised {
+                if !raised.isEmpty {
+                    self.bblock?(raised)
+                }else {
+                    return
+                }
+            }
+        }else {
+            if let model = headmodel.value?.exuding.knelt?.something?[index], let raised = model.raised {
+                if !raised.isEmpty {
+                    self.bllock?(raised)
+                }else {
+                    return
+                }
+            }
+        }
     }
+    
+//    func pagerView(_ pagerView: TYCyclePagerView, didSelectItemAt index: Int) {
+//        if pagerView == importView {
+//            if let model = headmodel.value?.exuding.cut?.something?[index], let raised = model.raised {
+//                if !raised.isEmpty {
+//                    self.bblock?(raised)
+//                }else {
+//                    return
+//                }
+//            }
+//        }else {
+//            if let model = headmodel.value?.exuding.knelt?.something?[index], let raised = model.raised {
+//                if !raised.isEmpty {
+//                    self.bllock?(raised)
+//                }else {
+//                    return
+//                }
+//            }
+//        }
+//    }
     
     func layout(for pagerView: TYCyclePagerView) -> TYCyclePagerViewLayout {
         let layout = TYCyclePagerViewLayout()
         if pagerView == importView {
-            layout.itemSize = CGSizeMake(SCREEN_WIDTH - 32, 120)
+            layout.itemSize = CGSizeMake(345, 120)
             layout.itemSpacing = 5
             return layout
         }else {
-            layout.itemSize = CGSizeMake(SCREEN_WIDTH - 70, 56)
+            layout.itemSize = CGSizeMake(315, 56)
             layout.itemSpacing = 5
             return layout
         }

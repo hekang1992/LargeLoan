@@ -249,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				7374161C2D0E92CA00E6CD23 /* HomeSubView.swift */,
+				7374161E2D0E92D700E6CD23 /* HomeMainView.swift */,
 				734F7D922D144E760086A214 /* StepView.swift */,
 				734C6CDD2D14790900B2DB98 /* KFCTableViewCell.swift */,
 				7303751E2D18107300C0885F /* EnterTextView.swift */,
@@ -259,7 +260,6 @@
 				73C752392D19A55000C47187 /* ClockWordsCell.swift */,
 				73C752452D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift */,
 				7393C2AA2D1F0DC10013F566 /* PushGoldenView.swift */,
-				7374161E2D0E92D700E6CD23 /* HomeMainView.swift */,
 				73B1C35B2D212F68008D2E23 /* ProductViewCell.swift */,
 			);
 			path = View;

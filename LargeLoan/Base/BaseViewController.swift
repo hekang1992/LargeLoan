@@ -171,11 +171,12 @@ extension BaseViewController {
         }
     }
     
-     func pushnetwork(from url: String) {
+    func pushnetwork(from url: String) {
         let wpVc = WebpageViewController()
         let pageUrl = DictToString.appendters(url: url, parameters: GetDengLuConfig.loginConfig()) ?? "".replacingOccurrences(of: " ", with: "%20")
         wpVc.webUrl.accept(pageUrl)
         self.navigationController?.pushViewController(wpVc, animated: true)
+        print("pageUrl======\(pageUrl)")
     }
     
 }

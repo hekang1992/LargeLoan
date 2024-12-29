@@ -122,6 +122,12 @@ class HomeViewController: BaseViewController {
             getHomedata()
         })
         
+        self.mainView.bblock = { [weak self] str in
+            self?.pushnetwork(from: str)
+        }
+        self.mainView.bllock = { [weak self] str in
+            self?.pushnetwork(from: str)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
