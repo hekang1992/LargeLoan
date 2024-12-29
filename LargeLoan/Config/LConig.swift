@@ -154,3 +154,19 @@ extension Data {
     }
     
 }
+
+
+class PaddedLabel: UILabel {
+    var padding = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+    
+    override func drawText(in rect: CGRect) {
+        let paddedRect = rect.inset(by: padding)
+        super.drawText(in: paddedRect)
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width + padding.left + padding.right,
+                      height: size.height + padding.top + padding.bottom)
+    }
+}

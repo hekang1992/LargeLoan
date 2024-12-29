@@ -17,17 +17,17 @@ class HomeViewController: BaseViewController {
         return subView
     }()
     
+    lazy var mainView: HomeMainView = {
+        let mainView = HomeMainView()
+        return mainView
+    }()
+    
     var homeModel = BehaviorRelay<BaseModel?>(value: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        view.addSubview(subView)
-        subView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
         subView.applyImageView
             .rx
             .tapGesture()
@@ -36,7 +36,7 @@ class HomeViewController: BaseViewController {
                 guard let self = self else { return }
                 let sparkle = self.homeModel.value?.exuding.sparkle ?? 0
                 guard sparkle == 1 else {
-                    self.apply()
+                    self.apply(from: self.homeModel.value?.exuding.palms?.something?.first?.digging ?? 0)
                     return
                 }
                 let status: CLAuthorizationStatus
@@ -49,10 +49,15 @@ class HomeViewController: BaseViewController {
                 case .restricted, .denied:
                     ShowalertConfig.showSettingsAlert(from: self, feature: "Location")
                 default:
-                    self.apply()
+                    self.apply(from: self.homeModel.value?.exuding.palms?.something?.first?.digging ?? 0)
                     //deviceinfo loaction
                 }
             }).disposed(by: disposeBag)
+        
+        self.mainView.tableView.rx.modelSelected(somethingModel.self).subscribe(onNext: { [weak self] model in
+            guard let self = self else { return }
+            self.apply(from: model.digging ?? 0)
+        }).disposed(by: disposeBag)
         
         self.subView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             guard let self = self else { return }
@@ -91,11 +96,42 @@ class HomeViewController: BaseViewController {
         let twoTime = UserDefaults.standard.object(forKey: CLOSE_TIME) as? String ?? ""
         let digging = String(self.homeModel.value?.exuding.palms?.something?.first?.digging ?? 0)
         self.expressioninfo(from: digging, continued: "1", openTime: oneTime, closingTime: twoTime)
+        
+        
+        homeModel.asObservable()
+            .compactMap { $0 }
+            .subscribe(onNext: { [weak self] model in
+                guard let self = self else { return }
+                let hasSkinData = !(model.exuding.skin?.something?.isEmpty ?? true)
+                self.updateViewVisibility(hasSkinData: hasSkinData)
+            })
+            .disposed(by: disposeBag)
+        
+        view.addSubview(subView)
+        view.addSubview(mainView)
+        subView.isHidden = true
+        mainView.isHidden = true
+        [subView, mainView].forEach { view in
+            view.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+        }
+        
+        self.mainView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            getHomedata()
+        })
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getHomedata()
+    }
+    
+    private func updateViewVisibility(hasSkinData: Bool) {
+        subView.isHidden = hasSkinData
+        mainView.isHidden = !hasSkinData
     }
     
 }
@@ -108,6 +144,7 @@ extension HomeViewController {
             LoadingIndicator.shared.hideLoading()
             guard let self = self else { return }
             self.subView.scrollView.mj_header?.endRefreshing()
+            self.mainView.tableView.mj_header?.endRefreshing()
             switch result {
             case .success(let response):
                 do {
@@ -115,6 +152,7 @@ extension HomeViewController {
                     let anyone = model.anyone
                     if anyone == "0" || anyone == "0" {
                         self.homeModel.accept(model)
+                        self.mainView.model.accept(model)
                     }
                 } catch {
                     print("JSON: \(error)")
@@ -127,11 +165,10 @@ extension HomeViewController {
         
     }
     
-    private func apply() {
-        let digging = self.homeModel.value?.exuding.palms?.something?.first?.digging ?? 0
+    private func apply(from digging: Int) {
         LoadingIndicator.shared.showLoading()
         provider.request(.applyInfo(productId: String(digging))) { [weak self] result in
-//            LoadingIndicator.shared.hideLoading()
+            //            LoadingIndicator.shared.hideLoading()
             guard let self = self else { return }
             switch result {
             case .success(let response):

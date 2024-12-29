@@ -32,7 +32,13 @@ struct exudingModel: Codable {
     var unfortunately: unfortunatelyModel?
     var her: herModel?
     var sparkle: Int?
+    var skin: skinModel?
+    var cut: cutModel?
+    var knelt: kneltModel?
     enum CodingKeys: String, CodingKey {
+        case knelt
+        case cut
+        case skin
         case sparkle
         case nonstop
         case surroundings
@@ -53,6 +59,10 @@ struct exudingModel: Codable {
     }
 }
 
+struct skinModel: Codable {
+    var something: [somethingModel]?
+}
+
 struct unfortunatelyModel: Codable {
     var region: [letModel]?
     enum CodingKeys: String, CodingKey {
@@ -67,6 +77,16 @@ struct palmsModel: Codable {
 
 struct somethingModel: Codable {
     var digging: Int?
+    var nodding: String?
+    var wetting: String?
+    var far: String?
+    var onto: String?
+    var mid: String?
+    var oozing: String?
+    var raised: String?
+    var coldly: String?
+    var failed: String?
+    var nails: String?
 }
 
 struct guessModel: Codable {
@@ -214,5 +234,26 @@ class letModel: Codable {
         case orderAmount = "orderAmount"
         case orderStatusDesc = "orderStatusDesc"
         case statusTextDescButton = "statusTextDescButton"
+    }
+}
+
+
+struct cutModel: Codable {
+    var bannetModelArray: [somethingModel]?
+    
+    enum CodingKeys: String, CodingKey {
+        
+    case bannetModelArray = "something"
+        
+    }
+}
+
+struct kneltModel: Codable {
+    var something: [somethingModel]?
+    
+    enum CodingKeys: String, CodingKey {
+        
+    case something = "something"
+        
     }
 }

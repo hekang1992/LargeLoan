@@ -48,6 +48,7 @@
 		73B1C3562D2055AF008D2E23 /* WlaninfoConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C3552D2055A7008D2E23 /* WlaninfoConfig.swift */; };
 		73B1C3582D2055C7008D2E23 /* NcBdConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C3572D2055C2008D2E23 /* NcBdConfig.swift */; };
 		73B1C35A2D20FAC5008D2E23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C3592D20FAC5008D2E23 /* LocationManager.swift */; };
+		73B1C35C2D212F68008D2E23 /* ProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B1C35B2D212F68008D2E23 /* ProductViewCell.swift */; };
 		73C752382D19A50900C47187 /* EnterWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752372D19A50900C47187 /* EnterWordsCell.swift */; };
 		73C7523A2D19A55000C47187 /* ClockWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C752392D19A55000C47187 /* ClockWordsCell.swift */; };
 		73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */; };
@@ -113,6 +114,7 @@
 		73B1C3552D2055A7008D2E23 /* WlaninfoConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WlaninfoConfig.swift; sourceTree = "<group>"; };
 		73B1C3572D2055C2008D2E23 /* NcBdConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NcBdConfig.swift; sourceTree = "<group>"; };
 		73B1C3592D20FAC5008D2E23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		73B1C35B2D212F68008D2E23 /* ProductViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewCell.swift; sourceTree = "<group>"; };
 		73C752372D19A50900C47187 /* EnterWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterWordsCell.swift; sourceTree = "<group>"; };
 		73C752392D19A55000C47187 /* ClockWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockWordsCell.swift; sourceTree = "<group>"; };
 		73C7523B2D1AE77600C47187 /* ClickBtnConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBtnConfig.swift; sourceTree = "<group>"; };
@@ -244,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				7374161C2D0E92CA00E6CD23 /* HomeSubView.swift */,
-				7374161E2D0E92D700E6CD23 /* HomeMainView.swift */,
 				734F7D922D144E760086A214 /* StepView.swift */,
 				734C6CDD2D14790900B2DB98 /* KFCTableViewCell.swift */,
 				7303751E2D18107300C0885F /* EnterTextView.swift */,
@@ -255,6 +256,8 @@
 				73C752392D19A55000C47187 /* ClockWordsCell.swift */,
 				73C752452D1C51C400C47187 /* ConLULULemonCongTableViewCell.swift */,
 				7393C2AA2D1F0DC10013F566 /* PushGoldenView.swift */,
+				7374161E2D0E92D700E6CD23 /* HomeMainView.swift */,
+				73B1C35B2D212F68008D2E23 /* ProductViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				7393C2AB2D1F0DC10013F566 /* PushGoldenView.swift in Sources */,
 				73C7523C2D1AE77600C47187 /* ClickBtnConfig.swift in Sources */,
 				730375252D18211600C0885F /* PopAuthDescView.swift in Sources */,
+				73B1C35C2D212F68008D2E23 /* ProductViewCell.swift in Sources */,
 				73C752422D1C487A00C47187 /* ConLULULemonViewController.swift in Sources */,
 				734C6CDC2D14687300B2DB98 /* KFCViewController.swift in Sources */,
 				7374161D2D0E92CA00E6CD23 /* HomeSubView.swift in Sources */,
