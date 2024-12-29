@@ -136,6 +136,8 @@ class AVTEViewController: BaseViewController {
             return UITableViewCell()
         }.disposed(by: disposeBag)
         
+        openTime = CurrentTimeManager.getCurrentTime()
+        
     }
     
 }
@@ -305,6 +307,15 @@ extension AVTEViewController {
             let type = model.exuding.guess?.pungent ?? ""
             ConLULULemonCong.tpuType(from: type, old: self.productID ?? "", vc: self)
         }
+        closingTime = CurrentTimeManager.getCurrentTime()
+        self.exprwssinfo()
+    }
+    
+    func exprwssinfo() {
+        self.expressioninfo(from: self.productID ?? "",
+                            continued: "6",
+                            openTime: self.openTime,
+                            closingTime: self.closingTime)
     }
     
 }

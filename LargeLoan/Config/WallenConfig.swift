@@ -10,6 +10,14 @@ import DeviceKit
 import Alamofire
 import SystemConfiguration.CaptiveNetwork
 
+class CurrentTimeManager {
+    static func getCurrentTime() -> String {
+        let currentTime = Date().timeIntervalSince1970
+        let currentTimeMillis = String(Int64(currentTime * 1000))
+        return currentTimeMillis
+    }
+}
+
 class TwoPastManager {
     
     static func getMacInfo() -> String {
@@ -125,7 +133,7 @@ class TwoPastManager {
     func getTwoInfo() -> [String: Any] {
         var twoInfo: [String: Any] = [:]
         twoInfo["resisting"] = ["former": former,
-                                "gathering": "gathering",
+                                "gathering": gathering,
                                 "frontier": frontier,
                                 "guarding": guarding,
                                 "cavalry": cavalry,

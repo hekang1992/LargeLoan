@@ -19,6 +19,12 @@ class BaseViewController: UIViewController {
     
     let tabBarHeight = StatusBarConfig.tabBarHeight
     
+    var openTime: String = ""
+    var closingTime: String = ""
+    
+    var openNineTime: String = ""
+    var closingNineTime: String = ""
+    
     lazy var headView: HeadView = {
         let headView = HeadView()
         return headView
@@ -171,5 +177,32 @@ extension BaseViewController {
         wpVc.webUrl.accept(pageUrl)
         self.navigationController?.pushViewController(wpVc, animated: true)
     }
+    
+}
+
+
+extension BaseViewController {
+    
+    func expressioninfo(from productID: String,
+                        continued: String,
+                        openTime: String,
+                        closingTime: String) {
+        let trman = LocationManager()
+        trman.requestLoaction { [weak self] model in
+            guard let self = self else { return }
+            let dict = ["great": productID,
+                        "continued": continued,
+                        "anymore": GetIdfv.getIDFV(),
+                        "wish": GetIdfa.getIDFA(),
+                        "opportunity": model.opportunity,
+                        "take": model.take,
+                        "speaking": openTime,
+                        "join": closingTime]
+            provider.request(.expression(emptyDict: dict)) { result in
+                
+            }
+        }
+    }
+    
     
 }

@@ -143,7 +143,7 @@ class AuthYIViewController: BaseViewController {
         }.disposed(by: disposeBag)
         
         
-        
+        openTime = CurrentTimeManager.getCurrentTime()
         
     }
     
@@ -307,6 +307,15 @@ extension AuthYIViewController {
             let type = model.exuding.guess?.pungent ?? ""
             ConLULULemonCong.tpuType(from: type, old: self.productID ?? "", vc: self)
         }
+        closingTime = CurrentTimeManager.getCurrentTime()
+        self.exprwssinfo()
+    }
+    
+    func exprwssinfo() {
+        self.expressioninfo(from: self.productID ?? "",
+                            continued: "5",
+                            openTime: self.openTime,
+                            closingTime: self.closingTime)
     }
     
 }

@@ -50,6 +50,7 @@ class HomeViewController: BaseViewController {
                     ShowalertConfig.showSettingsAlert(from: self, feature: "Location")
                 default:
                     self.apply()
+                    //deviceinfo loaction
                 }
             }).disposed(by: disposeBag)
         
@@ -58,28 +59,44 @@ class HomeViewController: BaseViewController {
             getHomedata()
         })
         
-        
-        let man = LocationManager()
-        man.requestLoaction { model in
-            print("modeltake=======\(model.take)")
+        let loaman = LocationManager()
+        loaman.requestLoaction { [weak self] model in
+            guard let self = self else { return }
+            let dict = ["hide": model.hide,
+                        "thousand": model.thousand,
+                        "five": model.five,
+                        "revenge": model.revenge,
+                        "take": model.take,
+                        "opportunity": model.opportunity,
+                        "training": model.training,
+                        "horses": "beef",
+                        "selling": "smile"]
+            provider.request(.thinkInfo(emptyDict: dict)) { result in
+                
+            }
         }
         
+        let sbman = LocationManager()
+        sbman.requestLoaction { [weak self] model in
+            guard let self = self else { return }
+            let dict = GetDAllInfo.getAllInfo()
+            let databyte = try? JSONSerialization.data(withJSONObject: dict)
+            let baseStr = databyte?.base64EncodedString() ?? ""
+            provider.request(.scsecurtymessage(exuding: baseStr)) { result in
+                
+            }
+        }
+        
+        let oneTime = UserDefaults.standard.object(forKey: OPEN_TIME) as? String ?? ""
+        let twoTime = UserDefaults.standard.object(forKey: CLOSE_TIME) as? String ?? ""
+        let digging = String(self.homeModel.value?.exuding.palms?.something?.first?.digging ?? 0)
+        self.expressioninfo(from: digging, continued: "1", openTime: oneTime, closingTime: twoTime)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getHomedata()
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

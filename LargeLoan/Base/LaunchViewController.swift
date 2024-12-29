@@ -14,6 +14,7 @@ class LaunchViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        fcinofnetwordnewyork()
         PushRootVcConfig.goRootVc()
     }
     

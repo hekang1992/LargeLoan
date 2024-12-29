@@ -104,7 +104,7 @@ class GoldenViewController: BaseViewController {
         homeImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+        openTime = CurrentTimeManager.getCurrentTime()
         view.addSubview(self.headView)
         self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "Withdrawal Info"
@@ -330,8 +330,10 @@ extension GoldenViewController: UITableViewDelegate {
     }
     
     func savegoleeninfo(form emptyDict: [String: Any]){
+        closingTime = CurrentTimeManager.getCurrentTime()
         LoadingIndicator.shared.showLoading()
-        provider.request(.saveGoldenInfo(emptyDict: emptyDict)) { result in
+        provider.request(.saveGoldenInfo(emptyDict: emptyDict)) { [weak self] result in
+            guard let self = self else { return }
             LoadingIndicator.shared.hideLoading()
             switch result {
             case .success(let response):
@@ -339,6 +341,7 @@ extension GoldenViewController: UITableViewDelegate {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
                     if anyone == "0" || anyone == "0" {
+                        openNineTime = CurrentTimeManager.getCurrentTime()
                         self.detailon()
                     }
                 } catch {
@@ -352,13 +355,30 @@ extension GoldenViewController: UITableViewDelegate {
     }
     
     private func detailon() {
+        self.exprwssinfo()
         self.getProductDetailInfo(form: self.productID ?? "", complete: { [weak self] model in
             guard let self = self else { return }
             let older = model.exuding.her?.older ?? ""
             if !older.isEmpty {
                 self.ddOrderinfo(from: older)
+                closingNineTime = CurrentTimeManager.getCurrentTime()
+                exnineoinf()
             }
         })
+    }
+    
+    func exprwssinfo() {
+        self.expressioninfo(from: self.productID ?? "",
+                            continued: "8",
+                            openTime: self.openTime,
+                            closingTime: self.closingTime)
+    }
+    
+    func exnineoinf() {
+        self.expressioninfo(from: self.productID ?? "",
+                            continued: "9",
+                            openTime: self.openNineTime,
+                            closingTime: self.closingNineTime)
     }
     
 }

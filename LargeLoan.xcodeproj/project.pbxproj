@@ -186,7 +186,6 @@
 		734312E02CF96AAC007FB9AB /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				73B1C34F2D20482A008D2E23 /* Networkmanager.swift */,
 				737416532D1069AF00E6CD23 /* Model.swift */,
 				737416512D1060F900E6CD23 /* LConig.swift */,
 				737416242D0EA0CC00E6CD23 /* HeadView.swift */,
@@ -203,6 +202,7 @@
 				73B1C3552D2055A7008D2E23 /* WlaninfoConfig.swift */,
 				73B1C3572D2055C2008D2E23 /* NcBdConfig.swift */,
 				73B1C3592D20FAC5008D2E23 /* LocationManager.swift */,
+				73B1C34F2D20482A008D2E23 /* Networkmanager.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";

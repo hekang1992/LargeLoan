@@ -236,7 +236,7 @@ class ZTViewController: BaseViewController {
         btn.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self, let model = self.typeModel.value, let type = model.exuding.guess?.pungent else { return }
             if type == "solargef" {
-                let dataModel = self.typeModel.value
+                let dataModel = self.dataModel.value
                 if let smiled = dataModel?.exuding.smiled, let ever = smiled.ever {
                     if ever == 0 {
                         let listVc = KFCViewController()

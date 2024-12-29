@@ -101,15 +101,18 @@ class KFCViewController: BaseViewController {
         arrayRelay.asObservable().bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         
         tableView.rx.modelSelected(String.self).subscribe(onNext: { [weak self] type in
+            guard let self = self else { return }
+            self.closingTime = CurrentTimeManager.getCurrentTime()
+            self.exprwssinfo()
             let phoVc = PhotoViewController()
             phoVc.type = type
-            phoVc.productID = self?.productID
-            self?.navigationController?.pushViewController(phoVc, animated: true)
+            phoVc.productID = self.productID
+            self.navigationController?.pushViewController(phoVc, animated: true)
         }).disposed(by: disposeBag)
         
+        openTime = CurrentTimeManager.getCurrentTime()
+        
     }
-    
-    
     
 }
 
@@ -139,6 +142,13 @@ extension KFCViewController: UITableViewDelegate {
             make.height.equalTo(20)
         }
         return headerView
+    }
+    
+    func exprwssinfo() {
+        self.expressioninfo(from: self.productID ?? "",
+                            continued: "2",
+                            openTime: self.openTime,
+                            closingTime: self.closingTime)
     }
     
 }

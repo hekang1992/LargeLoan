@@ -158,6 +158,9 @@ class FaceViewController: BaseViewController {
             }
         }).disposed(by: disposeBag)
         
+        openTime = CurrentTimeManager.getCurrentTime()
+        
+        
     }
     
 }
@@ -214,6 +217,7 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
     }
     
     private func uploadImage(with model: Data) {
+        closingTime = CurrentTimeManager.getCurrentTime()
         LoadingIndicator.shared.showLoading()
         let dict = ["failure": "2",
                     "old": productID ?? "",
@@ -236,7 +240,9 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
                         self.clickImageView.isUserInteractionEnabled = false
                         self.clickImageView.image = self.selectImage
                         self.rise = "1"
+                        self.exprwssinfo()
                     }
+                    ToastConfig.show(form: view, message: model.coldly)
                 } catch {
                     print("JSON: \(error)")
                 }
@@ -263,6 +269,18 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
             let type = model.exuding.guess?.pungent ?? ""
             ConLULULemonCong.tpuType(from: type, old: self.productID ?? "", vc: self)
         }
+    }
+    
+}
+
+
+extension FaceViewController {
+    
+    func exprwssinfo() {
+        self.expressioninfo(from: self.productID ?? "",
+                            continued: "4",
+                            openTime: self.openTime,
+                            closingTime: self.closingTime)
     }
     
 }

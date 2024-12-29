@@ -103,9 +103,12 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         let messageName = message.name
         print("message:\(message.name)")
-        if messageName == "peachTeaS" {//买点
-            
-        }else if messageName == "okraPiano" {//评价
+        if messageName == "peachTeaS" {
+            let body = message.body as? [String]
+            let productID = body?.first ?? ""
+            let openTime = body?.last ?? ""
+            exnineoinf(from: productID, openTime: openTime)
+        }else if messageName == "okraPiano" {
             DispatchQueue.main.async {
                 if #available(iOS 14.0, *) {
                     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
@@ -121,7 +124,7 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
             self.navigationController?.popViewController(animated: true)
         }else if messageName == "sorbetVul" {
             
-        }else if messageName == "eelPalmAc" {//url 跳转
+        }else if messageName == "eelPalmAc" {
             guard let array = message.body as? [String], let pageUrl = array.first else { return }
             if !pageUrl.isEmpty, pageUrl.hasPrefix(urlScheme), let sc = URL(string: pageUrl) {
                 if let productId = self.jiequzifu(url: sc) {
@@ -144,11 +147,21 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
         }
     }
     
-    
 }
 
 extension UIScrollView {
     func apply(_ configuration: (UIScrollView) -> Void) {
         configuration(self)
     }
+}
+
+extension WebpageViewController {
+    
+    func exnineoinf(from productID: String, openTime: String) {
+        self.expressioninfo(from: productID,
+                            continued: "10",
+                            openTime: openTime,
+                            closingTime: CurrentTimeManager.getCurrentTime())
+    }
+    
 }

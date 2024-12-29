@@ -340,6 +340,7 @@ class PhotoViewController: BaseViewController {
             self.threeView.enterTx.text = model.exuding.smiled?.determination?.threeDate ?? ""
             self.name = self.oneView.enterTx.text ?? ""
         }).disposed(by: disposeBag)
+        openTime = CurrentTimeManager.getCurrentTime()
         
     }
     
@@ -380,13 +381,17 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
     }
     
     private func clickPhoto() {
+        closingTime = CurrentTimeManager.getCurrentTime()
         ShowalertConfig.alertShow(form: self.aupView, vc: self, style: .actionSheet)
+        
         self.aupView.cancelBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.dismiss(animated: true)
         }).disposed(by: disposeBag)
+        
         self.aupView.threeBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.dismiss(animated: true)
         }).disposed(by: disposeBag)
+        
         self.aupView.oneBtn.rx.tap.subscribe(onNext: { [weak self] in
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -402,6 +407,7 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
                 }
             })
         }).disposed(by: disposeBag)
+        
         self.aupView.twoBtn.rx.tap.subscribe(onNext: { [weak self] in
             let imagePicker = UIImagePickerController()
             imagePicker.sourceType = .camera
@@ -504,7 +510,9 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
                         self.name = one
                         self.clickImageView.image = self.selectImage
                         self.clickImageView.isUserInteractionEnabled = false
-                        self.dismiss(animated: true)
+                        self.dismiss(animated: true) {
+                            self.exprwssinfo()
+                        }
                     }
                     ToastConfig.show(form: descView, message: model.coldly)
                 } catch {
@@ -564,5 +572,16 @@ extension PhotoViewController {
         return datePickerView
     }
 
+    
+}
+
+extension PhotoViewController {
+    
+    func exprwssinfo() {
+        self.expressioninfo(from: self.productID ?? "",
+                            continued: "3",
+                            openTime: self.openTime,
+                            closingTime: self.closingTime)
+    }
     
 }

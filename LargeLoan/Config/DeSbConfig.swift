@@ -12,17 +12,16 @@ import DeviceKit
 
 class ThreePastManager {
     
-     func getThreeInfo() -> [String: Any] {
+    func getThreeInfo() -> [String: Any] {
         let device = UIDevice.current
-        let screenSize = UIScreen.main.bounds.size
         let physicalSize = String(Device.current.diagonal)
         var deviceInfo: [String: Any] = [:]
         deviceInfo["rapacious"] = ""
         deviceInfo["has"] = device.name
         deviceInfo["sighed"] = ""
-        deviceInfo["saw"] = Int(screenSize.height)
+        deviceInfo["saw"] = String(format: "%.0f", SCREEN_HEIGHT)
         deviceInfo["upon"] = device.name
-        deviceInfo["tianwu"] = Int(screenSize.width)
+        deviceInfo["tianwu"] = String(format: "%.0f", SCREEN_WIDTH)
         deviceInfo["luo"] = device.model
         deviceInfo["shocked"] = physicalSize
         deviceInfo["alarmed"] = device.systemVersion

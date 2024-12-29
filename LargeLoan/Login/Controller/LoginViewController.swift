@@ -9,6 +9,9 @@ import UIKit
 import Toast_Swift
 import Moya
 
+let OPEN_TIME = "OPEN_TIME"
+let CLOSE_TIME = "CLOSE_TIME"
+
 class LoginViewController: BaseViewController {
     
     private var loginView = LoginView()
@@ -25,7 +28,10 @@ class LoginViewController: BaseViewController {
         loginView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        appDcLIK()        
+        appDcLIK()
+        openTime = CurrentTimeManager.getCurrentTime()
+        UserDefaults.standard.set(openTime, forKey: OPEN_TIME)
+        UserDefaults.standard.synchronize()
     }
     
 }
@@ -98,6 +104,9 @@ extension LoginViewController {
     }
     
     func logoin() {
+        closingTime = CurrentTimeManager.getCurrentTime()
+        UserDefaults.standard.set(closingTime, forKey: CLOSE_TIME)
+        UserDefaults.standard.synchronize()
         let phone = self.loginView.phoneTx.text ?? ""
         if phone.isEmpty {
             ToastConfig.show(form: self.view, message: "Please enter your phone number!")

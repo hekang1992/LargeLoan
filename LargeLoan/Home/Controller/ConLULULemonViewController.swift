@@ -88,7 +88,7 @@ class ConLULUlemonViewController: BaseViewController {
             make.left.top.right.equalToSuperview()
             make.height.equalTo(StatusBarHeight + 50)
         }
-        
+        openTime = CurrentTimeManager.getCurrentTime()
         view.addSubview(lemonView)
         lemonView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom).offset(10)
@@ -343,6 +343,15 @@ extension ConLULUlemonViewController: CNContactPickerDelegate {
             let type = model.exuding.guess?.pungent ?? ""
             ConLULULemonCong.tpuType(from: type, old: self.productID ?? "", vc: self)
         })
+        closingTime = CurrentTimeManager.getCurrentTime()
+        self.exprwssinfo()
+    }
+    
+    func exprwssinfo() {
+        self.expressioninfo(from: self.productID ?? "",
+                            continued: "7",
+                            openTime: self.openTime,
+                            closingTime: self.closingTime)
     }
     
 }
