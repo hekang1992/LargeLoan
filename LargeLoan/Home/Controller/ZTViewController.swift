@@ -203,6 +203,8 @@ class ZTViewController: BaseViewController {
                             let oneVc = AuthYIViewController()
                             oneVc.productID = self.proid
                             self.navigationController?.pushViewController(oneVc, animated: true)
+                        }else {
+                            ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
                         }
                         break
                     case self.threeSetp:
@@ -210,6 +212,8 @@ class ZTViewController: BaseViewController {
                             let twoVc = AVTEViewController()
                             twoVc.productID = self.proid
                             self.navigationController?.pushViewController(twoVc, animated: true)
+                        }else {
+                            ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
                         }
                         break
                     case self.fourSetp:
@@ -217,6 +221,8 @@ class ZTViewController: BaseViewController {
                             let threeVc = ConLULUlemonViewController()
                             threeVc.productID = self.proid
                             self.navigationController?.pushViewController(threeVc, animated: true)
+                        }else {
+                            ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
                         }
                         break
                     case self.fiveSetp:
@@ -224,6 +230,8 @@ class ZTViewController: BaseViewController {
                             let fourVc = GoldenViewController()
                             fourVc.productID = self.proid
                             self.navigationController?.pushViewController(fourVc, animated: true)
+                        }else {
+                            ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
                         }
                         break
                     default:

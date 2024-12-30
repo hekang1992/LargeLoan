@@ -117,6 +117,12 @@ class AVTEViewController: BaseViewController {
                             model.breathing = text
                         })
                         .disposed(by: disposeBag)
+                    let nourishing = model.nourishing ?? 0
+                    if nourishing == 0 {
+                        cell.enterView.enterTx.keyboardType = .default
+                    }else {
+                        cell.enterView.enterTx.keyboardType = .phonePad
+                    }
                     return cell
                 }
             }else {
@@ -210,7 +216,7 @@ extension AVTEViewController: UITableViewDelegate {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.model.accept(model)
                     }
                 } catch {
@@ -258,7 +264,7 @@ extension AVTEViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         if let modelArray = model.exuding.region {
                             let regionArray = ClickTypeModel.threeArray(dataArr: modelArray)
                             self.regionArray.accept(regionArray)
@@ -286,7 +292,7 @@ extension AVTEViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.getPD()
                     }else {
                         ToastConfig.show(form: view, message: model.coldly)

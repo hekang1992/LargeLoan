@@ -155,11 +155,7 @@ extension ConLULUlemonViewController: UITableViewDelegate, UITableViewDataSource
                         }
                     }
                 } else {
-                    if let error = error {
-                        print("Access denied: \(error)")
-                    } else {
-                        print("Access denied.")
-                    }
+                    ShowalertConfig.showSettingsAlert(from: self, feature: "Contact")
                 }
             }
             let databyte = try? JSONSerialization.data(withJSONObject: phoneArray, options: [])
@@ -244,7 +240,7 @@ extension ConLULUlemonViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         if let modelArray = model.exuding.unfortunately?.region {
                             self.modelArray.accept(modelArray)
                             self.tableView.reloadData()
@@ -270,8 +266,12 @@ extension ConLULUlemonViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self?.uploadBool = true
+                    }else {
+                        if let self = self {
+                            ToastConfig.show(form: self.view, message: model.coldly)
+                        }
                     }
                 } catch {
                     print("JSON: \(error)")
@@ -322,7 +322,7 @@ extension ConLULUlemonViewController: CNContactPickerDelegate {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.pdetailinfo()
                     }else {
                         ToastConfig.show(form: view, message: model.coldly)

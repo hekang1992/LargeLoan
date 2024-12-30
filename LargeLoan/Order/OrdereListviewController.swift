@@ -2,7 +2,7 @@
 //  OrdereListviewController.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/28.
+//  Created by TRUMP on 2024/12/28.
 //
 
 import UIKit
@@ -131,7 +131,7 @@ extension OrdereListviewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         let regionArray = model.exuding.region ?? []
                         self.modelArray.accept(regionArray)
                         if !regionArray.isEmpty {

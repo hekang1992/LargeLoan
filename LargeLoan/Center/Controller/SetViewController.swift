@@ -174,7 +174,7 @@ extension SetViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         LoginFactory.removeLoginInfo()
                         PushRootVcConfig.goRootVc()
                     }
@@ -199,7 +199,7 @@ extension SetViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         LoginFactory.removeLoginInfo()
                         PushRootVcConfig.goRootVc()
                     }

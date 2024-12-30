@@ -2,7 +2,7 @@
 //  SixConfig.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/28.
+//  Created by TRUMP on 2024/12/28.
 //
 
 import SystemServices

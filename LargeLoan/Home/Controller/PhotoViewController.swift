@@ -364,20 +364,7 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
                 self?.clickPhoto()
         }).disposed(by: disposeBag)
         
-        
-        nextBtn.rx.tap.subscribe(onNext: { [weak self] in
-            if self?.name == nil {
-                self?.clickPhoto()
-            }else {
-                let faceVc = FaceViewController()
-                faceVc.productID = self?.productID
-                if let model = self?.dataModel.value {
-                    faceVc.dataModel.accept(model)
-                }
-                self?.navigationController?.pushViewController(faceVc, animated: true)
-            }
-        }).disposed(by: disposeBag)
-        
+        nextTapClick()
     }
     
     private func clickPhoto() {
@@ -455,8 +442,10 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.saveModel(with: model)
+                    }else {
+                        ToastConfig.show(form: view, message: model.coldly)
                     }
                 } catch {
                     print("JSON: \(error)")
@@ -503,7 +492,7 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.oneView.enterTx.text = one
                         self.twoView.enterTx.text = two
                         self.threeView.enterTx.text = three
@@ -513,6 +502,7 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
                         self.dismiss(animated: true) {
                             self.exprwssinfo()
                         }
+                        self.goneFucVino()
                     }
                     ToastConfig.show(form: descView, message: model.coldly)
                 } catch {
@@ -583,5 +573,30 @@ extension PhotoViewController {
                             openTime: self.openTime,
                             closingTime: self.closingTime)
     }
+    
+}
+
+
+extension PhotoViewController {
+    
+    private func nextTapClick() {
+        nextBtn.rx.tap.subscribe(onNext: { [weak self] in
+            self?.goneFucVino()
+        }).disposed(by: disposeBag)
+    }
+    
+    private func goneFucVino() {
+        if self.name == nil {
+            self.clickPhoto()
+        }else {
+            let faceVc = FaceViewController()
+            faceVc.productID = self.productID
+            if let model = self.dataModel.value {
+                faceVc.dataModel.accept(model)
+            }
+            self.navigationController?.pushViewController(faceVc, animated: true)
+        }
+    }
+    
     
 }

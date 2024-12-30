@@ -2,7 +2,7 @@
 //  ProductViewCell.swift
 //  LargeLoan
 //
-//  Created by 何康 on 2024/12/29.
+//  Created by TRUMP on 2024/12/29.
 //
 
 import UIKit
@@ -17,6 +17,13 @@ class ProductViewCell: BaseTableViewCell {
         bgView.backgroundColor = .init(cssStr: "#FFF6EB")
         bgView.layer.cornerRadius = 20
         return bgView
+    }()
+    
+    lazy var pImageView: UIImageView = {
+        let pImageView = UIImageView()
+        pImageView.layer.cornerRadius = 4
+        pImageView.backgroundColor = .random()
+        return pImageView
     }()
     
     lazy var namelabel: UILabel = {
@@ -57,6 +64,7 @@ class ProductViewCell: BaseTableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(bgView)
+        contentView.addSubview(pImageView)
         contentView.addSubview(namelabel)
         contentView.addSubview(desclabel)
         contentView.addSubview(pricelabel)
@@ -67,9 +75,15 @@ class ProductViewCell: BaseTableViewCell {
             make.left.equalToSuperview().offset(16)
             make.height.equalTo(120)
         }
-        namelabel.snp.makeConstraints { make in
+        pImageView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(36)
             make.top.equalToSuperview().offset(16)
+            make.height.equalTo(19)
+            make.width.equalTo(19)
+        }
+        namelabel.snp.makeConstraints { make in
+            make.left.equalTo(pImageView.snp.right).offset(6)
+            make.centerY.equalTo(pImageView.snp.centerY)
             make.height.equalTo(19)
         }
         desclabel.snp.makeConstraints { make in
@@ -101,6 +115,8 @@ class ProductViewCell: BaseTableViewCell {
                 viewlabel.isHidden = false
                 viewlabel.text = model.far ?? ""
             }
+            let iamgeUrl = model.keeping ?? ""
+            pImageView.kf.setImage(with: URL(string: iamgeUrl))
         }).disposed(by: disposeBag)
      
         

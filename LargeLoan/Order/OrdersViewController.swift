@@ -26,7 +26,7 @@ class OrdersViewController: BaseViewController {
         orView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        self.getlIST(from: "7")
+        
         orView.oneBtn.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
             self.getlIST(from: "7")
@@ -72,6 +72,11 @@ class OrdersViewController: BaseViewController {
         }).disposed(by: disposeBag)
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.getlIST(from: self.tupe)
+    }
 
 }
 
@@ -91,7 +96,7 @@ extension OrdersViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         let regionArray = model.exuding.region ?? []
                         self.orView.modelArray.accept(regionArray)
                         if !regionArray.isEmpty {

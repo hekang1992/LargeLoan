@@ -46,6 +46,7 @@ class WebpageViewController: BaseViewController {
         
         view.addSubview(self.headView)
         self.headView.lemonView.backgroundColor = .clear
+        self.headView.addBtn.isHidden = true
         headView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(StatusBarHeight + 50)
@@ -106,8 +107,7 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
         if messageName == "peachTeaS" {
             let body = message.body as? [String]
             let productID = body?.first ?? ""
-            let openTime = body?.last ?? ""
-            exnineoinf(from: productID, openTime: openTime)
+            exnineoinf(from: productID, openTime: CurrentTimeManager.getCurrentTime())
         }else if messageName == "okraPiano" {
             DispatchQueue.main.async {
                 if #available(iOS 14.0, *) {
@@ -161,7 +161,7 @@ extension WebpageViewController {
         self.expressioninfo(from: productID,
                             continued: "10",
                             openTime: openTime,
-                            closingTime: CurrentTimeManager.getCurrentTime())
+                            closingTime: openTime)
     }
     
 }

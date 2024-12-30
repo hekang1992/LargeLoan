@@ -72,7 +72,7 @@ extension LoginViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.loginView.codeBtn.isEnabled = false
                         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(daojishiTime), userInfo: nil, repeats: true)
                     }
@@ -121,7 +121,7 @@ extension LoginViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         LoginFactory.saveLoginInfo(one: model.exuding.surroundings ?? "", two: model.exuding.nonstop ?? "")
                         PushRootVcConfig.goRootVc()
                     }

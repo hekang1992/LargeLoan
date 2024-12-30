@@ -159,8 +159,7 @@ class FaceViewController: BaseViewController {
         }).disposed(by: disposeBag)
         
         openTime = CurrentTimeManager.getCurrentTime()
-        
-        
+    
     }
     
 }
@@ -176,14 +175,9 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
                 self?.clickCamera()
             }).disposed(by: disposeBag)
         
-        
         nextBtn.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
-            if self.rise == nil {
-                self.clickCamera()
-            }else {
-                self.toProductDetailInfo()
-            }
+            self.goneFeiBooks()
         }).disposed(by: disposeBag)
         
     }
@@ -236,10 +230,11 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.clickImageView.isUserInteractionEnabled = false
                         self.clickImageView.image = self.selectImage
                         self.rise = "1"
+                        self.goneFeiBooks()
                         self.exprwssinfo()
                     }
                     ToastConfig.show(form: view, message: model.coldly)
@@ -281,6 +276,18 @@ extension FaceViewController {
                             continued: "4",
                             openTime: self.openTime,
                             closingTime: self.closingTime)
+    }
+    
+}
+
+extension FaceViewController {
+    
+    private func goneFeiBooks() {
+        if self.rise == nil {
+            self.clickCamera()
+        }else {
+            self.toProductDetailInfo()
+        }
     }
     
 }

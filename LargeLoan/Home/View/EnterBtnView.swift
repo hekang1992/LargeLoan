@@ -54,24 +54,26 @@ class EnterBtnView: BaseView {
         super.init(frame: frame)
         addSubview(bigManLabel)
         addSubview(lemonView)
-        lemonView.addSubview(enterTx)
+        addSubview(enterTx)
         lemonView.addSubview(clickBtn)
         lemonView.addSubview(pereImageView)
         bigManLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(2)
             make.height.equalTo(17)
             make.left.equalToSuperview().offset(14)
+            make.bottom.equalToSuperview().offset(-76)
         }
         lemonView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(14)
             make.top.equalTo(bigManLabel.snp.bottom).offset(10)
             make.height.equalTo(46)
-            make.bottom.equalToSuperview().offset(-20)
         }
         enterTx.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(14)
-            make.top.bottom.right.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().offset(28)
+            make.top.equalTo(bigManLabel.snp.bottom).offset(10)
+            make.height.equalTo(46)
         }
         clickBtn.snp.makeConstraints { make in
             make.edges.equalToSuperview()

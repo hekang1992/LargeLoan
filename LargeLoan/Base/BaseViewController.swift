@@ -67,19 +67,13 @@ extension BaseViewController {
     
     
     func backInfo() {
-        if self is FaceViewController {
-            self.headView.backBtn.rx.tap.subscribe(onNext: { [weak self] in
-                if let targetViewController = self?.navigationController?.viewControllers.first(where: { $0 is ZTViewController }) {
-                    self?.navigationController?.popToViewController(targetViewController, animated: true)
-                }else {
-                    self?.navigationController?.popViewController(animated: true)
-                }
-            }).disposed(by: disposeBag)
-        }else {
-            self.headView.backBtn.rx.tap.subscribe(onNext: { [weak self] in
+        self.headView.backBtn.rx.tap.subscribe(onNext: { [weak self] in
+            if let targetViewController = self?.navigationController?.viewControllers.first(where: { $0 is ZTViewController }) {
+                self?.navigationController?.popToViewController(targetViewController, animated: true)
+            }else {
                 self?.navigationController?.popViewController(animated: true)
-            }).disposed(by: disposeBag)
-        }
+            }
+        }).disposed(by: disposeBag)
     }
     
     func jiequzifu(url: URL) -> String? {
@@ -100,7 +94,7 @@ extension BaseViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         complete(model)
                     }else {
                         ToastConfig.show(form: self.view, message: model.coldly)
@@ -124,8 +118,10 @@ extension BaseViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         complete(model)
+                    }else {
+                        ToastConfig.show(form: self.view, message: model.coldly)
                     }
                 } catch {
                     print("JSON: \(error)")
@@ -154,7 +150,7 @@ extension BaseViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         if let url = model.exuding.raised {
                             pushnetwork(from: url)
                         }

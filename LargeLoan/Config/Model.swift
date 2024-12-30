@@ -88,6 +88,7 @@ struct somethingModel: Codable {
     var failed: String?
     var nails: String?
     var repay_btn_text: String?
+    var keeping: String?
 }
 
 struct guessModel: Codable {

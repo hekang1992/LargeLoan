@@ -50,10 +50,10 @@ class HomeMainView: BaseView {
     
     lazy var importView: TYCyclePagerView = {
         let importView = TYCyclePagerView()
-        importView.delegate = self
-        importView.dataSource = self
         importView.isInfiniteLoop = true
         importView.autoScrollInterval = 2
+        importView.delegate = self
+        importView.dataSource = self
         importView.register(MainCycleCell.self,
                             forCellWithReuseIdentifier: "MainCycleCell")
         return importView
@@ -61,10 +61,10 @@ class HomeMainView: BaseView {
     
     lazy var notimpView: TYCyclePagerView = {
         let notimpView = TYCyclePagerView()
-        notimpView.delegate = self
-        notimpView.dataSource = self
         notimpView.isInfiniteLoop = true
         notimpView.autoScrollInterval = 2
+        notimpView.delegate = self
+        notimpView.dataSource = self
         notimpView.register(SunViewCell.self,
                             forCellWithReuseIdentifier: "SunViewCell")
         return notimpView
@@ -75,7 +75,7 @@ class HomeMainView: BaseView {
     var headmodel = BehaviorRelay<BaseModel?>(value: nil)
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.estimatedRowHeight = 60
@@ -234,26 +234,6 @@ extension HomeMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSource {
             }
         }
     }
-    
-//    func pagerView(_ pagerView: TYCyclePagerView, didSelectItemAt index: Int) {
-//        if pagerView == importView {
-//            if let model = headmodel.value?.exuding.cut?.something?[index], let raised = model.raised {
-//                if !raised.isEmpty {
-//                    self.bblock?(raised)
-//                }else {
-//                    return
-//                }
-//            }
-//        }else {
-//            if let model = headmodel.value?.exuding.knelt?.something?[index], let raised = model.raised {
-//                if !raised.isEmpty {
-//                    self.bllock?(raised)
-//                }else {
-//                    return
-//                }
-//            }
-//        }
-//    }
     
     func layout(for pagerView: TYCyclePagerView) -> TYCyclePagerViewLayout {
         let layout = TYCyclePagerViewLayout()

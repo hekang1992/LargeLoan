@@ -216,7 +216,7 @@ extension AuthYIViewController: UITableViewDelegate {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.model.accept(model)
                     }
                 } catch {
@@ -258,7 +258,7 @@ extension AuthYIViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         if let modelArray = model.exuding.region {
                             let regionArray = ClickTypeModel.threeArray(dataArr: modelArray)
                             self.regionArray.accept(regionArray)
@@ -286,7 +286,7 @@ extension AuthYIViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.getPD()
                     }else {
                         ToastConfig.show(form: view, message: model.coldly)

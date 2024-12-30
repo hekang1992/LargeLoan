@@ -160,7 +160,7 @@ extension HomeViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.homeModel.accept(model)
                         self.mainView.model.accept(model)
                     }
@@ -185,7 +185,7 @@ extension HomeViewController {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.productInfo(form: model.exuding.raised ?? "")
                     }
                 } catch {

@@ -272,7 +272,7 @@ extension GoldenViewController: UITableViewDelegate {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         self.model.accept(model)
                         self.commonArray.accept(model.exuding.common?.first?.common ?? [])
                     }else {
@@ -340,9 +340,11 @@ extension GoldenViewController: UITableViewDelegate {
                 do {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
-                    if anyone == "0" || anyone == "0" {
+                    if anyone == "0" {
                         openNineTime = CurrentTimeManager.getCurrentTime()
                         self.detailon()
+                    }else {
+                        ToastConfig.show(form: self.view, message: model.coldly)
                     }
                 } catch {
                     print("JSON: \(error)")

@@ -83,7 +83,6 @@ class LoginView: BaseView {
     
     lazy var loginBtn: UIButton = {
         let loginBtn = UIButton(type: .custom)
-        loginBtn.isEnabled = false
         loginBtn.adjustsImageWhenHighlighted = false
         loginBtn.setImage(UIImage(named: "loginimage"), for: .normal)
         return loginBtn
@@ -92,8 +91,8 @@ class LoginView: BaseView {
     lazy var priBtn: UIButton = {
         let priBtn = UIButton(type: .custom)
         priBtn.adjustsImageWhenHighlighted = false
-        priBtn.setImage(UIImage(named: "xieyiimage"), for: .normal)
-        priBtn.setImage(UIImage(named: "yinsisel"), for: .selected)
+        priBtn.setImage(UIImage(named: "xieyiimage"), for: .selected)
+        priBtn.setImage(UIImage(named: "yinsisel"), for: .normal)
         return priBtn
     }()
     
@@ -194,37 +193,17 @@ extension LoginView {
         priBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.priBtn.isSelected.toggle()
             if let loginBtn = self?.loginBtn, let priBtn = self?.priBtn {
-                loginBtn.isEnabled = priBtn.isSelected
+                loginBtn.isEnabled = !priBtn.isSelected
             }
         }).disposed(by: disposeBag)
-        
-        phoneTx.rx.text
-            .orEmpty
-            .map { text in
-                let limitedText = String(text.prefix(11))
-                return (limitedText, limitedText.count >= 11)
-            }
-            .distinctUntilChanged { $0.0 == $1.0 }
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] (text, isExceeded) in
-                guard let self = self else { return }
-                self.phoneTx.text = text
-                if isExceeded {
-                    self.phoneTx.resignFirstResponder()
-                }
-            })
-            .disposed(by: disposeBag)
         
         phoneTx.rx.controlEvent(.editingChanged)
             .withLatestFrom(phoneTx.rx.text.orEmpty)
             .subscribe(onNext: { [weak self] text in
                 guard let self = self else { return }
-                if text.count > 11 {
-                    self.phoneTx.text = String(text.prefix(11))
-                }
+                self.phoneTx.text = String(text.prefix(15))
             })
             .disposed(by: disposeBag)
-        
         
         codeTx.rx.text
             .orEmpty
