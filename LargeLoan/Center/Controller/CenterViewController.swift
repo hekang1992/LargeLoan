@@ -30,9 +30,18 @@ class CenterViewController: BaseViewController {
             webVc.webUrl.accept("\(h5Host)/sorbetOwlB")
             self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
+                
+        centerView.serviceBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let webVc = WebpageViewController()
+            webVc.webUrl.accept("\(h5Host)/broccoliRo")
+            self?.navigationController?.pushViewController(webVc, animated: true)
+        }).disposed(by: disposeBag)
         
-        
-        
+        centerView.aboBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let webVc = WebpageViewController()
+            webVc.webUrl.accept("\(h5Host)")
+            self?.navigationController?.pushViewController(webVc, animated: true)
+        }).disposed(by: disposeBag)
         
         centerView.oneBtn.rx.tap.subscribe(onNext: { [weak self] in
             let vc = OrdereListviewController()

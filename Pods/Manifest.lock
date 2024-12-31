@@ -28,6 +28,12 @@ PODS:
     - BRPickerView/Core
   - DeviceKit (5.2.3)
   - Differentiator (5.0.0)
+  - FBAEMKit (17.4.0):
+    - FBSDKCoreKit_Basics (= 17.4.0)
+  - FBSDKCoreKit (17.4.0):
+    - FBAEMKit (= 17.4.0)
+    - FBSDKCoreKit_Basics (= 17.4.0)
+  - FBSDKCoreKit_Basics (17.4.0)
   - IQKeyboardManagerSwift (6.5.16)
   - Kingfisher (7.11.0)
   - MJRefresh (3.7.9)
@@ -58,6 +64,7 @@ PODS:
 DEPENDENCIES:
   - BRPickerView (~> 2.9.1)
   - DeviceKit (~> 5.2.2)
+  - FBSDKCoreKit (~> 17.4.0)
   - IQKeyboardManagerSwift (~> 6.5.16)
   - Kingfisher (~> 7.11.0)
   - MJRefresh (~> 3.7.9)
@@ -79,6 +86,9 @@ SPEC REPOS:
     - BRPickerView
     - DeviceKit
     - Differentiator
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
     - IQKeyboardManagerSwift
     - Kingfisher
     - MJRefresh
@@ -100,6 +110,9 @@ SPEC CHECKSUMS:
   BRPickerView: 6dd69ea2c48e0a0abf1d197a705050e13143ee63
   DeviceKit: 4504e64df8f8ad1c42aae68f30ece5b51d56022a
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  FBAEMKit: 58cb5f302cdd715a56d4c1d0dfdd2e423ac1421a
+  FBSDKCoreKit: 94d7461d0cecf441b1ba7c41acfff41daa8ccd41
+  FBSDKCoreKit_Basics: 151b43db8b834d3f0e02f95d36a44ffd36265e45
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
   Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
   MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
@@ -116,6 +129,6 @@ SPEC CHECKSUMS:
   TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
   TYCyclePagerView: 2b051dade0615c70784aa34f40c646feeddb7344
 
-PODFILE CHECKSUM: 7d3b8e0e36e2207010b2f38d5c287a443e3faa66
+PODFILE CHECKSUM: c37015b02ef368808fdf6e38597fee71ecc65d93
 
 COCOAPODS: 1.16.2

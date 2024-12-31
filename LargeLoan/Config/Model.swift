@@ -35,6 +35,7 @@ struct exudingModel: Codable {
     var skin: skinModel?
     var cut: kneltModel?
     var knelt: kneltModel?
+    var fact: String?
     enum CodingKeys: String, CodingKey {
         case knelt
         case cut

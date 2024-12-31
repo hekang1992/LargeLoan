@@ -16,21 +16,52 @@ class ContactManager {
         }
     }
     
-    func fetchContacts() -> [CNContact] {
-        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey, CNContactEmailAddressesKey] as [CNKeyDescriptor]
-        let fetchRequest = CNContactFetchRequest(keysToFetch: keys)
-        
-        var contacts: [CNContact] = []
-        
-        do {
-            try contactStore.enumerateContacts(with: fetchRequest) { contact, stop in
-                contacts.append(contact)
+    func fetchContacts() -> [CNContact]? {
+        // 首先检查访问权限
+        let authorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
+        switch authorizationStatus {
+            
+        case .authorized:
+            return fetchAllContacts()
+            
+        case .denied, .restricted:
+            return nil
+            
+        case .notDetermined:
+            requestAccess { granted, error in
             }
-        } catch {
-            print("Error fetching contacts: \(error)")
+            return nil
+            
+        case .limited:
+            return nil
+            
+        @unknown default:
+            
+            return nil
         }
-        
-        return contacts
     }
+    
+    private func fetchAllContacts() -> [CNContact]? {
+            let keys = [
+                CNContactGivenNameKey,
+                CNContactFamilyNameKey,
+                CNContactPhoneNumbersKey
+            ] as [CNKeyDescriptor]
+            
+            let fetchRequest = CNContactFetchRequest(keysToFetch: keys)
+            
+            var contacts: [CNContact] = []
+            
+            do {
+                try contactStore.enumerateContacts(with: fetchRequest) { contact, stop in
+                    contacts.append(contact)
+                }
+            } catch {
+                print("Error fetching contacts: \(error)")
+            }
+            
+            return contacts
+        }
+    
 }
 

@@ -67,7 +67,16 @@ class NetworkManager {
                     "gathering": gathering]
         provider.request(.soundsInfo(emptyDict: dict)) { result in
             switch result {
-            case .success(_):
+            case .success(let response):
+                do {
+                    let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                    let anyone = model.anyone
+                    if anyone == "0" {
+                        
+                    }
+                } catch {
+                    print("JSON: \(error)")
+                }
                 break
             case .failure(_):
                 break

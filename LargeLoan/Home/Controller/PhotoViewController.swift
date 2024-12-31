@@ -216,7 +216,7 @@ class PhotoViewController: BaseViewController {
         homeImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+        backInfo()
         view.addSubview(self.headView)
         self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "Identity Information"
@@ -381,11 +381,11 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
         
         self.aupView.oneBtn.rx.tap.subscribe(onNext: { [weak self] in
             let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .camera
             imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
             guard let self = self else { return }
             self.dismiss(animated: true, completion: {
-                PermissionManager.checkPhotoLibraryPermission(from: self) { [weak self] granted in
+                PermissionManager.checkCameraPermission(from: self) { [weak self] granted in
                     if granted {
                         if let self = self {
                             self.present(imagePicker, animated: true)
@@ -397,10 +397,11 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
         
         self.aupView.twoBtn.rx.tap.subscribe(onNext: { [weak self] in
             let imagePicker = UIImagePickerController()
-            imagePicker.sourceType = .camera
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
             guard let self = self else { return }
             self.dismiss(animated: true, completion: {
-                PermissionManager.checkCameraPermission(from: self) { [weak self] granted in
+                PermissionManager.checkPhotoLibraryPermission(from: self) { [weak self] granted in
                     if granted {
                         if let self = self {
                             self.present(imagePicker, animated: true)

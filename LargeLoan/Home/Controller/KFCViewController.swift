@@ -65,7 +65,7 @@ class KFCViewController: BaseViewController {
         homeImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+        backInfo()
         view.addSubview(self.headView)
         self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "E-KYC"

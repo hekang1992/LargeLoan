@@ -57,6 +57,7 @@ class SetViewController: BaseViewController {
         homeImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        backInfo()
         homeImageView.addSubview(self.headView)
         self.headView.namelabel.text = "Set Up"
         self.headView.lemonView.backgroundColor = .clear

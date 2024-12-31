@@ -80,7 +80,7 @@ class ConLULUlemonViewController: BaseViewController {
         homeImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
+        backInfo()
         view.addSubview(self.headView)
         self.headView.lemonView.backgroundColor = .clear
         self.headView.namelabel.text = "Contact Information"
@@ -137,9 +137,11 @@ extension ConLULUlemonViewController: UITableViewDelegate, UITableViewDataSource
             manager.requestAccess { [weak self] granted, error in
                 guard let self = self else { return }
                 if granted {
-                    let contacts = manager.fetchContacts()
+                    let contacts = manager.fetchContacts() ?? []
                     if contacts.isEmpty {
-                        ShowalertConfig.showSettingsAlert(from: self, feature: "Contact")
+                        DispatchQueue.main.async {
+                            ShowalertConfig.showSettingsAlert(from: self, feature: "Contact")
+                        }
                         return
                     }
                     self.present(contactPicker, animated: true, completion: nil)
@@ -158,10 +160,12 @@ extension ConLULUlemonViewController: UITableViewDelegate, UITableViewDataSource
                     ShowalertConfig.showSettingsAlert(from: self, feature: "Contact")
                 }
             }
-            let databyte = try? JSONSerialization.data(withJSONObject: phoneArray, options: [])
-            let baseData = databyte?.base64EncodedString() ?? ""
-            if self?.uploadBool == false {
-                self?.upsumang(from: baseData)
+            if !phoneArray.isEmpty {
+                let databyte = try? JSONSerialization.data(withJSONObject: phoneArray, options: [])
+                let baseData = databyte?.base64EncodedString() ?? ""
+                if self?.uploadBool == false {
+                    self?.upsumang(from: baseData)
+                }
             }
         }
         return cell ?? UITableViewCell()

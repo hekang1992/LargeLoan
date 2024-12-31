@@ -104,6 +104,7 @@ class GoldenViewController: BaseViewController {
         homeImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        backInfo()
         openTime = CurrentTimeManager.getCurrentTime()
         view.addSubview(self.headView)
         self.headView.lemonView.backgroundColor = .clear

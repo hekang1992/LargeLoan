@@ -94,6 +94,9 @@ class ZTViewController: BaseViewController {
             make.top.equalTo(headView.snp.bottom)
         }
         
+        self.headView.backBtn.rx.tap.subscribe(onNext: { [weak self] in
+            self?.navigationController?.popToRootViewController(animated: true)
+        }).disposed(by: disposeBag)
         
         let bgIcon = UIImageView()
         bgIcon.image = UIImage(named: "moneyiamge")

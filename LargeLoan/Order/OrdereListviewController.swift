@@ -57,7 +57,7 @@ class OrdereListviewController: BaseViewController {
             make.left.top.right.equalToSuperview()
             make.height.equalTo(StatusBarHeight + 50)
         }
-        
+        backInfo()
         view.addSubview(bbView)
         bbView.snp.makeConstraints { make in
             make.top.equalTo(headView.snp.bottom).offset(20)

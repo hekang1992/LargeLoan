@@ -38,4 +38,6 @@ target 'LargeLoan' do
   
   pod 'SystemServices', '~> 2.0.1'
   
+  pod 'FBSDKCoreKit', '~> 17.4.0'
+  
 end
