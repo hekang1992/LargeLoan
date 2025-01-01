@@ -8,6 +8,7 @@
 import Alamofire
 import AppTrackingTransparency
 import Moya
+import FBSDKCoreKit
 
 class NetworkManager {
     
@@ -72,7 +73,9 @@ class NetworkManager {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
                     if anyone == "0" {
-                        
+                        if let faboo = model.exuding.narratedfb {
+                            self.toFabookc(model: faboo)
+                        }
                     }
                 } catch {
                     print("JSON: \(error)")
@@ -82,8 +85,15 @@ class NetworkManager {
                 break
             }
         }
-        
     }
+    
+    private func toFabookc(model: narratedfbModel) {
+        Settings.shared.appID = model.facebookAppID ?? ""
+        Settings.shared.clientToken = model.facebookClientToke ?? ""
+        Settings.shared.displayName = model.facebookDisplayName ?? ""
+        Settings.shared.appURLSchemeSuffix = model.cFBundleURLScheme ?? ""
+    }
+    
 }
 
 

@@ -16,6 +16,7 @@ class ThreePastManager {
         let device = UIDevice.current
         let physicalSize = String(Device.current.diagonal)
         var deviceInfo: [String: Any] = [:]
+        
         deviceInfo["rapacious"] = ""
         deviceInfo["has"] = device.name
         deviceInfo["sighed"] = ""
@@ -25,6 +26,13 @@ class ThreePastManager {
         deviceInfo["luo"] = device.model
         deviceInfo["shocked"] = physicalSize
         deviceInfo["alarmed"] = device.systemVersion
+        
+        let keysToMove = ["has", "saw", "upon", "tianwu", "luo", "shocked", "alarmed", "rapacious", "sighed"]
+        let designs = deviceInfo.filter { keysToMove.contains($0.key) }
+                                 .compactMapValues { $0 as? String }
+        
+        deviceInfo["designs"] = designs
+        
         return deviceInfo
     }
     

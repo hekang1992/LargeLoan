@@ -342,7 +342,6 @@ extension GoldenViewController: UITableViewDelegate {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
                     if anyone == "0" {
-                        openNineTime = CurrentTimeManager.getCurrentTime()
                         self.detailon()
                     }else {
                         ToastConfig.show(form: self.view, message: model.coldly)
@@ -359,13 +358,16 @@ extension GoldenViewController: UITableViewDelegate {
     
     private func detailon() {
         self.exprwssinfo()
+        self.openNineTime = CurrentTimeManager.getCurrentTime()
         self.getProductDetailInfo(form: self.productID ?? "", complete: { [weak self] model in
             guard let self = self else { return }
             let older = model.exuding.her?.older ?? ""
             if !older.isEmpty {
                 self.ddOrderinfo(from: older)
-                closingNineTime = CurrentTimeManager.getCurrentTime()
-                exnineoinf()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.closingNineTime = CurrentTimeManager.getCurrentTime()
+                    self.exnineoinnine()
+                }
             }
         })
     }
@@ -377,7 +379,7 @@ extension GoldenViewController: UITableViewDelegate {
                             closingTime: self.closingTime)
     }
     
-    func exnineoinf() {
+    func exnineoinnine() {
         self.expressioninfo(from: self.productID ?? "",
                             continued: "9",
                             openTime: self.openNineTime,

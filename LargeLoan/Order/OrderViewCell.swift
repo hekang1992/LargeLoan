@@ -11,6 +11,8 @@ import RxRelay
 class OrderViewCell: BaseTableViewCell {
     
     var model = BehaviorRelay<letModel?>(value: nil)
+    
+    var cellBlock: (() -> Void)?
 
     lazy var bgView: UIView = {
         let bgView = UIView()
@@ -70,12 +72,18 @@ class OrderViewCell: BaseTableViewCell {
         return vw
     }()
     
-    lazy var nextBtn: UIButton = {
-        let nextBtn = UIButton(type: .custom)
-        nextBtn.setTitleColor(.white, for: .normal)
-        nextBtn.titleLabel?.font = .regularFontOfSize(size: 12)
-        nextBtn.setImage(UIImage(named: "eigthiapprl"), for: .normal)
-        return nextBtn
+    lazy var descLabel: UILabel = {
+        let descLabel = UILabel()
+        descLabel.textColor = .white
+        descLabel.font = .regularFontOfSize(size: 12)
+        descLabel.textAlignment = .center
+        return descLabel
+    }()
+    
+    lazy var riImageView: UIImageView = {
+        let riImageView = UIImageView()
+        riImageView.image = UIImage(named: "eigthiapprl")
+        return riImageView
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -88,7 +96,8 @@ class OrderViewCell: BaseTableViewCell {
         contentView.addSubview(tImageView)
         contentView.addSubview(deslabel)
         bgView.addSubview(vw)
-        vw.addSubview(nextBtn)
+        vw.addSubview(descLabel)
+        vw.addSubview(riImageView)
         bgView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview()
@@ -132,8 +141,16 @@ class OrderViewCell: BaseTableViewCell {
             make.left.equalTo(tImageView.snp.right).offset(2)
             make.height.equalTo(14)
         }
-        nextBtn.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        descLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(6)
+            make.height.equalTo(38)
+            make.width.equalTo(88)
+        }
+        riImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(descLabel.snp.right).offset(2)
+            make.size.equalTo(CGSize(width: 12, height: 12))
         }
         model.asObservable().subscribe(onNext: { [weak self] model in
             guard let self = self, let model = model else { return }
@@ -142,7 +159,7 @@ class OrderViewCell: BaseTableViewCell {
             timelabel.text = model.dateValue ?? ""
             mlabel.text = model.orderAmount ?? ""
             deslabel.text = model.orderStatusDesc ?? ""
-            nextBtn.setTitle(model.statusTextDescButton ?? "", for: .normal)
+            descLabel.text = model.statusTextDescButton ?? ""
             let replied = model.replied ?? 0
             var colstr: String = ""
             if replied == 1 {
@@ -175,7 +192,6 @@ extension OrderViewCell {
         super.layoutSubviews()
         bgView.layoutIfNeeded()
         vw.setLeftCorners(radius: 20)
-        nextBtn.layoutButtonEdgeInsets(style: .right, space: 2)
     }
     
 }

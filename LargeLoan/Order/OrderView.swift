@@ -10,6 +10,8 @@ import RxRelay
 
 class OrderView: BaseView {
     
+    var cellBlock: ((letModel) -> Void)?
+    
     var modelArray = BehaviorRelay<[letModel]?>(value: nil)
 
     lazy var bgImageView: UIImageView = {
@@ -33,6 +35,7 @@ class OrderView: BaseView {
     
     lazy var oneBtn: UIButton = {
         let oneBtn = UIButton(type: .custom)
+        oneBtn.alpha = 1.0
         oneBtn.titleLabel?.font = .mediumFontOfSize(size: 12)
         oneBtn.setTitle("Apply", for: .normal)
         oneBtn.setImage(UIImage(named: "applyiocn"), for: .normal)
@@ -44,11 +47,13 @@ class OrderView: BaseView {
         twoBtn.titleLabel?.font = .mediumFontOfSize(size: 12)
         twoBtn.setTitle("Repayment", for: .normal)
         twoBtn.setImage(UIImage(named: "Repaymentimge"), for: .normal)
+        twoBtn.alpha = 0.6
         return twoBtn
     }()
     
     lazy var threeBtn: UIButton = {
         let threeBtn = UIButton(type: .custom)
+        threeBtn.alpha = 0.6
         threeBtn.titleLabel?.font = .mediumFontOfSize(size: 12)
         threeBtn.setTitle("Finished", for: .normal)
         threeBtn.setImage(UIImage(named: "Finishedimge"), for: .normal)

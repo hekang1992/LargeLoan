@@ -340,7 +340,6 @@ class PhotoViewController: BaseViewController {
             self.threeView.enterTx.text = model.exuding.smiled?.determination?.threeDate ?? ""
             self.name = self.oneView.enterTx.text ?? ""
         }).disposed(by: disposeBag)
-        openTime = CurrentTimeManager.getCurrentTime()
         
     }
     
@@ -368,7 +367,7 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
     }
     
     private func clickPhoto() {
-        closingTime = CurrentTimeManager.getCurrentTime()
+        openTime = CurrentTimeManager.getCurrentTime()
         ShowalertConfig.alertShow(form: self.aupView, vc: self, style: .actionSheet)
         
         self.aupView.cancelBtn.rx.tap.subscribe(onNext: { [weak self] in
@@ -459,6 +458,7 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
     }
     
     func saveModel(with model: BaseModel) {
+        self.closingTime = CurrentTimeManager.getCurrentTime()
         descView.oneView.enterTx.text = model.exuding.bed ?? ""
         descView.twoView.enterTx.text = model.exuding.willpower ?? ""
         descView.threeView.enterTx.text = model.exuding.strong ?? ""
@@ -473,7 +473,6 @@ extension PhotoViewController: UINavigationControllerDelegate, UIImagePickerCont
         descView.threeView.clickBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.timeInfo(tx: self?.descView.threeView.enterTx ?? UITextField())
         }).disposed(by: disposeBag)
-        
     }
     
     private func timeInfo(tx: UITextField) {

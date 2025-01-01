@@ -158,11 +158,23 @@ extension SetViewController {
         logoutView.twoBtn.rx.tap.subscribe(onNext: {
             self.dismiss(animated: true)
         }).disposed(by: disposeBag)
-        logoutView.threeBtn.rx.tap.subscribe(onNext: {
-            self.dismiss(animated: true) {
-                self.oiont()
+        logoutView.threeBtn.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            if logoutView.priBtn.isSelected {
+                self.dismiss(animated: true) {
+                    self.oiont()
+                }
+            }else {
+                ToastConfig.show(form: logoutView, message: "Please confirm the agreement first, and then decide whether to delete the account.")
             }
+            
         }).disposed(by: disposeBag)
+        
+        logoutView.priBtn.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            logoutView.priBtn.isSelected.toggle()
+        }).disposed(by: disposeBag)
+        
     }
     
     func out() {
@@ -297,12 +309,21 @@ class DelInfoView: BaseView {
     
     lazy var twoBtn: UIButton = {
         let twoBtn = UIButton(type: .custom)
+        twoBtn.setImage(UIImage(named: "bushace"), for: .normal)
         return twoBtn
     }()
     
     lazy var threeBtn: UIButton = {
         let threeBtn = UIButton(type: .custom)
+        threeBtn.setImage(UIImage(named: "querenshan"), for: .normal)
         return threeBtn
+    }()
+    
+    lazy var priBtn: UIButton = {
+        let priBtn = UIButton(type: .custom)
+        priBtn.setImage(UIImage(named: "noesef"), for: .normal)
+        priBtn.setImage(UIImage(named: "selimagedelas"), for: .selected)
+        return priBtn
     }()
     
     override init(frame: CGRect) {
@@ -311,7 +332,7 @@ class DelInfoView: BaseView {
         bgImageView.addSubview(oneBtn)
         bgImageView.addSubview(twoBtn)
         bgImageView.addSubview(threeBtn)
-        
+        bgImageView.addSubview(priBtn)
         bgImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.size.equalTo(CGSize(width: 315, height: 370))
@@ -324,14 +345,17 @@ class DelInfoView: BaseView {
         twoBtn.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(193)
             make.centerX.equalToSuperview()
-            make.left.equalToSuperview()
-            make.height.equalTo(48)
+            make.size.equalTo(CGSize(width: 271, height: 48))
         }
         threeBtn.snp.makeConstraints { make in
             make.top.equalTo(twoBtn.snp.bottom).offset(18)
             make.centerX.equalToSuperview()
-            make.left.equalToSuperview()
-            make.height.equalTo(48)
+            make.size.equalTo(CGSize(width: 271, height: 48))
+        }
+        priBtn.snp.makeConstraints { make in
+            make.top.equalTo(threeBtn.snp.bottom).offset(15)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 238, height: 18))
         }
     }
     

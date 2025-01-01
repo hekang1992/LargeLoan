@@ -157,8 +157,6 @@ class FaceViewController: BaseViewController {
                 }
             }
         }).disposed(by: disposeBag)
-        
-        openTime = CurrentTimeManager.getCurrentTime()
     
     }
     
@@ -173,6 +171,7 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 self?.clickCamera()
+                self?.openTime = CurrentTimeManager.getCurrentTime()
             }).disposed(by: disposeBag)
         
         nextBtn.rx.tap.subscribe(onNext: { [weak self] in

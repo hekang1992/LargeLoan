@@ -50,8 +50,6 @@ class HomeMainView: BaseView {
     
     lazy var importView: TYCyclePagerView = {
         let importView = TYCyclePagerView()
-        importView.isInfiniteLoop = true
-        importView.autoScrollInterval = 2
         importView.delegate = self
         importView.dataSource = self
         importView.register(MainCycleCell.self,
@@ -61,8 +59,6 @@ class HomeMainView: BaseView {
     
     lazy var notimpView: TYCyclePagerView = {
         let notimpView = TYCyclePagerView()
-        notimpView.isInfiniteLoop = true
-        notimpView.autoScrollInterval = 2
         notimpView.delegate = self
         notimpView.dataSource = self
         notimpView.register(SunViewCell.self,
@@ -185,11 +181,9 @@ extension HomeMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSource {
     
     func numberOfItems(in pagerView: TYCyclePagerView) -> Int {
         if pagerView == importView {
-            let count = headmodel.value?.exuding.cut?.something?.count ?? 0
-            return count
+            return headmodel.value?.exuding.cut?.something?.count ?? 0
         }else {
-            let count = headmodel.value?.exuding.knelt?.something?.count ?? 0
-            return count
+            return headmodel.value?.exuding.knelt?.something?.count ?? 0
         }
     }
     
@@ -200,6 +194,14 @@ extension HomeMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSource {
                 let model = allUrl[index]
                 cell.ipoImgaView.kf.setImage(with: URL(string: model.oozing ?? ""))
             }
+            let count = headmodel.value?.exuding.cut?.something?.count ?? 0
+            if count > 1 {
+                importView.autoScrollInterval = 2
+                importView.isInfiniteLoop = true
+            }else {
+                importView.autoScrollInterval = 0
+                importView.isInfiniteLoop = false
+            }
             return cell
         }else {
             guard let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "SunViewCell", for: index) as? SunViewCell else { return UICollectionViewCell() }
@@ -209,11 +211,18 @@ extension HomeMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSource {
                 cell.mlabel.textColor = UIColor.init(cssStr: model.failed ?? "#000000")
                 cell.delabel.text = model.repay_btn_text ?? ""
             }
+            let count = headmodel.value?.exuding.knelt?.something?.count ?? 0
+            if count > 1 {
+                notimpView.autoScrollInterval = 2
+                notimpView.isInfiniteLoop = true
+            }else {
+                notimpView.autoScrollInterval = 0
+                notimpView.isInfiniteLoop = false
+            }
             return cell
         }
         
     }
-    
     
     func pagerView(_ pageView: TYCyclePagerView, didSelectedItemCell cell: UICollectionViewCell, at index: Int) {
         if pageView == importView {

@@ -43,7 +43,6 @@ class WebpageViewController: BaseViewController {
         homeImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        backInfo()
         view.addSubview(self.headView)
         self.headView.lemonView.backgroundColor = .clear
         self.headView.addBtn.isHidden = true
@@ -60,7 +59,6 @@ class WebpageViewController: BaseViewController {
                 self.navigationController?.popToRootViewController(animated: true)
             }
         }).disposed(by: disposeBag)
-        
         
         view.addSubview(webView)
         webView.snp.makeConstraints { make in
@@ -123,7 +121,24 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
         }else if messageName == "kangarooS" {
             self.navigationController?.popViewController(animated: true)
         }else if messageName == "sorbetVul" {
-            
+            guard let url = message.body as? String else { return }
+            if url.contains("email:") {
+                guard let range = url.range(of: ":") else { return }
+                let email = url[range.upperBound...]
+                let phoneStr = UserDefaults.standard.string(forKey: LOGIN_ONE) ?? ""
+                if  let mailURL = URL(string: "mailto:\(email)") {
+                    let bodyContent = "Large Loan: \(phoneStr)"
+                    var emailString = "\(mailURL)?body=\(bodyContent)"
+                    emailString = emailString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                    if let url = URL(string: emailString), UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            } else {
+                if let phoneURL = URL(string: "\(url)"), UIApplication.shared.canOpenURL(phoneURL) {
+                    UIApplication.shared.open(phoneURL, options: [:], completionHandler: nil)
+                }
+            }
         }else if messageName == "eelPalmAc" {
             guard let array = message.body as? [String], let pageUrl = array.first else { return }
             if !pageUrl.isEmpty, pageUrl.hasPrefix(urlScheme), let sc = URL(string: pageUrl) {

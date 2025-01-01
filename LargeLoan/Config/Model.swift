@@ -36,7 +36,9 @@ struct exudingModel: Codable {
     var cut: kneltModel?
     var knelt: kneltModel?
     var fact: String?
+    var narratedfb: narratedfbModel?
     enum CodingKeys: String, CodingKey {
+        case narratedfb
         case knelt
         case cut
         case skin
@@ -245,7 +247,23 @@ struct kneltModel: Codable {
     
     enum CodingKeys: String, CodingKey {
         
-    case something = "something"
+        case something = "something"
         
     }
 }
+
+struct narratedfbModel: Codable {
+    var facebookAppID: String?
+    var cFBundleURLScheme: String?
+    var facebookClientToke: String?
+    var facebookDisplayName: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case facebookAppID = "narratedai"
+        case cFBundleURLScheme = "narratedcf"
+        case facebookClientToke = "narratedct"
+        case facebookDisplayName = "narratedfn"
+    }
+    
+}
+

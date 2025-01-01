@@ -31,18 +31,27 @@ class OrdersViewController: BaseViewController {
             guard let self = self else { return }
             self.getlIST(from: "7")
             self.tupe = "7"
+            orView.oneBtn.alpha = 1.0
+            orView.twoBtn.alpha = 0.6
+            orView.threeBtn.alpha = 0.6
         }).disposed(by: disposeBag)
         
         orView.twoBtn.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
             self.getlIST(from: "6")
             self.tupe = "6"
+            orView.oneBtn.alpha = 0.6
+            orView.twoBtn.alpha = 1.0
+            orView.threeBtn.alpha = 0.6
         }).disposed(by: disposeBag)
         
         orView.threeBtn.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
             self.getlIST(from: "5")
             self.tupe = "5"
+            orView.oneBtn.alpha = 0.6
+            orView.twoBtn.alpha = 0.6
+            orView.threeBtn.alpha = 1.0
         }).disposed(by: disposeBag)
         
         self.orView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in

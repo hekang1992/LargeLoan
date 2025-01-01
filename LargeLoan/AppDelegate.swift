@@ -7,6 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(rootVc(_ :)), name: NSNotification.Name(ROOT_VC), object: nil)
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enable = true
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         window?.makeKeyAndVisible()
         return true
     }
