@@ -18,6 +18,7 @@ class OrdereListviewController: BaseViewController {
     private let emptyManager = AddEmptyManager()
     
     var modelArray = BehaviorRelay<[letModel]?>(value: nil)
+    
     var letArray = BehaviorRelay<[letModel]?>(value: nil)
     
     lazy var bbView: UIView = {

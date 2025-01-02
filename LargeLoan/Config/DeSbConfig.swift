@@ -27,7 +27,11 @@ class ThreePastManager {
         deviceInfo["shocked"] = physicalSize
         deviceInfo["alarmed"] = device.systemVersion
         
-        let keysToMove = ["has", "saw", "upon", "tianwu", "luo", "shocked", "alarmed", "rapacious", "sighed"]
+        var keysToMove = ["shocked", "alarmed", "rapacious", "sighed"]
+        let keys = ["has", "saw", "upon", "tianwu", "luo"]
+        
+        keysToMove.append(contentsOf: keys)
+        
         let designs = deviceInfo.filter { keysToMove.contains($0.key) }
                                  .compactMapValues { $0 as? String }
         

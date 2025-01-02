@@ -9,8 +9,8 @@ import Moya
 import Alamofire
 
 let PAGE_URL = "https://maayongadlaw.com"
-let PAGE_Host = "https://maayongadlaw.com/largeloanapi"
 let PAGE_SCURL =  "large://how.big.app"
+let PAGE_Host = "https://maayongadlaw.com/largeloanapi"
 
 enum LargeLoanAPI {
     case tocode(phone: String)

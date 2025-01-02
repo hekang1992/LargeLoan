@@ -13,14 +13,15 @@ import FBSDKCoreKit
 class NetworkManager {
     
     static let shared = NetworkManager()
-    private var reachabilityManager: NetworkReachabilityManager?
+    
+    private var reachaManager: NetworkReachabilityManager?
     
     private init() {
-        self.reachabilityManager = NetworkReachabilityManager()
+        self.reachaManager = NetworkReachabilityManager()
     }
     
     func startListening() {
-        self.reachabilityManager?.startListening(onUpdatePerforming: { status in
+        self.reachaManager?.startListening(onUpdatePerforming: { status in
             switch status {
             case .notReachable:
                 break
@@ -37,7 +38,7 @@ class NetworkManager {
     }
     
     func stopListening() {
-        self.reachabilityManager?.stopListening()
+        self.reachaManager?.stopListening()
     }
     
     
@@ -64,6 +65,7 @@ class NetworkManager {
         let former = GetIdfv.getIDFV()
         let gathering = GetIdfa.getIDFA()
         let dict = ["pretense": "av",
+                    "macdownad": "1",
                     "former": former,
                     "gathering": gathering]
         provider.request(.soundsInfo(emptyDict: dict)) { result in

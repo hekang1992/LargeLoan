@@ -24,7 +24,7 @@ class OnePastManager {
     }
     
     func getAppInfo() -> [String: String] {
-        let bundleID = Bundle.main.bundleIdentifier ?? "Unknown"
+        let bundleID = Bundle.main.bundleIdentifier ?? ""
         return ["place": bundleID]
     }
     

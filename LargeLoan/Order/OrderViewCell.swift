@@ -31,7 +31,6 @@ class OrderViewCell: BaseTableViewCell {
     
     lazy var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
-        iconImageView.backgroundColor = .random()
         iconImageView.layer.cornerRadius = 4
         iconImageView.layer.masksToBounds = true
         return iconImageView
@@ -69,7 +68,6 @@ class OrderViewCell: BaseTableViewCell {
     
     lazy var vw: UIView = {
         let vw = UIView()
-        vw.backgroundColor = .random()
         return vw
     }()
     

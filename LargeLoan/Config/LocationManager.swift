@@ -12,16 +12,19 @@ import CoreLocation
 
 class LocationManager: NSObject {
     
-    var locationManager = CLLocationManager()
-    var completion: ((LoactioModel) -> Void)?
     let disposeBag = DisposeBag()
+    
+    var locationMan = CLLocationManager()
+    
+    var completion: ((LoactioModel) -> Void)?
+    
     var model = BehaviorRelay<LoactioModel?>(value: nil)
     
     override init() {
         super.init()
-        locationManager.delegate = self
+        locationMan.delegate = self
         
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationMan.desiredAccuracy = kCLLocationAccuracyBest
         
         model.asObservable()
             .debounce(RxTimeInterval.milliseconds(500),
@@ -43,11 +46,11 @@ extension LocationManager: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
-            locationManager.startUpdatingLocation()
+            locationMan.startUpdatingLocation()
         case .denied, .restricted:
-            let lmodel = LoactioModel()
-            self.model.accept(lmodel)
-            locationManager.stopUpdatingLocation()
+            let model = LoactioModel()
+            self.model.accept(model)
+            locationMan.stopUpdatingLocation()
         default:
             break
         }
@@ -64,13 +67,13 @@ extension LocationManager: CLLocationManagerDelegate{
                 status = CLLocationManager.authorizationStatus()
             }
             if status == .notDetermined {
-                locationManager.requestAlwaysAuthorization()
-                locationManager.requestWhenInUseAuthorization()
+                locationMan.requestAlwaysAuthorization()
+                locationMan.requestWhenInUseAuthorization()
             }else if status == .denied || status == .restricted {
                 let lmodel = LoactioModel()
                 self.model.accept(lmodel)
             }else {
-                locationManager.startUpdatingLocation()
+                locationMan.startUpdatingLocation()
             }
         }
     }
@@ -97,7 +100,7 @@ extension LocationManager: CLLocationManagerDelegate{
             }
             self.populateLocationModel(model, with: placemark)
             self.model.accept(model)
-            self.locationManager.stopUpdatingLocation()
+            self.locationMan.stopUpdatingLocation()
         }
     }
     

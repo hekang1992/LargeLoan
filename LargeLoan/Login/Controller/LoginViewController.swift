@@ -117,7 +117,8 @@ extension LoginViewController {
             return
         }
         LoadingIndicator.shared.showLoading()
-        provider.request(.tologin(phone: self.loginView.phoneTx.text ?? "", code: self.loginView.codeTx.text ?? "")) { [weak self] result in
+        provider.request(.tologin(phone: self.loginView.phoneTx.text ?? "",
+                                  code: self.loginView.codeTx.text ?? "")) { [weak self] result in
             LoadingIndicator.shared.hideLoading()
             guard let self = self else { return }
             switch result {

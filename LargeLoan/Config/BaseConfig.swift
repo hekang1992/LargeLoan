@@ -30,17 +30,6 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
     
-    class func random() -> UIColor {
-        return UIColor(red: randomNumber(),
-                       green: randomNumber(),
-                       blue: randomNumber(),
-                       alpha: 1.0)
-    }
-    
-    private class func randomNumber() -> CGFloat {
-        return CGFloat(arc4random()) / CGFloat(UInt32.max)
-    }
-    
 }
 
 extension UIFont {
@@ -157,7 +146,7 @@ class LoadingIndicator {
         }
         if activityIndicator != nil { return }
         backgroundView = UIView(frame: window.bounds)
-        backgroundView?.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        backgroundView?.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         window.addSubview(backgroundView!)
         activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator?.center = window.center

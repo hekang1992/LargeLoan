@@ -167,11 +167,9 @@ extension SetViewController {
             }else {
                 ToastConfig.show(form: logoutView, message: "Please confirm the agreement first, and then decide whether to delete the account.")
             }
-            
         }).disposed(by: disposeBag)
         
-        logoutView.priBtn.rx.tap.subscribe(onNext: { [weak self] in
-            guard let self = self else { return }
+        logoutView.priBtn.rx.tap.subscribe(onNext: {
             logoutView.priBtn.isSelected.toggle()
         }).disposed(by: disposeBag)
         

@@ -126,7 +126,7 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
                 guard let range = url.range(of: ":") else { return }
                 let email = url[range.upperBound...]
                 let phoneStr = UserDefaults.standard.string(forKey: LOGIN_ONE) ?? ""
-                if  let mailURL = URL(string: "mailto:\(email)") {
+                if let mailURL = URL(string: "mailto:\(email)") {
                     let bodyContent = "Large Loan: \(phoneStr)"
                     var emailString = "\(mailURL)?body=\(bodyContent)"
                     emailString = emailString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""

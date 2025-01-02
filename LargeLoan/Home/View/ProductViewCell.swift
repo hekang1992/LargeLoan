@@ -22,7 +22,6 @@ class ProductViewCell: BaseTableViewCell {
     lazy var pImageView: UIImageView = {
         let pImageView = UIImageView()
         pImageView.layer.cornerRadius = 4
-        pImageView.backgroundColor = .random()
         return pImageView
     }()
     

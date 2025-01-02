@@ -44,18 +44,6 @@ class BaseViewController: UIViewController {
         view.backgroundColor = .white
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 
@@ -192,10 +180,18 @@ extension BaseViewController {
                         "join": closingTime]
             provider.request(.expression(emptyDict: dict)) { result in
                 switch result {
-                case .success(_):
-                    if continued == "1" {
-                        UserDefaults.standard.setValue("1", forKey: "CONTINUEONE")
-                        UserDefaults.standard.synchronize()
+                case .success(let response):
+                    do {
+                        let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
+                        let anyone = model.anyone
+                        if anyone == "0" {
+                            if continued == "1" {
+                                UserDefaults.standard.setValue("1", forKey: "CONTINUEONE")
+                                UserDefaults.standard.synchronize()
+                            }
+                        }
+                    } catch {
+                        print("JSON: \(error)")
                     }
                     break
                 case .failure(_):

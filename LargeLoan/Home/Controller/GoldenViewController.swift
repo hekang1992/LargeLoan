@@ -13,7 +13,6 @@ class GoldenViewController: BaseViewController {
     var productID: String? {
         didSet {
             guard let productID = productID else { return }
-
         }
     }
     

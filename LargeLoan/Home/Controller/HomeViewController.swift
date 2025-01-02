@@ -91,7 +91,7 @@ class HomeViewController: BaseViewController {
                 
             }
             let oneStr = UserDefaults.standard.object(forKey: "CONTINUEONE") as? String ?? ""
-            if oneStr != "1" {
+            if (oneStr != "1") && (!model.five.isEmpty) {
                 let oneTime = UserDefaults.standard.object(forKey: OPEN_TIME) as? String ?? ""
                 let twoTime = UserDefaults.standard.object(forKey: CLOSE_TIME) as? String ?? ""
                 let digging = String(self.homeModel.value?.exuding.palms?.something?.first?.digging ?? 0)
