@@ -102,6 +102,7 @@ class LoginFactory {
     static func removeLoginInfo() {
         UserDefaults.standard.setValue("", forKey: LOGIN_ONE)
         UserDefaults.standard.setValue("", forKey: LOGIN_TWO)
+        UserDefaults.standard.setValue("", forKey: "CONTINUEONE")
         UserDefaults.standard.synchronize()
     }
 }

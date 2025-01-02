@@ -39,7 +39,7 @@ class SystemDiskInfo {
     
     private static func formatSize(_ size: Int64) -> String {
         let sizeInGB = Double(size)
-        return String(format: "%.2f", sizeInGB)
+        return String(format: "%.0f", sizeInGB)
     }
 }
 

@@ -90,13 +90,14 @@ class HomeViewController: BaseViewController {
             provider.request(.scsecurtymessage(exuding: baseStr)) { result in
                 
             }
+            let oneStr = UserDefaults.standard.object(forKey: "CONTINUEONE") as? String ?? ""
+            if oneStr != "1" {
+                let oneTime = UserDefaults.standard.object(forKey: OPEN_TIME) as? String ?? ""
+                let twoTime = UserDefaults.standard.object(forKey: CLOSE_TIME) as? String ?? ""
+                let digging = String(self.homeModel.value?.exuding.palms?.something?.first?.digging ?? 0)
+                self.expressioninfo(from: digging, continued: "1", openTime: oneTime, closingTime: twoTime)
+            }
         }
-        
-        let oneTime = UserDefaults.standard.object(forKey: OPEN_TIME) as? String ?? ""
-        let twoTime = UserDefaults.standard.object(forKey: CLOSE_TIME) as? String ?? ""
-        let digging = String(self.homeModel.value?.exuding.palms?.something?.first?.digging ?? 0)
-        self.expressioninfo(from: digging, continued: "1", openTime: oneTime, closingTime: twoTime)
-        
         
         homeModel.asObservable()
             .compactMap { $0 }

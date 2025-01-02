@@ -191,7 +191,16 @@ extension BaseViewController {
                         "speaking": openTime,
                         "join": closingTime]
             provider.request(.expression(emptyDict: dict)) { result in
-                
+                switch result {
+                case .success(_):
+                    if continued == "1" {
+                        UserDefaults.standard.setValue("1", forKey: "CONTINUEONE")
+                        UserDefaults.standard.synchronize()
+                    }
+                    break
+                case .failure(_):
+                    break
+                }
             }
         }
     }
