@@ -20,10 +20,14 @@ class LocationManager: NSObject {
     override init() {
         super.init()
         locationManager.delegate = self
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        model.debounce(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
+        
+        model.asObservable()
+            .debounce(RxTimeInterval.milliseconds(500),
+                       scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .subscribe(onNext: { locationModel in
+           .subscribe(onNext: { locationModel in
                 if let locationModel = locationModel {
                     self.completion?(locationModel)
                 }

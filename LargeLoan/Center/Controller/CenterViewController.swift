@@ -27,19 +27,19 @@ class CenterViewController: BaseViewController {
         
         centerView.agreeBtn.rx.tap.subscribe(onNext: { [weak self] in
             let webVc = WebpageViewController()
-            webVc.webUrl.accept("\(h5Host)/sorbetOwlB")
+            webVc.webUrl.accept("\(PAGE_URL)/sorbetOwlB")
             self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
                 
         centerView.serviceBtn.rx.tap.subscribe(onNext: { [weak self] in
             let webVc = WebpageViewController()
-            webVc.webUrl.accept("\(h5Host)/broccoliRo")
+            webVc.webUrl.accept("\(PAGE_URL)/broccoliRo")
             self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
         
         centerView.aboBtn.rx.tap.subscribe(onNext: { [weak self] in
             let webVc = WebpageViewController()
-            webVc.webUrl.accept("\(h5Host)")
+            webVc.webUrl.accept("\(PAGE_URL)")
             self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
         

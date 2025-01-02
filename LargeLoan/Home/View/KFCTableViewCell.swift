@@ -11,7 +11,7 @@ class KFCTableViewCell: BaseTableViewCell {
     
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
-        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         bigManLabel.textAlignment = .left
         bigManLabel.font = .regularFontOfSize(size: 14)
         return bigManLabel
@@ -25,7 +25,7 @@ class KFCTableViewCell: BaseTableViewCell {
     
     lazy var littleLineView: UIView = {
         let littleLineView = UIView()
-        littleLineView.backgroundColor = .init(cssStr: "#EEEEEE")
+        littleLineView.backgroundColor = .init(colorHexStr: "#EEEEEE")
         return littleLineView
     }()
 

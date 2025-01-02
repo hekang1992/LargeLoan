@@ -267,8 +267,6 @@ struct narratedfbModel: Codable {
     
 }
 
-
-
 struct packsModel: Codable {
     var replied: Int?
     var hiding: String?

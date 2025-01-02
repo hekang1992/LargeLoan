@@ -12,13 +12,13 @@ import CoreLocation
 
 class HomeViewController: BaseViewController {
     
-    lazy var subView: HomeSubView = {
-        let subView = HomeSubView()
+    lazy var subView: HomeOneSubView = {
+        let subView = HomeOneSubView()
         return subView
     }()
     
-    lazy var mainView: HomeMainView = {
-        let mainView = HomeMainView()
+    lazy var mainView: HomeSpecialMainView = {
+        let mainView = HomeSpecialMainView()
         return mainView
     }()
     
@@ -132,19 +132,19 @@ class HomeViewController: BaseViewController {
         
         self.subView.coponeImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
             let webVc = WebpageViewController()
-            webVc.webUrl.accept("\(h5Host)/broccoliRo")
+            webVc.webUrl.accept("\(PAGE_URL)/broccoliRo")
             self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
         
         self.subView.coptwoImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
             let webVc = WebpageViewController()
-            webVc.webUrl.accept("\(h5Host)/sorbetOwlB")
+            webVc.webUrl.accept("\(PAGE_URL)/sorbetOwlB")
             self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
         
         self.subView.copthreeImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
             let webVc = WebpageViewController()
-            webVc.webUrl.accept("\(h5Host)")
+            webVc.webUrl.accept("\(PAGE_URL)")
             self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
         
@@ -219,7 +219,7 @@ extension HomeViewController {
     }
     
     private func productInfo(form withUrl: String?) {
-        if let url = withUrl, !url.isEmpty, url.hasPrefix(urlScheme), let sc = URL(string: url) {
+        if let url = withUrl, !url.isEmpty, url.hasPrefix(PAGE_SCURL), let sc = URL(string: url) {
             if let productId = jiequzifu(url: sc) {
                 self.getProductDetailInfo(form: productId, complete: { [weak self] model in
                     let older = model.exuding.her?.older ?? ""

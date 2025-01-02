@@ -19,7 +19,7 @@ class PopAuthDescView: BaseView {
     lazy var ttlabel: UILabel = {
         let ttlabel = UILabel()
         ttlabel.text = "Identity Information"
-        ttlabel.textColor = UIColor.init(cssStr: "#2B170A")
+        ttlabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         ttlabel.textAlignment = .center
         ttlabel.font = .boldFontOfSize(size: 18)
         return ttlabel
@@ -52,7 +52,7 @@ class PopAuthDescView: BaseView {
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
         bigManLabel.text = "*Please confirm relevant information"
-        bigManLabel.textColor = UIColor.init(cssStr: "#FF0000")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#FF0000")
         bigManLabel.textAlignment = .center
         bigManLabel.font = .mediumFontOfSize(size: 14)
         return bigManLabel

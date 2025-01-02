@@ -29,7 +29,7 @@ class ConLULUlemonViewController: BaseViewController {
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
         bigManLabel.text = "Contact Information"
-        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         bigManLabel.textAlignment = .center
         bigManLabel.font = .boldFontOfSize(size: 18)
         return bigManLabel
@@ -38,7 +38,7 @@ class ConLULUlemonViewController: BaseViewController {
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
         minSoulLabel.text = "Please fill in emergency contact information"
-        minSoulLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        minSoulLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         minSoulLabel.textAlignment = .center
         minSoulLabel.font = .regularFontOfSize(size: 13)
         return minSoulLabel
@@ -46,7 +46,7 @@ class ConLULUlemonViewController: BaseViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.backgroundColor = .init(cssStr: "#FFDFCA")
+        tableView.backgroundColor = .init(colorHexStr: "#FFDFCA")
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self

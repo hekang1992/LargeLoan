@@ -14,7 +14,7 @@ class ProductViewCell: BaseTableViewCell {
 
     lazy var bgView: UIView = {
         let bgView = UIView()
-        bgView.backgroundColor = .init(cssStr: "#FFF6EB")
+        bgView.backgroundColor = .init(colorHexStr: "#FFF6EB")
         bgView.layer.cornerRadius = 20
         return bgView
     }()
@@ -28,7 +28,7 @@ class ProductViewCell: BaseTableViewCell {
     
     lazy var namelabel: UILabel = {
         let namelabel = UILabel()
-        namelabel.textColor = UIColor.init(cssStr: "#2B170A")
+        namelabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         namelabel.textAlignment = .left
         namelabel.font = .boldFontOfSize(size: 16)
         return namelabel
@@ -36,7 +36,7 @@ class ProductViewCell: BaseTableViewCell {
     
     lazy var desclabel: UILabel = {
         let desclabel = UILabel()
-        desclabel.textColor = UIColor.init(cssStr: "#FFC438")
+        desclabel.textColor = UIColor.init(colorHexStr: "#FFC438")
         desclabel.textAlignment = .left
         desclabel.font = .boldFontOfSize(size: 14)
         return desclabel
@@ -44,7 +44,7 @@ class ProductViewCell: BaseTableViewCell {
     
     lazy var pricelabel: UILabel = {
         let pricelabel = UILabel()
-        pricelabel.textColor = UIColor.init(cssStr: "#2B170A")
+        pricelabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         pricelabel.textAlignment = .left
         pricelabel.font = .boldFontOfSize(size: 30)
         return pricelabel
@@ -55,7 +55,7 @@ class ProductViewCell: BaseTableViewCell {
         viewlabel.textColor = .white
         viewlabel.textAlignment = .center
         viewlabel.font = .mediumFontOfSize(size: 14)
-        viewlabel.backgroundColor = .init(cssStr: "#FF7F38")
+        viewlabel.backgroundColor = .init(colorHexStr: "#FF7F38")
         viewlabel.layer.cornerRadius = 8
         viewlabel.layer.masksToBounds = true
         return viewlabel

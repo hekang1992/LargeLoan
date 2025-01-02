@@ -26,21 +26,21 @@ class LoginView: BaseView {
     lazy var pView: UIView = {
         let pView = UIView()
         pView.layer.cornerRadius = 10
-        pView.backgroundColor = .init(cssStr: "#FF7F38")?.withAlphaComponent(0.1)
+        pView.backgroundColor = .init(colorHexStr: "#FF7F38")?.withAlphaComponent(0.1)
         return pView
     }()
     
     lazy var cView: UIView = {
         let cView = UIView()
         cView.layer.cornerRadius = 10
-        cView.backgroundColor = .init(cssStr: "#FF7F38")?.withAlphaComponent(0.1)
+        cView.backgroundColor = .init(colorHexStr: "#FF7F38")?.withAlphaComponent(0.1)
         return cView
     }()
     
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
         bigManLabel.text = "+63"
-        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         bigManLabel.textAlignment = .center
         bigManLabel.font = .regularFontOfSize(size: 14)
         return bigManLabel
@@ -50,12 +50,12 @@ class LoginView: BaseView {
         let phoneTx = UITextField()
         phoneTx.keyboardType = .numberPad
         let attrString = NSMutableAttributedString(string: "Enter your cellphone number", attributes: [
-            .foregroundColor: UIColor.init(cssStr: "#2B170A")?.withAlphaComponent(0.5) as Any,
+            .foregroundColor: UIColor.init(colorHexStr: "#2B170A")?.withAlphaComponent(0.5) as Any,
             .font: UIFont.regularFontOfSize(size: 14)
         ])
         phoneTx.attributedPlaceholder = attrString
         phoneTx.font = .regularFontOfSize(size: 14)
-        phoneTx.textColor = UIColor.init(cssStr: "#2B170A")
+        phoneTx.textColor = UIColor.init(colorHexStr: "#2B170A")
         return phoneTx
     }()
     
@@ -63,12 +63,12 @@ class LoginView: BaseView {
         let codeTx = UITextField()
         codeTx.keyboardType = .numberPad
         let attrString = NSMutableAttributedString(string: "Enter the confirmation code", attributes: [
-            .foregroundColor: UIColor.init(cssStr: "#2B170A")?.withAlphaComponent(0.5) as Any,
+            .foregroundColor: UIColor.init(colorHexStr: "#2B170A")?.withAlphaComponent(0.5) as Any,
             .font: UIFont.regularFontOfSize(size: 14)
         ])
         codeTx.attributedPlaceholder = attrString
         codeTx.font = .regularFontOfSize(size: 14)
-        codeTx.textColor = UIColor.init(cssStr: "#2B170A")
+        codeTx.textColor = UIColor.init(colorHexStr: "#2B170A")
         return codeTx
     }()
     
@@ -77,7 +77,7 @@ class LoginView: BaseView {
         codeBtn.setTitle("Get code", for: .normal)
         codeBtn.setTitleColor(.white, for: .normal)
         codeBtn.layer.cornerRadius = 10
-        codeBtn.backgroundColor = UIColor.init(cssStr: "#FF7F38")
+        codeBtn.backgroundColor = UIColor.init(colorHexStr: "#FF7F38")
         return codeBtn
     }()
     

@@ -15,8 +15,8 @@ let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 
 extension UIColor {
-    convenience init?(cssStr: String) {
-        let hexString = cssStr.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+    convenience init?(colorHexStr: String) {
+        let hexString = colorHexStr.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         guard hexString.hasPrefix("#") else {
             return nil
         }
@@ -24,8 +24,8 @@ extension UIColor {
         guard hexCode.count == 6, let rgbValue = UInt64(hexCode, radix: 16) else {
             return nil
         }
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
         let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
         let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
         self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
@@ -98,10 +98,10 @@ class PushRootVcConfig {
 }
 
 enum ButtonEdgeInsetsStyle {
-    case top // image in top，label in bottom
-    case left  // image in left，label in right
-    case bottom  // image in bottom，label in top
-    case right // image in right，label in left
+    case top
+    case left
+    case bottom
+    case right
 }
 
 extension UIButton {

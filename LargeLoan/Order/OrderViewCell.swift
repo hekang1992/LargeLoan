@@ -17,13 +17,13 @@ class OrderViewCell: BaseTableViewCell {
     lazy var bgView: UIView = {
         let bgView = UIView()
         bgView.layer.cornerRadius = 16
-        bgView.backgroundColor = .init(cssStr: "#FFF5E9")
+        bgView.backgroundColor = .init(colorHexStr: "#FFF5E9")
         return bgView
     }()
     
     lazy var namelabel: UILabel = {
         let namelabel = UILabel()
-        namelabel.textColor = UIColor.init(cssStr: "#2B170A")
+        namelabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         namelabel.textAlignment = .left
         namelabel.font = .boldFontOfSize(size: 19)
         return namelabel
@@ -39,7 +39,7 @@ class OrderViewCell: BaseTableViewCell {
     
     lazy var timelabel: UILabel = {
         let timelabel = UILabel()
-        timelabel.textColor = UIColor.init(cssStr: "#2B170A")?.withAlphaComponent(0.6)
+        timelabel.textColor = UIColor.init(colorHexStr: "#2B170A")?.withAlphaComponent(0.6)
         timelabel.textAlignment = .right
         timelabel.font = .regularFontOfSize(size: 16)
         return timelabel
@@ -47,7 +47,7 @@ class OrderViewCell: BaseTableViewCell {
     
     lazy var mlabel: UILabel = {
         let mlabel = UILabel()
-        mlabel.textColor = UIColor.init(cssStr: "#2B170A")
+        mlabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         mlabel.textAlignment = .left
         mlabel.font = .boldFontOfSize(size: 35)
         return mlabel
@@ -61,7 +61,7 @@ class OrderViewCell: BaseTableViewCell {
     
     lazy var deslabel: UILabel = {
         let deslabel = UILabel()
-        deslabel.textColor = UIColor.init(cssStr: "#2B170A")?.withAlphaComponent(0.4)
+        deslabel.textColor = UIColor.init(colorHexStr: "#2B170A")?.withAlphaComponent(0.4)
         deslabel.textAlignment = .left
         deslabel.font = .regularFontOfSize(size: 12)
         return deslabel
@@ -183,7 +183,7 @@ class OrderViewCell: BaseTableViewCell {
             }else {
                 colstr = "#FF7F38"
             }
-            vw.backgroundColor = UIColor.init(cssStr: colstr)
+            vw.backgroundColor = UIColor.init(colorHexStr: colstr)
         }).disposed(by: disposeBag)
         
     }

@@ -141,7 +141,7 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
             }
         }else if messageName == "eelPalmAc" {
             guard let array = message.body as? [String], let pageUrl = array.first else { return }
-            if !pageUrl.isEmpty, pageUrl.hasPrefix(urlScheme), let sc = URL(string: pageUrl) {
+            if !pageUrl.isEmpty, pageUrl.hasPrefix(PAGE_SCURL), let sc = URL(string: pageUrl) {
                 if let productId = self.jiequzifu(url: sc) {
                     self.getProductDetailInfo(form: productId, complete: { [weak self] model in
                         let older = model.exuding.her?.older ?? ""

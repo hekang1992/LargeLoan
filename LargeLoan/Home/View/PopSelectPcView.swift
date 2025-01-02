@@ -21,12 +21,6 @@ class PopSelectPcView: BaseView {
         return lemonView
     }()
     
-    lazy var lemonView1: UIView = {
-        let lemonView1 = UIView()
-        lemonView1.layer.cornerRadius = 4
-        return lemonView1
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(pereImageView)

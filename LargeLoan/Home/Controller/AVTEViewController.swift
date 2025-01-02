@@ -27,7 +27,7 @@ class AVTEViewController: BaseViewController {
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
         bigManLabel.text = "Work Information"
-        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         bigManLabel.textAlignment = .center
         bigManLabel.font = .boldFontOfSize(size: 18)
         return bigManLabel
@@ -36,7 +36,7 @@ class AVTEViewController: BaseViewController {
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
         minSoulLabel.text = "Please fill in your job information"
-        minSoulLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        minSoulLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         minSoulLabel.textAlignment = .center
         minSoulLabel.font = .regularFontOfSize(size: 13)
         return minSoulLabel
@@ -44,7 +44,7 @@ class AVTEViewController: BaseViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .init(cssStr: "#FFDFCA")
+        tableView.backgroundColor = .init(colorHexStr: "#FFDFCA")
         tableView.estimatedRowHeight = 88
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false

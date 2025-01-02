@@ -49,7 +49,7 @@ class CenterView: BaseView {
     lazy var lemonView: UIView = {
         let lemonView = UIView()
         lemonView.layer.cornerRadius = 16
-        lemonView.backgroundColor = UIColor.init(cssStr: "#FF7F38")
+        lemonView.backgroundColor = UIColor.init(colorHexStr: "#FF7F38")
         return lemonView
     }()
     

@@ -128,8 +128,8 @@ extension KFCViewController: UITableViewDelegate {
         let label = UILabel()
         label.textAlignment = .left
         label.font = .mediumFontOfSize(size: 16)
-        label.textColor = .init(cssStr: "#2B170A")
-        headerView.backgroundColor = .init(cssStr: "#FFDFCA")
+        label.textColor = .init(colorHexStr: "#2B170A")
+        headerView.backgroundColor = .init(colorHexStr: "#FFDFCA")
         if section == 0 {
             label.text = "Recommended ID Type"
         } else {
@@ -143,6 +143,12 @@ extension KFCViewController: UITableViewDelegate {
         }
         return headerView
     }
+    
+    
+    
+}
+
+extension KFCViewController {
     
     func exprwssinfo() {
         self.expressioninfo(from: self.productID ?? "",

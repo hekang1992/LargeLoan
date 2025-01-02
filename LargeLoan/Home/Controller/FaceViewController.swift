@@ -32,7 +32,7 @@ class FaceViewController: BaseViewController {
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
         bigManLabel.text = "To ensere that loan is operated br you,the plaform needs to cerify your identity"
-        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         bigManLabel.textAlignment = .center
         bigManLabel.numberOfLines = 0
         bigManLabel.font = .mediumFontOfSize(size: 18)
@@ -48,7 +48,7 @@ class FaceViewController: BaseViewController {
     
     lazy var tupelabel: UILabel = {
         let tupelabel = UILabel()
-        tupelabel.textColor = UIColor.init(cssStr: "#2B170A")
+        tupelabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         tupelabel.textAlignment = .left
         tupelabel.font = .mediumFontOfSize(size: 16)
         tupelabel.text = "Face"

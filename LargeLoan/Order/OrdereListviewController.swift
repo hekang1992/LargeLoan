@@ -90,7 +90,7 @@ class OrdereListviewController: BaseViewController {
         })
         
         self.tableView.rx.modelSelected(letModel.self).subscribe(onNext: { [weak self] model in
-            if let url = model.countries, !url.isEmpty, url.hasPrefix(urlScheme), let sc = URL(string: url) {
+            if let url = model.countries, !url.isEmpty, url.hasPrefix(PAGE_SCURL), let sc = URL(string: url) {
                 if let productId = self?.jiequzifu(url: sc) {
                     self?.getProductDetailInfo(form: productId, complete: { [weak self] model in
                         let older = model.exuding.her?.older ?? ""

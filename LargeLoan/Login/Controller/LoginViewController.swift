@@ -50,12 +50,16 @@ extension LoginViewController {
         
         loginView.clickBtn.rx.tap.subscribe(onNext: { [weak self] in
             let webVc = WebpageViewController()
-            webVc.webUrl.accept("\(h5Host)/sorbetOwlB")
+            webVc.webUrl.accept("\(PAGE_URL)/sorbetOwlB")
             self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
         
     }
     
+}
+
+
+extension LoginViewController {
     
     func getcode() {
         let phone = self.loginView.phoneTx.text ?? ""

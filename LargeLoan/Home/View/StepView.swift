@@ -11,7 +11,7 @@ class StepView: BaseView {
 
     lazy var lemonView: UIView = {
         let lemonView = UIView()
-        lemonView.backgroundColor = .init(cssStr: "#FF7F38")
+        lemonView.backgroundColor = .init(colorHexStr: "#FF7F38")
         lemonView.layer.cornerRadius = 12
         return lemonView
     }()
@@ -35,7 +35,7 @@ class StepView: BaseView {
     
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
-        bigManLabel.textColor = UIColor.init(cssStr: "#101D37")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#101D37")
         bigManLabel.textAlignment = .left
         bigManLabel.font = .mediumFontOfSize(size: 16)
         return bigManLabel

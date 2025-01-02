@@ -26,7 +26,7 @@ class GoldenViewController: BaseViewController {
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
         bigManLabel.text = "Withdrawal Method"
-        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         bigManLabel.textAlignment = .center
         bigManLabel.font = .boldFontOfSize(size: 18)
         return bigManLabel
@@ -35,7 +35,7 @@ class GoldenViewController: BaseViewController {
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
         minSoulLabel.text = "Please select the most convenient way for you to withdraw"
-        minSoulLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        minSoulLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         minSoulLabel.textAlignment = .center
         minSoulLabel.font = .regularFontOfSize(size: 13)
         return minSoulLabel
@@ -43,13 +43,13 @@ class GoldenViewController: BaseViewController {
     
     lazy var littleLineView: UIView = {
         let littleLineView = UIView()
-        littleLineView.backgroundColor = .init(cssStr: "#FF7F38")
+        littleLineView.backgroundColor = .init(colorHexStr: "#FF7F38")
         return littleLineView
     }()
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .init(cssStr: "#FFFAF1")
+        tableView.backgroundColor = .init(colorHexStr: "#FFFAF1")
         tableView.estimatedRowHeight = 88
         tableView.separatorStyle = .none
         tableView.delegate = self
@@ -68,7 +68,7 @@ class GoldenViewController: BaseViewController {
         let oneBtn = UIButton(type: .custom)
         oneBtn.setTitle("E-wallet", for: .normal)
         oneBtn.titleLabel?.font = .mediumFontOfSize(size: 16)
-        oneBtn.setTitleColor(UIColor.init(cssStr: "#2B170A"), for: .normal)
+        oneBtn.setTitleColor(UIColor.init(colorHexStr: "#2B170A"), for: .normal)
         return oneBtn
     }()
     
@@ -76,7 +76,7 @@ class GoldenViewController: BaseViewController {
         let twoBtn = UIButton(type: .custom)
         twoBtn.setTitle("Bank", for: .normal)
         twoBtn.titleLabel?.font = .mediumFontOfSize(size: 16)
-        twoBtn.setTitleColor(UIColor.init(cssStr: "#FFE5D6"), for: .normal)
+        twoBtn.setTitleColor(UIColor.init(colorHexStr: "#FFE5D6"), for: .normal)
         return twoBtn
     }()
     
@@ -187,8 +187,8 @@ class GoldenViewController: BaseViewController {
         getgoldenInfo()
         
         oneBtn.rx.tap.subscribe(onNext: { [weak self] in
-            self?.oneBtn.setTitleColor(UIColor(cssStr: "#2B170A"), for: .normal)
-            self?.twoBtn.setTitleColor(UIColor(cssStr: "#FFE5D6"), for: .normal)
+            self?.oneBtn.setTitleColor(UIColor(colorHexStr: "#2B170A"), for: .normal)
+            self?.twoBtn.setTitleColor(UIColor(colorHexStr: "#FFE5D6"), for: .normal)
             self?.lineoView.isHidden = false
             self?.linepView.isHidden = true
             self?.commonArray.accept(self?.model.value?.exuding.common?.first?.common ?? [])
@@ -197,8 +197,8 @@ class GoldenViewController: BaseViewController {
         
         twoBtn.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
-            self.oneBtn.setTitleColor(UIColor(cssStr: "#FFE5D6"), for: .normal)
-            self.twoBtn.setTitleColor(UIColor(cssStr: "#2B170A"), for: .normal)
+            self.oneBtn.setTitleColor(UIColor(colorHexStr: "#FFE5D6"), for: .normal)
+            self.twoBtn.setTitleColor(UIColor(colorHexStr: "#2B170A"), for: .normal)
             self.lineoView.isHidden = true
             self.linepView.isHidden = false
             self.commonArray.accept(self.model.value?.exuding.common?.last?.common ?? [])

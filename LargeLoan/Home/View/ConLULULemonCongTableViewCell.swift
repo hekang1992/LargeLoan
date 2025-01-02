@@ -18,13 +18,13 @@ class ConLULULemonCongTableViewCell: BaseTableViewCell {
     lazy var lemonView: UIView = {
         let lemonView = UIView()
         lemonView.layer.cornerRadius = 12
-        lemonView.backgroundColor = .init(cssStr: "#FFFAF1")
+        lemonView.backgroundColor = .init(colorHexStr: "#FFFAF1")
         return lemonView
     }()
     
     lazy var littleLineView: UIView = {
         let littleLineView = UIView()
-        littleLineView.backgroundColor = .init(cssStr: "#FF7F38")
+        littleLineView.backgroundColor = .init(colorHexStr: "#FF7F38")
         return littleLineView
     }()
 

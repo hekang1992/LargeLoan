@@ -112,7 +112,7 @@ class PhotoViewController: BaseViewController {
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
         bigManLabel.text = "Verify Identity"
-        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         bigManLabel.textAlignment = .center
         bigManLabel.font = .mediumFontOfSize(size: 18)
         return bigManLabel
@@ -121,7 +121,7 @@ class PhotoViewController: BaseViewController {
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
         minSoulLabel.text = "Verify Identity and name information"
-        minSoulLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        minSoulLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         minSoulLabel.textAlignment = .center
         minSoulLabel.font = .mediumFontOfSize(size: 13)
         return minSoulLabel
@@ -136,7 +136,7 @@ class PhotoViewController: BaseViewController {
     
     lazy var tupelabel: UILabel = {
         let tupelabel = UILabel()
-        tupelabel.textColor = UIColor.init(cssStr: "#2B170A")
+        tupelabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         tupelabel.textAlignment = .left
         tupelabel.font = .mediumFontOfSize(size: 16)
         tupelabel.text = type ?? ""
@@ -153,7 +153,7 @@ class PhotoViewController: BaseViewController {
     lazy var layerView: UIView = {
         let layerView = UIView()
         layerView.layer.cornerRadius = 12
-        layerView.backgroundColor = .init(cssStr: "#FFFAF1")
+        layerView.backgroundColor = .init(colorHexStr: "#FFFAF1")
         return layerView
     }()
     
@@ -172,7 +172,7 @@ class PhotoViewController: BaseViewController {
     lazy var ttlabel: UILabel = {
         let ttlabel = UILabel()
         ttlabel.text = "Please confirm your identity information"
-        ttlabel.textColor = UIColor.init(cssStr: "#2B170A")
+        ttlabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         ttlabel.textAlignment = .center
         ttlabel.font = .mediumFontOfSize(size: 16)
         return ttlabel
@@ -567,18 +567,6 @@ extension PhotoViewController {
 
 extension PhotoViewController {
     
-    func exprwssinfo() {
-        self.expressioninfo(from: self.productID ?? "",
-                            continued: "3",
-                            openTime: self.openTime,
-                            closingTime: self.closingTime)
-    }
-    
-}
-
-
-extension PhotoViewController {
-    
     private func nextTapClick() {
         nextBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.goneFucVino()
@@ -597,6 +585,15 @@ extension PhotoViewController {
             self.navigationController?.pushViewController(faceVc, animated: true)
         }
     }
+}
+
+extension PhotoViewController {
     
+    func exprwssinfo() {
+        self.expressioninfo(from: self.productID ?? "",
+                            continued: "3",
+                            openTime: self.openTime,
+                            closingTime: self.closingTime)
+    }
     
 }

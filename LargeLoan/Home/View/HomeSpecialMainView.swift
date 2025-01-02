@@ -10,7 +10,7 @@ import RxRelay
 import TYCyclePagerView
 import RxSwift
 
-class HomeMainView: BaseView {
+class HomeSpecialMainView: BaseView {
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -118,7 +118,7 @@ class HomeMainView: BaseView {
 }
 
 
-extension HomeMainView: UITableViewDelegate {
+extension HomeSpecialMainView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let model = self.headmodel.value?.exuding.knelt
@@ -177,7 +177,7 @@ extension HomeMainView: UITableViewDelegate {
 }
 
 
-extension HomeMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSource {
+extension HomeSpecialMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSource {
     
     func numberOfItems(in pagerView: TYCyclePagerView) -> Int {
         if pagerView == importView {
@@ -208,7 +208,7 @@ extension HomeMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSource {
             if let wentUrl = headmodel.value?.exuding.knelt?.something{
                 let model = wentUrl[index]
                 cell.mlabel.text = model.coldly ?? ""
-                cell.mlabel.textColor = UIColor.init(cssStr: model.failed ?? "#000000")
+                cell.mlabel.textColor = UIColor.init(colorHexStr: model.failed ?? "#000000")
                 cell.delabel.text = model.repay_btn_text ?? ""
             }
             let count = headmodel.value?.exuding.knelt?.something?.count ?? 0

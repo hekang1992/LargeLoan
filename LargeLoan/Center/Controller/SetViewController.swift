@@ -31,7 +31,7 @@ class SetViewController: BaseViewController {
     lazy var vlabel: UILabel = {
         let vlabel = UILabel()
         vlabel.text = "Version 1.0.0"
-        vlabel.textColor = UIColor.init(cssStr: "#101D37")
+        vlabel.textColor = UIColor.init(colorHexStr: "#101D37")
         vlabel.textAlignment = .center
         vlabel.font = .regularFontOfSize(size: 16)
         return vlabel

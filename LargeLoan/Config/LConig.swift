@@ -114,11 +114,11 @@ class ShowalertConfig {
         vc.present(alertVc, animated: true)
     }
     
-    // MARK: - 显示跳转设置的提示框
-     static func showSettingsAlert(from viewController: BaseViewController, feature: String) {
+    static func showSettingsAlert(from viewController: BaseViewController, feature: String) {
+        
         let alert = UIAlertController(
             title: "\(feature) Permission denied",
-            message: "Please go to the settings page to enable it",
+            message: "To ensure your application is processed smoothly, please enable \"Allow All\" permissions. If you choose to deny or allow partial permissions, it may affect the application review process. Please go to the settings page to adjust the permissions.",
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -128,8 +128,7 @@ class ShowalertConfig {
         viewController.present(alert, animated: true, completion: nil)
     }
     
-    // MARK: - 打开设置页面
-     static func openSettings() {
+    static func openSettings() {
         if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
             if UIApplication.shared.canOpenURL(settingsURL) {
                 UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)

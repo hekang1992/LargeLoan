@@ -17,7 +17,7 @@ class ContactManager {
     }
     
     func fetchContacts() -> [CNContact]? {
-        // 首先检查访问权限
+        
         let authorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
         switch authorizationStatus {
             

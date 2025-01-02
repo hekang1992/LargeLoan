@@ -11,7 +11,7 @@ class EnterTextView: BaseView {
     
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
-        bigManLabel.textColor = UIColor.init(cssStr: "#2B170A")
+        bigManLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         bigManLabel.textAlignment = .left
         bigManLabel.font = .regularFontOfSize(size: 14)
         return bigManLabel
@@ -20,19 +20,19 @@ class EnterTextView: BaseView {
     lazy var lemonView: UIView = {
         let lemonView = UIView()
         lemonView.layer.cornerRadius = 12
-        lemonView.backgroundColor = .init(cssStr: "#FFFFFF")
+        lemonView.backgroundColor = .init(colorHexStr: "#FFFFFF")
         return lemonView
     }()
     
     lazy var enterTx: UITextField = {
         let enterTx = UITextField()
         let attrString = NSMutableAttributedString(string: "Please Enter", attributes: [
-            .foregroundColor: UIColor.init(cssStr: "#2B170A")?.withAlphaComponent(0.6) as Any,
+            .foregroundColor: UIColor.init(colorHexStr: "#2B170A")?.withAlphaComponent(0.6) as Any,
             .font: UIFont.mediumFontOfSize(size: 14)
         ])
         enterTx.attributedPlaceholder = attrString
         enterTx.font = .mediumFontOfSize(size: 14)
-        enterTx.textColor = UIColor.init(cssStr: "#2B170A")
+        enterTx.textColor = UIColor.init(colorHexStr: "#2B170A")
         return enterTx
     }()
 

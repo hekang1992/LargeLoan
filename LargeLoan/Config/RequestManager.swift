@@ -8,9 +8,9 @@
 import Moya
 import Alamofire
 
-let h5Host = "http://8.212.181.184:8493"
-let apiHost = "http://8.212.181.184:8493/largeloanapi"
-let urlScheme =  "large://how.big.app"
+let PAGE_URL = "https://maayongadlaw.com"
+let PAGE_Host = "https://maayongadlaw.com/largeloanapi"
+let PAGE_SCURL =  "large://how.big.app"
 
 enum LargeLoanAPI {
     case tocode(phone: String)
@@ -45,7 +45,7 @@ enum LargeLoanAPI {
 extension LargeLoanAPI: TargetType {
     
     var baseURL: URL {
-        guard let url = URL(string: apiHost) else { fatalError("InvalidURL")
+        guard let url = URL(string: PAGE_Host) else { fatalError("InvalidURL")
         }
         let config = GetDengLuConfig.loginConfig()
         let apiUrl = DictToString.appendters(url: url.absoluteString, parameters: config) ?? ""
@@ -94,13 +94,16 @@ extension LargeLoanAPI: TargetType {
         switch self {
         case .tocode(phone: let phone):
             return .requestParameters(parameters: ["shall": phone,
+                                                   "beef": "9",
                                                    "type": "code"],
                                       encoding: URLEncoding.default)
             
         case .tologin(phone: let surroundings, code: let surveyed):
-            return .requestParameters(parameters: ["surroundings": surroundings,
-                                                   "surveyed": surveyed,
-                                                   "type": "login"],
+            return .requestParameters(parameters: [
+                "surroundings": surroundings,
+                "sallow": "1",
+                "surveyed": surveyed,
+                "type": "login"],
                                       encoding: URLEncoding.default)
             
         case .tologOut, .getRegion, .todeleinfo, .toHomeData:
@@ -116,7 +119,7 @@ extension LargeLoanAPI: TargetType {
         case .productDetailInfo(productId: let productId):
             return .requestParameters(parameters: ["old": productId,
                                                    "whispers": "10",
-                                                   "type": "productDetailInfo"],
+                                                   "type": "detailInfo"],
                                       encoding: URLEncoding.default)
             
         case .southern(old: let old):
@@ -147,6 +150,7 @@ extension LargeLoanAPI: TargetType {
                                                    "strong": date,
                                                    "defeated": defeated,
                                                    "large": "11",
+                                                   "public": "1",
                                                    "stabilize": "idcard"],
                                       encoding: URLEncoding.default)
             
@@ -155,6 +159,7 @@ extension LargeLoanAPI: TargetType {
                                                    "bedfly": "name",
                                                    "weak": "onedate",
                                                    "define": "young",
+                                                   "party": "1",
                                                    "small": "11"],
                                       encoding: URLEncoding.default)
             
@@ -168,6 +173,7 @@ extension LargeLoanAPI: TargetType {
         case .getTttInfo(old: let old):
             return .requestParameters(parameters: ["old": old,
                                                    "bbq": "1",
+                                                   "school": "0",
                                                    "porcuse": "buy"],
                                       encoding: URLEncoding.default)
             
@@ -179,6 +185,7 @@ extension LargeLoanAPI: TargetType {
             return .requestParameters(parameters: ["pp": "special",
                                                    "old": old,
                                                    "lulu": "more",
+                                                   "nooles": "1",
                                                    "lemon": "laji"],
                                       encoding: URLEncoding.default)
             
@@ -203,6 +210,7 @@ extension LargeLoanAPI: TargetType {
             
         case .scsecurtymessage(exuding: let exuding):
             return .requestParameters(parameters: ["exuding": exuding,
+                                                   "hex": "pink",
                                                    "device": "taiphone"],
                                       encoding: URLEncoding.default)
         case .expression(emptyDict: let emptyDict):

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeSubView: BaseView {
+class HomeOneSubView: BaseView {
     
     lazy var homeImageView: UIImageView = {
         let homeImageView = UIImageView()
@@ -155,7 +155,7 @@ class HomeSubView: BaseView {
 }
 
 
-extension HomeSubView {
+extension HomeOneSubView {
     
     override func layoutSubviews() {
         super.layoutSubviews()

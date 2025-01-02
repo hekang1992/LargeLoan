@@ -37,12 +37,10 @@ class PermissionManager {
         }
     }
     
-    // MARK: - 检查相册权限
     class func checkPhotoLibraryPermission(from viewController: BaseViewController, completion: @escaping (Bool) -> Void) {
         let photoStatus = PHPhotoLibrary.authorizationStatus()
         switch photoStatus {
         case .notDetermined:
-            // 请求权限
             PHPhotoLibrary.requestAuthorization { status in
                 DispatchQueue.main.async {
                     if status == .authorized || status == .limited {
@@ -54,12 +52,11 @@ class PermissionManager {
                 }
             }
         case .authorized, .limited:
-            // 已授权
+            
             completion(true)
         case .denied, .restricted:
-            // 权限被拒绝，显示提示
             DispatchQueue.main.async {
-                ShowalertConfig.showSettingsAlert(from: viewController, feature: "相册")
+                ShowalertConfig.showSettingsAlert(from: viewController, feature: "PhotoLibrary")
                 completion(false)
             }
         @unknown default:

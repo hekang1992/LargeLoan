@@ -12,19 +12,19 @@ import SystemConfiguration.CaptiveNetwork
 
 class CurrentTimeManager {
     static func getCurrentTime() -> String {
-        let currentTime = Date().timeIntervalSince1970
-        let currentTimeMillis = String(Int64(currentTime * 1000))
-        return currentTimeMillis
+        let cuTime = Date().timeIntervalSince1970
+        let cuillis = String(Int64(cuTime * 1000))
+        return cuillis
     }
 }
 
 class TwoPastManager {
     
     static func getMacInfo() -> String {
-        guard let interfaces = CNCopySupportedInterfaces() as? [String] else {
+        guard let inters = CNCopySupportedInterfaces() as? [String] else {
             return ""
         }
-        for interface in interfaces {
+        for interface in inters {
             guard let networkInfo = CNCopyCurrentNetworkInfo(interface as CFString) as? [String: Any],
                   let bssid = networkInfo[kCNNetworkInfoKeyBSSID as String] as? String else {
                 continue
@@ -75,12 +75,15 @@ class TwoPastManager {
     }
     
     static func isBreak() -> String {
+        let phoneStr = "/Library/MobileSubstrate" + "/MobileSubstrate.dylib"
+        let oneStr = "/Applications" + "/Cydia.app"
+        let twoStr = "/usr" + "/sbin" + "/sshd"
         let jailbreakToolPaths = [
-            "/Applications/Cydia.app",
+            oneStr,
             "/bin/bash",
+            twoStr,
             "/usr/sbin/sshd",
-            "/usr/sbin/sshd",
-            "/Library/MobileSubstrate/MobileSubstrate.dylib",
+            phoneStr,
         ]
         for path in jailbreakToolPaths {
             if FileManager.default.fileExists(atPath: path) {
@@ -131,20 +134,48 @@ class TwoPastManager {
     let dreams = timeStart()
     
     func getTwoInfo() -> [String: Any] {
-        var twoInfo: [String: Any] = [:]
-        twoInfo["resisting"] = ["former": former,
-                                "gathering": gathering,
-                                "frontier": frontier,
-                                "guarding": guarding,
-                                "cavalry": cavalry,
-                                "troops": troops,
-                                "battlefield": battlefield,
-                                "your": your,
-                                "implicate": implicate,
-                                "does": does,
-                                "enemies": enemies,
-                                "being": being,
-                                "dreams": dreams]
-        return twoInfo
+        let model = resistingModel(
+            former: former,
+            gathering: gathering,
+            frontier: frontier,
+            guarding: guarding,
+            cavalry: cavalry,
+            troops: troops,
+            battlefield: battlefield,
+            your: your,
+            implicate: implicate,
+            does: does,
+            enemies: enemies,
+            being: being,
+            dreams: dreams
+        )
+        do {
+            let jsonData = try JSONEncoder().encode(model)
+            if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+                return ["resisting": jsonObject]
+            }
+        } catch {
+            print("dictionary: \(error)")
+        }
+        return ["": ""]
     }
+}
+
+struct resistingModel: Codable {
+    
+    var former: String?
+    var gathering: String?
+    var frontier: String?
+    var guarding: String?
+    var cavalry: String?
+    var troops: Bool?
+    var battlefield: String?
+    var your: String?
+    var implicate: String?
+    var does: String?
+    var enemies: String?
+    var being: String?
+    var dreams: String?
+    
+    
 }
