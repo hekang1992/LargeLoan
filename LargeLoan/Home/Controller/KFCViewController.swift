@@ -35,7 +35,6 @@ class KFCViewController: BaseViewController {
     var productID: String? {
         didSet {
             guard let productID = productID else { return }
-            print("productID======\(productID)")
         }
     }
     

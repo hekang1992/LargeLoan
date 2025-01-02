@@ -115,10 +115,22 @@ class ShowalertConfig {
     }
     
     static func showSettingsAlert(from viewController: BaseViewController, feature: String) {
+        var message: String = ""
         
+        if feature == "Contact" {
+            message = "To ensure your application is processed smoothly, please enable \"Allow All\" permissions. If you choose to deny or allow partial permissions, it may affect the application review process. Please go to the settings page to adjust the permissions."
+        }else if feature == "Camera" {
+            message = Bundle.main.object(forInfoDictionaryKey: "NSCameraUsageDescription") as? String ?? ""
+        }else if feature == "PhotoLibrary" {
+            message = Bundle.main.object(forInfoDictionaryKey: "NSPhotoLibraryUsageDescription") as? String ?? ""
+        }else if feature == "Location" {
+             message = Bundle.main.object(forInfoDictionaryKey: "NSLocationAlwaysUsageDescription") as? String ?? ""
+        }else {
+            message = ""
+        }
         let alert = UIAlertController(
             title: "\(feature) Permission denied",
-            message: "To ensure your application is processed smoothly, please enable \"Allow All\" permissions. If you choose to deny or allow partial permissions, it may affect the application review process. Please go to the settings page to adjust the permissions.",
+            message: message,
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

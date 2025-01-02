@@ -63,10 +63,12 @@ class ShowEnumConfig {
             name = oneName
             code = province?.code ?? ""
         case (false, false, true):
-            name = "\(oneName)|\(twoName)"
-            code = "\(province?.code ?? "")|\(city?.code ?? "")"
+            let nameStr = "\(oneName)" + "|" + "\(twoName)"
+            name = nameStr
+            let codeStr = "\(province?.code ?? "")" + "|" + "\(city?.code ?? "")"
+            code = codeStr
         case (false, false, false):
-            name = "\(oneName) \(twoName) \(threeName)"
+            name = "\(oneName)|\(twoName)|\(threeName)"
             code = "\(province?.code ?? "")|\(city?.code ?? "")|\(area?.code ?? "")"
         default:
             name = ""

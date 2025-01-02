@@ -14,7 +14,6 @@ class AuthYIViewController: BaseViewController {
     var productID: String? {
         didSet {
             guard let productID = productID else { return }
-            print("photo====productID======\(productID)")
         }
     }
     

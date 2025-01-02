@@ -16,7 +16,6 @@ class ConLULUlemonViewController: BaseViewController {
     var productID: String? {
         didSet {
             guard let productID = productID else { return }
-            print("photo====productID======\(productID)")
         }
     }
     
@@ -152,12 +151,15 @@ extension ConLULUlemonViewController: UITableViewDelegate, UITableViewDataSource
                             let dict = ["large": "3",
                                         "intend": "1",
                                         "shall": phone,
+                                        "rush": "1",
                                         "bed": name]
                             phoneArray.append(dict)
                         }
                     }
                 } else {
-                    ShowalertConfig.showSettingsAlert(from: self, feature: "Contact")
+                    DispatchQueue.main.async {
+                        ShowalertConfig.showSettingsAlert(from: self, feature: "Contact")
+                    }
                 }
             }
             if !phoneArray.isEmpty {
@@ -215,6 +217,7 @@ extension ConLULUlemonViewController: UITableViewDelegate, UITableViewDataSource
                     "chairman": "ceo",
                     "outcome": model.outcome ?? "",
                     "bed": model.bed ?? "",
+                    "fight": "0",
                     "might": model.might ?? "",
                     "arrows": model.arrows ?? "",
                     "table": "1"

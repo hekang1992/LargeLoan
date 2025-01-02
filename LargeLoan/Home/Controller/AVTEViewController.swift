@@ -14,7 +14,6 @@ class AVTEViewController: BaseViewController {
     var productID: String? {
         didSet {
             guard let productID = productID else { return }
-            print("photo====productID======\(productID)")
         }
     }
     
@@ -71,7 +70,7 @@ class AVTEViewController: BaseViewController {
         backInfo()
         view.addSubview(self.headView)
         self.headView.lemonView.backgroundColor = .clear
-        self.headView.namelabel.text = "Personal Information"
+        self.headView.namelabel.text = "Work Information"
         headView.snp.makeConstraints { make in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(StatusBarHeight + 50)

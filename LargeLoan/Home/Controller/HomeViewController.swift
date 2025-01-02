@@ -138,7 +138,7 @@ class HomeViewController: BaseViewController {
         
         self.subView.coptwoImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
             let webVc = WebpageViewController()
-            webVc.webUrl.accept("\(PAGE_URL)/sorbetOwlB")
+            webVc.webUrl.accept("\(PAGE_URL)/owlJackfru")
             self?.navigationController?.pushViewController(webVc, animated: true)
         }).disposed(by: disposeBag)
         
