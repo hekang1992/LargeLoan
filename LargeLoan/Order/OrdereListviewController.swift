@@ -89,7 +89,6 @@ class OrdereListviewController: BaseViewController {
             getlIST(from: type)
         })
         
-        
         self.tableView.rx.modelSelected(letModel.self).subscribe(onNext: { [weak self] model in
             if let url = model.countries, !url.isEmpty, url.hasPrefix(urlScheme), let sc = URL(string: url) {
                 if let productId = self?.jiequzifu(url: sc) {

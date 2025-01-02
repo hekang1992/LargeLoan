@@ -171,7 +171,6 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 self?.clickCamera()
-                self?.openTime = CurrentTimeManager.getCurrentTime()
             }).disposed(by: disposeBag)
         
         nextBtn.rx.tap.subscribe(onNext: { [weak self] in
@@ -182,6 +181,7 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
     }
     
     private func clickCamera() {
+        self.openTime = CurrentTimeManager.getCurrentTime()
         PermissionManager.checkCameraPermission(from: self) { [weak self] granted in
             if granted {
                 if let self = self {

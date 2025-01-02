@@ -128,6 +128,26 @@ class HomeViewController: BaseViewController {
         self.mainView.bllock = { [weak self] str in
             self?.pushnetwork(from: str)
         }
+        
+        
+        self.subView.coponeImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
+            let webVc = WebpageViewController()
+            webVc.webUrl.accept("\(h5Host)/broccoliRo")
+            self?.navigationController?.pushViewController(webVc, animated: true)
+        }).disposed(by: disposeBag)
+        
+        self.subView.coptwoImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
+            let webVc = WebpageViewController()
+            webVc.webUrl.accept("\(h5Host)/sorbetOwlB")
+            self?.navigationController?.pushViewController(webVc, animated: true)
+        }).disposed(by: disposeBag)
+        
+        self.subView.copthreeImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
+            let webVc = WebpageViewController()
+            webVc.webUrl.accept("\(h5Host)")
+            self?.navigationController?.pushViewController(webVc, animated: true)
+        }).disposed(by: disposeBag)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

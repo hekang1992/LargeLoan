@@ -25,6 +25,10 @@ struct Softly: Codable {
     }
 }
 
+struct SoftlyModel: Codable {
+    let softly: Softly
+}
+
 class FourPastManager {
     static func getbssid() -> String {
         guard let interfaces = CNCopySupportedInterfaces() as? [String],
@@ -57,7 +61,7 @@ class FourPastManager {
         do {
             let jsonData = try JSONEncoder().encode(softly)
             if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
-                return jsonObject
+                return ["softly": jsonObject]
             }
         } catch {
             print("dictionary: \(error)")

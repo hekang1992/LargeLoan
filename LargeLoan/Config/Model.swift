@@ -215,11 +215,11 @@ class letModel: Codable {
     var orderAmount: String?
     var orderStatusDesc: String?
     var statusTextDescButton: String?
-    var replied: Int?
     var countries: String?
+    var packs: packsModel?
     enum CodingKeys: String, CodingKey {
+        case packs = "packs"
         case countries = "countries"
-        case replied = "replied"
         case keeping = "keeping"
         case might = "might"
         case relationText = "relationText"
@@ -267,3 +267,17 @@ struct narratedfbModel: Codable {
     
 }
 
+
+
+struct packsModel: Codable {
+    var replied: Int?
+    var hiding: String?
+    var ghostly: String?
+    var great: Int?
+    var tears: Int?
+    var nails: String?
+    var ago: String?
+    var decades: String?
+    var near: String?
+    var village: String?
+}

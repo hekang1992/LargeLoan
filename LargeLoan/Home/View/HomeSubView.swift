@@ -58,11 +58,13 @@ class HomeSubView: BaseView {
     lazy var coponeImageView: UIImageView = {
         let coponeImageView = UIImageView()
         coponeImageView.image = UIImage(named: "Copyone")
+        coponeImageView.isUserInteractionEnabled = true
         return coponeImageView
     }()
     
     lazy var coptwoImageView: UIImageView = {
         let coptwoImageView = UIImageView()
+        coptwoImageView.isUserInteractionEnabled = true
         coptwoImageView.image = UIImage(named: "Copytwo")
         return coptwoImageView
     }()
@@ -70,6 +72,7 @@ class HomeSubView: BaseView {
     lazy var copthreeImageView: UIImageView = {
         let copthreeImageView = UIImageView()
         copthreeImageView.image = UIImage(named: "Copythree")
+        copthreeImageView.isUserInteractionEnabled = true
         return copthreeImageView
     }()
     

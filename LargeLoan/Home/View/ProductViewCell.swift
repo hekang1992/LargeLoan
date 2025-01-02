@@ -73,7 +73,7 @@ class ProductViewCell: BaseTableViewCell {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview()
             make.left.equalToSuperview().offset(16)
-            make.height.equalTo(120)
+            make.height.equalTo(110)
         }
         pImageView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(36)
@@ -88,13 +88,13 @@ class ProductViewCell: BaseTableViewCell {
         }
         desclabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(36)
-            make.top.equalTo(namelabel.snp.bottom).offset(10)
+            make.top.equalTo(namelabel.snp.bottom).offset(12)
             make.height.equalTo(16)
         }
         pricelabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(36)
-            make.top.equalTo(desclabel.snp.bottom).offset(8)
-            make.height.equalTo(53)
+            make.top.equalTo(desclabel.snp.bottom).offset(4)
+            make.height.equalTo(48)
             make.bottom.equalToSuperview().offset(-5)
         }
         viewlabel.snp.makeConstraints { make in

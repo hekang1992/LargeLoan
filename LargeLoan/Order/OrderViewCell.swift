@@ -33,6 +33,7 @@ class OrderViewCell: BaseTableViewCell {
         let iconImageView = UIImageView()
         iconImageView.backgroundColor = .random()
         iconImageView.layer.cornerRadius = 4
+        iconImageView.layer.masksToBounds = true
         return iconImageView
     }()
     
@@ -155,12 +156,19 @@ class OrderViewCell: BaseTableViewCell {
         model.asObservable().subscribe(onNext: { [weak self] model in
             guard let self = self, let model = model else { return }
             iconImageView.kf.setImage(with: URL(string: model.keeping ?? ""))
-            namelabel.text = model.nails ?? ""
-            timelabel.text = model.dateValue ?? ""
-            mlabel.text = model.orderAmount ?? ""
-            deslabel.text = model.orderStatusDesc ?? ""
-            descLabel.text = model.statusTextDescButton ?? ""
-            let replied = model.replied ?? 0
+            namelabel.text = model.packs?.nails ?? ""
+            timelabel.text = model.packs?.village ?? ""
+            mlabel.text = model.packs?.decades ?? ""
+            deslabel.text = model.packs?.hiding ?? ""
+            let ghostly = model.packs?.ghostly ?? ""
+            if ghostly.isEmpty {
+                self.vw.isHidden = true
+            }else {
+                self.vw.isHidden = false
+                descLabel.text = model.packs?.ghostly ?? ""
+            }
+            
+            let replied = model.packs?.replied ?? 0
             var colstr: String = ""
             if replied == 1 {
                 colstr = "#FF5F5E"
