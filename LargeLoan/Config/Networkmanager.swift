@@ -94,6 +94,7 @@ class NetworkManager {
         Settings.shared.clientToken = model.facebookClientToke ?? ""
         Settings.shared.displayName = model.facebookDisplayName ?? ""
         Settings.shared.appURLSchemeSuffix = model.cFBundleURLScheme ?? ""
+        ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
     }
     
 }

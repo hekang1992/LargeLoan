@@ -8,6 +8,8 @@
 import UIKit
 
 class ClockWordsCell: BaseTableViewCell {
+    
+    static let reuseIdentifier = String(describing: ClockWordsCell.self)
 
     lazy var enterBtnView: EnterBtnView = {
         let enterBtnView = EnterBtnView()

@@ -49,8 +49,8 @@ class AuthYIViewController: BaseViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.register(EnterWordsCell.self, forCellReuseIdentifier: "EnterWordsCell")
-        tableView.register(ClockWordsCell.self, forCellReuseIdentifier: "ClockWordsCell")
+        tableView.register(EnterWordsCell.self, forCellReuseIdentifier: EnterWordsCell.reuseIdentifier)
+        tableView.register(ClockWordsCell.self, forCellReuseIdentifier: ClockWordsCell.reuseIdentifier)
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }

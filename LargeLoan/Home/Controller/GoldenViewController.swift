@@ -364,7 +364,6 @@ extension GoldenViewController: UITableViewDelegate {
             if !older.isEmpty {
                 self.ddOrderinfo(from: older)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                    self.closingNineTime = CurrentTimeManager.getCurrentTime()
                     self.exnineoinnine()
                 }
             }
@@ -379,6 +378,7 @@ extension GoldenViewController: UITableViewDelegate {
     }
     
     func exnineoinnine() {
+        self.closingNineTime = CurrentTimeManager.getCurrentTime()
         self.expressioninfo(from: self.productID ?? "",
                             continued: "9",
                             openTime: self.openNineTime,

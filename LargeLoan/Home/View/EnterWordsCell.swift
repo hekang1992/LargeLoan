@@ -9,6 +9,8 @@ import UIKit
 
 class EnterWordsCell: BaseTableViewCell {
 
+    static let reuseIdentifier = String(describing: EnterWordsCell.self)
+    
     lazy var enterView: EnterTextView = {
         let enterView = EnterTextView()
         return enterView
