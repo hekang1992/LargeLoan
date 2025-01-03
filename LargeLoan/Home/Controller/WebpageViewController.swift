@@ -143,7 +143,7 @@ extension WebpageViewController: WKScriptMessageHandler, WKNavigationDelegate {
             guard let array = message.body as? [String], let pageUrl = array.first else { return }
             if !pageUrl.isEmpty, pageUrl.hasPrefix(PAGE_SCURL), let sc = URL(string: pageUrl) {
                 if let productId = self.jiequzifu(url: sc) {
-                    self.getProductDetailInfo(form: productId, complete: { [weak self] model in
+                    self.getProductDetailInfo(form: productId, complete: { [weak self] model, str in
                         let older = model.exuding.her?.older ?? ""
                         if let guess = model.exuding.guess, let pungent = guess.pungent, !pungent.isEmpty  {
                             let pushVc = ZTViewController()

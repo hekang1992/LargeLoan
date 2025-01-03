@@ -222,7 +222,7 @@ extension HomeViewController {
     private func productInfo(form withUrl: String?) {
         if let url = withUrl, !url.isEmpty, url.hasPrefix(PAGE_SCURL), let sc = URL(string: url) {
             if let productId = jiequzifu(url: sc) {
-                self.getProductDetailInfo(form: productId, complete: { [weak self] model in
+                self.getProductDetailInfo(form: productId, typeStr: "home", complete: { [weak self] model, str in
                     let older = model.exuding.her?.older ?? ""
                     if let guess = model.exuding.guess, let pungent = guess.pungent, !pungent.isEmpty  {
                         let pushVc = ZTViewController()
@@ -230,7 +230,14 @@ extension HomeViewController {
                         pushVc.proid = productId
                         self?.navigationController?.pushViewController(pushVc, animated: true)
                     }else {
-                        self?.ddOrderinfo(from: older)
+                        if productId == "2" {
+                            let pushVc = ZTViewController()
+                            pushVc.model = model
+                            pushVc.proid = productId
+                            self?.navigationController?.pushViewController(pushVc, animated: true)
+                        }else {
+                            self?.ddOrderinfo(from: older)
+                        }
                     }
                 })
             }

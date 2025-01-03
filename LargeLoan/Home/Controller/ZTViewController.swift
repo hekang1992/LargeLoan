@@ -207,7 +207,13 @@ class ZTViewController: BaseViewController {
                             oneVc.productID = self.proid
                             self.navigationController?.pushViewController(oneVc, animated: true)
                         }else {
-                            ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                            if type.isEmpty {
+                                let oneVc = AuthYIViewController()
+                                oneVc.productID = self.proid
+                                self.navigationController?.pushViewController(oneVc, animated: true)
+                            }else {
+                                ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                            }
                         }
                         break
                     case self.threeSetp:
@@ -216,7 +222,13 @@ class ZTViewController: BaseViewController {
                             twoVc.productID = self.proid
                             self.navigationController?.pushViewController(twoVc, animated: true)
                         }else {
-                            ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                            if type.isEmpty {
+                                let twoVc = AVTEViewController()
+                                twoVc.productID = self.proid
+                                self.navigationController?.pushViewController(twoVc, animated: true)
+                            }else {
+                                ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                            }
                         }
                         break
                     case self.fourSetp:
@@ -225,7 +237,13 @@ class ZTViewController: BaseViewController {
                             threeVc.productID = self.proid
                             self.navigationController?.pushViewController(threeVc, animated: true)
                         }else {
-                            ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                            if type.isEmpty {
+                                let threeVc = ConLULUlemonViewController()
+                                threeVc.productID = self.proid
+                                self.navigationController?.pushViewController(threeVc, animated: true)
+                            }else {
+                                ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                            }
                         }
                         break
                     case self.fiveSetp:
@@ -234,7 +252,13 @@ class ZTViewController: BaseViewController {
                             fourVc.productID = self.proid
                             self.navigationController?.pushViewController(fourVc, animated: true)
                         }else {
-                            ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                            if type.isEmpty {
+                                let fourVc = GoldenViewController()
+                                fourVc.productID = self.proid
+                                self.navigationController?.pushViewController(fourVc, animated: true)
+                            }else {
+                                ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                            }
                         }
                         break
                     default:
@@ -290,7 +314,7 @@ extension ZTViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.getProductDetailInfo(form: proid ?? "", complete: { [weak self] model in
+        self.getProductDetailInfo(form: proid ?? "", complete: { [weak self] model, str in
             self?.typeModel.accept(model)
             self?.getTupuInfo(form: model)
         })

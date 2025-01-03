@@ -68,7 +68,7 @@ extension BaseViewController {
         return value
     }
     
-    func getProductDetailInfo(form old: String, complete: @escaping ((BaseModel) -> Void)) {
+    func getProductDetailInfo(form old: String, typeStr: String? = "", complete: @escaping ((BaseModel, String?) -> Void)) {
         LoadingIndicator.shared.showLoading()
         provider.request(.productDetailInfo(productId: old)) { result in
             LoadingIndicator.shared.hideLoading()
@@ -78,7 +78,7 @@ extension BaseViewController {
                     let model = try JSONDecoder().decode(BaseModel.self, from: response.data)
                     let anyone = model.anyone
                     if anyone == "0" {
-                        complete(model)
+                        complete(model, typeStr)
                     }else {
                         ToastConfig.show(form: self.view, message: model.coldly)
                     }

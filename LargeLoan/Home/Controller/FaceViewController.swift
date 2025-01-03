@@ -257,7 +257,7 @@ extension FaceViewController: UINavigationControllerDelegate, UIImagePickerContr
     }
     
     private func toProductDetailInfo() {
-        self.getProductDetailInfo(form: self.productID ?? "") { [weak self] model in
+        self.getProductDetailInfo(form: self.productID ?? "") { [weak self] model, str in
             guard let self = self else { return }
             let type = model.exuding.guess?.pungent ?? ""
             ConLULULemonCong.tpuType(from: type, old: self.productID ?? "", vc: self)

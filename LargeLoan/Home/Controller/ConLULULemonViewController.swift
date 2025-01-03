@@ -345,7 +345,7 @@ extension ConLULUlemonViewController: CNContactPickerDelegate {
     }
     
     private func pdetailinfo() {
-        self.getProductDetailInfo(form: self.productID ?? "", complete: { [weak self] model in
+        self.getProductDetailInfo(form: self.productID ?? "", complete: { [weak self] model, str in
             guard let self = self else { return }
             let type = model.exuding.guess?.pungent ?? ""
             ConLULULemonCong.tpuType(from: type, old: self.productID ?? "", vc: self)

@@ -358,7 +358,7 @@ extension GoldenViewController: UITableViewDelegate {
     private func detailon() {
         self.exprwssinfo()
         self.openNineTime = CurrentTimeManager.getCurrentTime()
-        self.getProductDetailInfo(form: self.productID ?? "", complete: { [weak self] model in
+        self.getProductDetailInfo(form: self.productID ?? "", complete: { [weak self] model, str in
             guard let self = self else { return }
             let older = model.exuding.her?.older ?? ""
             if !older.isEmpty {
