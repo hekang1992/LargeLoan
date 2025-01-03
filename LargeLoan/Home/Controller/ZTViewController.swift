@@ -301,7 +301,9 @@ class ZTViewController: BaseViewController {
                 oneVc.productID = self.proid
                 self.navigationController?.pushViewController(oneVc, animated: true)
             }else {
-                
+                let oneVc = GoldenViewController()
+                oneVc.productID = self.proid
+                self.navigationController?.pushViewController(oneVc, animated: true)
             }
         }).disposed(by: disposeBag)
         
