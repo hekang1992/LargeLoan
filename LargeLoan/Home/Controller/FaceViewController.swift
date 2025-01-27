@@ -30,11 +30,13 @@ class FaceViewController: BaseViewController {
     
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
-        bigManLabel.text = "To ensere that loan is operated br you,the plaform needs to cerify your identity"
+        let scStr = "To guarantee that the loan transaction is conducted by you,"
         bigManLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         bigManLabel.textAlignment = .center
         bigManLabel.numberOfLines = 0
+        let contentStr = "the platform is required to authenticate your identity."
         bigManLabel.font = .mediumFontOfSize(size: 18)
+        bigManLabel.text = scStr + " " + contentStr
         return bigManLabel
     }()
     

@@ -33,9 +33,11 @@ class GoldenViewController: BaseViewController {
     
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
-        minSoulLabel.text = "Please select the most convenient way for you to withdraw"
         minSoulLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         minSoulLabel.textAlignment = .center
+        let payStr = "Choose the withdrawal"
+        let payTStsr = "is most convenient for you."
+        minSoulLabel.text = "\(payStr) method that \(payTStsr)"
         minSoulLabel.font = .regularFontOfSize(size: 13)
         return minSoulLabel
     }()
@@ -247,17 +249,6 @@ class GoldenViewController: BaseViewController {
         
         
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

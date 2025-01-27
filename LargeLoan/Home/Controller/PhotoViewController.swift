@@ -119,7 +119,9 @@ class PhotoViewController: BaseViewController {
     
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
-        minSoulLabel.text = "Verify Identity and name information"
+        let typeStr = "Authenticate your identity"
+        let issueStr = "and personal details."
+        minSoulLabel.text = typeStr + " " + issueStr
         minSoulLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         minSoulLabel.textAlignment = .center
         minSoulLabel.font = .mediumFontOfSize(size: 13)
@@ -170,7 +172,9 @@ class PhotoViewController: BaseViewController {
     
     lazy var ttlabel: UILabel = {
         let ttlabel = UILabel()
-        ttlabel.text = "Please confirm your identity information"
+        let oneStr = "Kindly verify your personal"
+        let twoStr = "identification details."
+        ttlabel.text = oneStr + " " + twoStr
         ttlabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         ttlabel.textAlignment = .center
         ttlabel.font = .mediumFontOfSize(size: 16)
@@ -179,7 +183,7 @@ class PhotoViewController: BaseViewController {
     
     lazy var oneView: EnterTextView = {
         let oneView = EnterTextView()
-        oneView.bigManLabel.text = "Full Name"
+        oneView.bigManLabel.text = "Name"
         oneView.lemonView.isUserInteractionEnabled = false
         return oneView
     }()
@@ -193,7 +197,7 @@ class PhotoViewController: BaseViewController {
     
     lazy var threeView: EnterBtnView = {
         let threeView = EnterBtnView()
-        threeView.bigManLabel.text = "Date of Birth"
+        threeView.bigManLabel.text = "Date"
         threeView.lemonView.isUserInteractionEnabled = false
         return threeView
     }()
@@ -539,7 +543,7 @@ extension PhotoViewController {
     }
 
     private func extractDateComponents(from text: String?) -> (day: Int, month: Int, year: Int)? {
-        let defaultDate = "01-10-1949"
+        let defaultDate = "11-11-1911"
         let timeStr = text ?? defaultDate
         let timeArray = timeStr.components(separatedBy: "-")
         guard timeArray.count == 3,
@@ -555,13 +559,11 @@ extension PhotoViewController {
         let datePickerView = BRDatePickerView()
         datePickerView.pickerMode = .YMD
         datePickerView.title = "Date"
-        datePickerView.minDate = NSDate.br_setYear(1949, month: 10, day: 01)
+        datePickerView.minDate = NSDate.br_setYear(1911, month: 11, day: 11)
         datePickerView.selectDate = NSDate.br_setYear(dateComponents.year, month: dateComponents.month, day: dateComponents.day)
         datePickerView.maxDate = Date()
         return datePickerView
     }
-
-    
 }
 
 extension PhotoViewController {

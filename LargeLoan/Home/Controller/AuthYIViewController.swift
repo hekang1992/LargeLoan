@@ -34,7 +34,7 @@ class AuthYIViewController: BaseViewController {
     
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
-        minSoulLabel.text = "Please fill in your real name information"
+        minSoulLabel.text = "Kindly provide your authentic name details."
         minSoulLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         minSoulLabel.textAlignment = .center
         minSoulLabel.font = .regularFontOfSize(size: 13)

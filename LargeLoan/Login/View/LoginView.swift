@@ -49,7 +49,7 @@ class LoginView: BaseView {
     lazy var phoneTx: UITextField = {
         let phoneTx = UITextField()
         phoneTx.keyboardType = .numberPad
-        let attrString = NSMutableAttributedString(string: "Enter your cellphone number", attributes: [
+        let attrString = NSMutableAttributedString(string: "Enter your phone number", attributes: [
             .foregroundColor: UIColor.init(colorHexStr: "#2B170A")?.withAlphaComponent(0.5) as Any,
             .font: UIFont.regularFontOfSize(size: 14)
         ])
@@ -62,7 +62,7 @@ class LoginView: BaseView {
     lazy var codeTx: UITextField = {
         let codeTx = UITextField()
         codeTx.keyboardType = .numberPad
-        let attrString = NSMutableAttributedString(string: "Enter the confirmation code", attributes: [
+        let attrString = NSMutableAttributedString(string: "Enter the verification code", attributes: [
             .foregroundColor: UIColor.init(colorHexStr: "#2B170A")?.withAlphaComponent(0.5) as Any,
             .font: UIFont.regularFontOfSize(size: 14)
         ])
@@ -74,7 +74,7 @@ class LoginView: BaseView {
     
     lazy var codeBtn: UIButton = {
         let codeBtn = UIButton(type: .custom)
-        codeBtn.setTitle("Get code", for: .normal)
+        codeBtn.setTitle("Send code", for: .normal)
         codeBtn.setTitleColor(.white, for: .normal)
         codeBtn.layer.cornerRadius = 10
         codeBtn.backgroundColor = UIColor.init(colorHexStr: "#FF7F38")

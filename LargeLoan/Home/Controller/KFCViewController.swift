@@ -130,9 +130,9 @@ extension KFCViewController: UITableViewDelegate {
         label.textColor = .init(colorHexStr: "#2B170A")
         headerView.backgroundColor = .init(colorHexStr: "#FFDFCA")
         if section == 0 {
-            label.text = "Recommended ID Type"
+            label.text = "Suggested ID Category"
         } else {
-            label.text = "Other Options"
+            label.text = "Alternative Choices"
         }
         headerView.addSubview(label)
         label.snp.makeConstraints { make in

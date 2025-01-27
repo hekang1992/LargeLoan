@@ -115,7 +115,6 @@ class SetViewController: BaseViewController {
             make.top.equalTo(logoutBtn.snp.bottom).offset(10)
         }
         
-        
         logoutBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.log()
         }).disposed(by: disposeBag)
@@ -165,7 +164,7 @@ extension SetViewController {
                     self.oiont()
                 }
             }else {
-                ToastConfig.show(form: logoutView, message: "Please confirm the agreement first, and then decide whether to delete the account.")
+                ToastConfig.show(form: logoutView, message: "Please review and confirm the agreement before deciding whether to delete the account.")
             }
         }).disposed(by: disposeBag)
         

@@ -212,7 +212,7 @@ class ZTViewController: BaseViewController {
                                 oneVc.productID = self.proid
                                 self.navigationController?.pushViewController(oneVc, animated: true)
                             }else {
-                                ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                                self.toasVcinfo()
                             }
                         }
                         break
@@ -227,7 +227,7 @@ class ZTViewController: BaseViewController {
                                 twoVc.productID = self.proid
                                 self.navigationController?.pushViewController(twoVc, animated: true)
                             }else {
-                                ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                                self.toasVcinfo()
                             }
                         }
                         break
@@ -242,7 +242,7 @@ class ZTViewController: BaseViewController {
                                 threeVc.productID = self.proid
                                 self.navigationController?.pushViewController(threeVc, animated: true)
                             }else {
-                                ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                                self.toasVcinfo()
                             }
                         }
                         break
@@ -257,7 +257,7 @@ class ZTViewController: BaseViewController {
                                 fourVc.productID = self.proid
                                 self.navigationController?.pushViewController(fourVc, animated: true)
                             }else {
-                                ToastConfig.show(form: self.view, message: "Please complete the previous certification process first!")
+                                self.toasVcinfo()
                             }
                         }
                         break
@@ -309,6 +309,10 @@ class ZTViewController: BaseViewController {
         
     }
     
+    private func toasVcinfo() {
+        ToastConfig.show(form: self.view, message: "Kindly finalize the prior authentication procedure before proceeding.")
+    }
+    
     
 }
 
@@ -326,7 +330,6 @@ extension ZTViewController {
         self.pushVcWithType(model: model)
     }
     
-    //状态
     func pushVcWithType(model: BaseModel) {
         let type = model.exuding.guess?.pungent ?? ""
         if type == "solargef" {

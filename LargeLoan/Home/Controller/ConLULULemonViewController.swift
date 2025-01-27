@@ -36,10 +36,12 @@ class ConLULUlemonViewController: BaseViewController {
     
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
-        minSoulLabel.text = "Please fill in emergency contact information"
         minSoulLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         minSoulLabel.textAlignment = .center
+        let boyStr = "emergency contact."
         minSoulLabel.font = .regularFontOfSize(size: 13)
+        let blueDtr = "Please provide the details of your"
+        minSoulLabel.text = blueDtr + " " + boyStr
         return minSoulLabel
     }()
     

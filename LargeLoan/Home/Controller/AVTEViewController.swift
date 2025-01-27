@@ -34,7 +34,7 @@ class AVTEViewController: BaseViewController {
     
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
-        minSoulLabel.text = "Please fill in your job information"
+        minSoulLabel.text = "We kindly ask you to complete the section with your current employment details."
         minSoulLabel.textColor = UIColor.init(colorHexStr: "#2B170A")
         minSoulLabel.textAlignment = .center
         minSoulLabel.font = .regularFontOfSize(size: 13)

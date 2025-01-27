@@ -247,7 +247,7 @@ extension HomeSpecialMainView: TYCyclePagerViewDelegate, TYCyclePagerViewDataSou
     func layout(for pagerView: TYCyclePagerView) -> TYCyclePagerViewLayout {
         let layout = TYCyclePagerViewLayout()
         if pagerView == importView {
-            layout.itemSize = CGSizeMake(345, 120)
+            layout.itemSize = CGSizeMake(375, 120)
             layout.itemSpacing = 5
             return layout
         }else {

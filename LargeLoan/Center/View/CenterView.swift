@@ -23,7 +23,7 @@ class CenterView: BaseView {
 
     lazy var minSoulLabel: UILabel = {
         let minSoulLabel = UILabel()
-        minSoulLabel.text = "Hello!"
+        minSoulLabel.text = "Greetings!"
         minSoulLabel.textColor = .white
         minSoulLabel.textAlignment = .left
         minSoulLabel.font = .mediumFontOfSize(size: 24)

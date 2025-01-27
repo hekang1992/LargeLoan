@@ -33,7 +33,7 @@ class PopAuthDescView: BaseView {
     
     lazy var oneView: EnterTextView = {
         let oneView = EnterTextView()
-        oneView.bigManLabel.text = "Full Name"
+        oneView.bigManLabel.text = "Name"
         return oneView
     }()
     
@@ -51,7 +51,7 @@ class PopAuthDescView: BaseView {
     
     lazy var bigManLabel: UILabel = {
         let bigManLabel = UILabel()
-        bigManLabel.text = "*Please confirm relevant information"
+        bigManLabel.text = "*Kindly verify the pertinent details."
         bigManLabel.textColor = UIColor.init(colorHexStr: "#FF0000")
         bigManLabel.textAlignment = .center
         bigManLabel.font = .mediumFontOfSize(size: 14)

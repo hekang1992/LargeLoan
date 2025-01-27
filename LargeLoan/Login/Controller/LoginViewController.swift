@@ -113,7 +113,7 @@ extension LoginViewController {
         UserDefaults.standard.synchronize()
         let phone = self.loginView.phoneTx.text ?? ""
         if phone.isEmpty {
-            ToastConfig.show(form: self.view, message: "Please enter your phone number!")
+            ToastConfig.show(form: self.view, message: "We kindly request you to provide your contact number.")
             return
         }
         LoadingIndicator.shared.showLoading()
